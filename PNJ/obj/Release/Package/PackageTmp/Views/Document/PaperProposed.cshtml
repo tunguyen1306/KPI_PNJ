@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "PaperProposed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-clockpicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+<div class="content animate-panel">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                    </div>
+                    Danh sách bộ lọc
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label" for="username">Chọn loại biểu mẫu</label>
+                                <select name="Vender" class="form-control m-b" onchange="postData()" onloadstart="postData()">
+                                    <option value="0">Lựa chọn biểu mẫu</option>
+                                    <option value="ISO_1">BMSC_PhanCung</option>
+                                    <option value="ISO_2">BMYC_PhanCung</option>
+                                    <option value="ISO_3">BMYC_PhanMem</option>
+                                </select>
+                                <input type="hidden" id="idTicket" value="@ViewBag.id" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                    </div>
+                    Nội dung biểu mẩu
+                </div>
+                <div class="panel-body" id="Replace">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function postData() {
+        var datasend = {
+            id: $("#idTicket").val(),
+            type: $("[name='Vender']").val()
+
+        }
+        $.post("/Document/Theform/" + datasend.type + "/" + datasend.id, function (data, status) {
+            $("#Replace").html(data)
+        });
+    }
+</script>

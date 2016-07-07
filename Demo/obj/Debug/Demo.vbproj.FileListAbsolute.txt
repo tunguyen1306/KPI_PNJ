@@ -1,0 +1,20 @@
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\bin\Debug\Demo.exe.config
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\obj\Debug\Demo.vbprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\obj\Debug\Demo.Resources.resources
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\obj\Debug\Demo.vbproj.GenerateResource.Cache
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\bin\Debug\Demo.exe
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\bin\Debug\Demo.pdb
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\bin\Debug\Demo.xml
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\obj\Debug\Demo.exe
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\obj\Debug\Demo.xml
+C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\Demo\obj\Debug\Demo.pdb
+F:\VietConnect\Source Code\KPI\Demo\bin\Debug\Demo.exe.config
+F:\VietConnect\Source Code\KPI\Demo\bin\Debug\Demo.exe
+F:\VietConnect\Source Code\KPI\Demo\bin\Debug\Demo.pdb
+F:\VietConnect\Source Code\KPI\Demo\bin\Debug\Demo.xml
+F:\VietConnect\Source Code\KPI\Demo\obj\Debug\Demo.vbprojResolveAssemblyReference.cache
+F:\VietConnect\Source Code\KPI\Demo\obj\Debug\Demo.Resources.resources
+F:\VietConnect\Source Code\KPI\Demo\obj\Debug\Demo.vbproj.GenerateResource.Cache
+F:\VietConnect\Source Code\KPI\Demo\obj\Debug\Demo.exe
+F:\VietConnect\Source Code\KPI\Demo\obj\Debug\Demo.xml
+F:\VietConnect\Source Code\KPI\Demo\obj\Debug\Demo.pdb

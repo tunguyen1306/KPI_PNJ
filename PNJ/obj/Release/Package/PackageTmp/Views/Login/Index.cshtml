@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PNJ đăng nhập</title>
+
+    <link rel="stylesheet" href="~/Content/font-awesome.css" />
+    <link rel="stylesheet" href="~/Content/metisMenu.css" />
+    <link rel="stylesheet" href="~/Content/animate.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="~/Content/helper.css" />
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+<body class="blank" ng-app="techcombankapp">
+
+    <div class="login-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center m-b-md">
+                    <img src="~/img/logo-black.png" width="100%" />
+                </div>
+                <div class="hpanel">
+                    <div class="panel-body">
+                        @using (Ajax.BeginForm("AjaxLogin", "Login", new AjaxOptions { HttpMethod = "post", OnSuccess = "getresult.success", OnFailure = "getresult.failed", LoadingElementId = "loading", OnBegin = "" }, new { id = "loginForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                <label class="control-label" for="username">Tên đăng nhập</label>
+                                <input type="text" placeholder="Tên đăng nhập" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Mật khẩu</label>
+                                <input type="password" title="Please enter your password" placeholder="Mật khẩu" required="" value="" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Domain</label>
+
+                                <select class="form-control" name="AD" ng-controller="getDomain">
+                                    <option ng-repeat="domain in getDomain" value="{{domain.directoryPath}}">{{domain.title}}</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" class="i-checks" checked>
+                                Ghi nhớ đăng nhập
+                            </div>
+                            <input class="btn btn-success btn-block" type="submit" value="Đăng nhập" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                Ngân Hàng TMCP Kỹ Thương<br />Bản quyền © @DateTime.Now.Year thuộc về Ngân hàng Techcombank.
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendor scripts -->
+    <script src="~/Scripts/Plugin/jquery.min.js"></script>
+    <script src="~/Scripts/Plugin/jquery-ui.min.js"></script>
+    <script src="~/Scripts/Plugin/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/Plugin/bootstrap.min.js"></script>
+    <script src="~/Scripts/Plugin/metisMenu.min.js"></script>
+    <script src="~/Scripts/Plugin/icheck.min.js"></script>
+    <script src="~/Scripts/Plugin/index.js"></script>
+    <script src="~/Scripts/Angularjs/angular.min.js"></script>
+    <script src="~/Scripts/Plugin/Controller.js"></script>
+    <!-- App scripts -->
+    <script src="~/Scripts/Plugin/homer.js"></script>
+    <script src="~/Scripts/Plugin/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        var getresult = {
+            success: function () {
+                window.location.reload();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Admin_TCBModelStoreContainer" CdmEntityContainer="Admin_TCBEntities">
+    <EntitySetMapping Name="ConfigADs">
+      <EntityTypeMapping TypeName="Admin_TCBModel.ConfigAD">
+        <MappingFragment StoreEntitySet="ConfigAD">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="directoryDomain" ColumnName="directoryDomain" />
+          <ScalarProperty Name="directoryPath" ColumnName="directoryPath" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConfigReportServers">
+      <EntityTypeMapping TypeName="Admin_TCBModel.ConfigReportServer">
+        <MappingFragment StoreEntitySet="ConfigReportServer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="reportUri" ColumnName="reportUri" />
+          <ScalarProperty Name="reportPath" ColumnName="reportPath" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="passWord" ColumnName="passWord" />
+          <ScalarProperty Name="domain" ColumnName="domain" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DashBoards">
+      <EntityTypeMapping TypeName="Admin_TCBModel.DashBoard">
+        <MappingFragment StoreEntitySet="DashBoard">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="reportUri" ColumnName="reportUri" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Functions">
+      <EntityTypeMapping TypeName="Admin_TCBModel.Function">
+        <MappingFragment StoreEntitySet="Functions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idFunction" ColumnName="idFunction" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="Admin_TCBModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupUsers">
+      <EntityTypeMapping TypeName="Admin_TCBModel.GroupUser">
+        <MappingFragment StoreEntitySet="GroupUser">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Navigations">
+      <EntityTypeMapping TypeName="Admin_TCBModel.Navigation">
+        <MappingFragment StoreEntitySet="Navigation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idNavigation" ColumnName="idNavigation" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="report" ColumnName="report" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="Admin_TCBModel.Page">
+        <MappingFragment StoreEntitySet="Page">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="namePage" ColumnName="namePage" />
+          <ScalarProperty Name="idFunction" ColumnName="idFunction" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="Admin_TCBModel.Permission">
+        <MappingFragment StoreEntitySet="Permission">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idPermission" ColumnName="idPermission" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PermissionObjects">
+      <EntityTypeMapping TypeName="Admin_TCBModel.PermissionObject">
+        <MappingFragment StoreEntitySet="PermissionObject">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idPermission" ColumnName="idPermission" />
+          <ScalarProperty Name="typeobject" ColumnName="typeobject" />
+          <ScalarProperty Name="idobject" ColumnName="idobject" />
+          <ScalarProperty Name="valueobject" ColumnName="valueobject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Admin_TCBModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleGroups">
+      <EntityTypeMapping TypeName="Admin_TCBModel.RoleGroup">
+        <MappingFragment StoreEntitySet="RoleGroup">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolePermissions">
+      <EntityTypeMapping TypeName="Admin_TCBModel.RolePermission">
+        <MappingFragment StoreEntitySet="RolePermission">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+          <ScalarProperty Name="idPermission" ColumnName="idPermission" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Admin_TCBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Admin_TCBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="nameUser" ColumnName="nameUser" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="passWord" ColumnName="passWord" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="isLoginAd" ColumnName="isLoginAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Navigation" FunctionName="Admin_TCBModel.Store.sp_Navigation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Admin_TCBModel.sp_Navigation_Result">
+          <ScalarProperty Name="idNavigation" ColumnName="idNavigation" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

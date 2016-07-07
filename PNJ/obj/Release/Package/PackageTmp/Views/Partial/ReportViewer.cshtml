@@ -1,0 +1,13 @@
+﻿@using ReportViewerForMvc
+@Html.ReportViewer(ViewBag.Report as Microsoft.Reporting.WebForms.ReportViewer)
+<script type="text/javascript">
+    var temp = setInterval(function () {
+        $("iframe").removeAttr("style");
+        $("iframe").attr("width", "100%");
+        $("iframe").css({"border": "none", "height":"650px" })
+        $("iframe").contents().find("#ReportViewer1").css({ "width": "100%" });
+        if ( $("iframe").attr("clearinter") === "yes") {
+            clearInterval(temp);
+        }
+    }, 2000)
+</script>

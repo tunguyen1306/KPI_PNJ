@@ -1,0 +1,999 @@
+﻿
+@{
+    ViewBag.Title = "Requests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-clockpicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+
+<script src="~/wizard_data/homer.js"></script>
+<link href="~/wizard_data/bootstrap-multiselect.css" rel="stylesheet" />
+
+
+<link rel="stylesheet" href="~/wizard_data/font-awesome.css">
+<link rel="stylesheet" href="~/wizard_data/metisMenu.css">
+<link rel="stylesheet" href="~/wizard_data/animate.css">
+<link rel="stylesheet" href="~/wizard_data/bootstrap.css">
+<link rel="stylesheet" href="~/wizard_data/bootstrap-clockpicker.css">
+<link rel="stylesheet" href="~/wizard_data/sweet-alert.css">
+
+<!-- App styles -->
+<link rel="stylesheet" href="~/wizard_data/pe-icon-7-stroke.css">
+<link rel="stylesheet" href="~/wizard_data/helper.css">
+<link rel="stylesheet" href="~/wizard_data/style.css">
+<link href="~/wizard_data/bootstrap-datetimepicker.css" rel="stylesheet">
+<link href="~/wizard_data/bootstrap-clockpicker.css" rel="stylesheet">
+<link href="~/wizard_data/bootstrap-datepicker3.css" rel="stylesheet">
+
+<link rel="stylesheet" href="~/wizard_data/bootstrap-multiselect.css">
+
+
+<div class="content animate-panel">
+    <div class="row">
+        <div class="col-lg-12 text-center m-t-md">
+            <h2>
+                Báo Cáo Request
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                    </div>
+                    Danh sách bộ lọc
+                </div>
+                <div class="panel-body" ng-controller="getFilterContract">
+                    @using (Ajax.BeginForm("ReportsR", "ReportPnj", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "Replace" }, new { id = "panel-body" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@ViewBag.NameReport" name="nameReport" />
+                        <input type="hidden" value="1" name="Condtition" />
+                        <div class="row">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-10" style="margin: 0px 148px;">
+                                        <div name="optradio_2" id="radioGroup">
+                                            <label class="radio_button_group">Chọn theo ngày</label><input type="radio" value="ngay" name="optradio">
+                                            <label class="radio_button_group">Tháng</label><input type="radio" value="thang" name="optradio">
+                                            <label class="radio_button_group">Quý</label><input type="radio" value="quy" name="optradio">
+                                            <label class="radio_button_group">Năm</label><input type="radio" value="nam" name="optradio">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <div id="div_show_ngay" style="">
+                                        <label class="col-sm-2 control-label" for="inputPassword3">From Date:</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" placeholder="Từ ngày" id="dateTime_Tungay" name="tungaytao" class="form-control m-b">
+                                        </div>
+
+                                        <label class="col-sm-1 control-label" for="inputPassword3">To Date:</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" placeholder="Đến ngày" id="dateTime_Denngay" name="denngaytao" class="form-control m-b">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div id="div_show_quy" style="display: none;">
+                                        <label class="col-sm-2 control-label" for="inputPassword3">Quý:</label>
+                                        <div class="col-sm-2">
+                                            <div class="btn-group">
+                                                <select multiple="multiple" id="example37" style="display: none; width:100%">
+                                                    <option value="1">1 </option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Năm:</label>
+                                        <div class="col-sm-2">
+                                            <input class="form-control m-b" name="dateTime_QuyNam" id="dateTime_QuyNam" placeholder="Year" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div id="div_show_thang" style="display: none;">
+                                        <label class="col-sm-2 control-label" for="inputPassword3">Tháng:</label>
+                                        <div class="col-sm-2">
+                                            <div class="btn-group">
+                                                <select multiple="multiple" id="example38" style="display: none; width:100%">
+                                                    <option value="1">1 </option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="4">5</option>
+                                                    <option value="4">6</option>
+                                                    <option value="4">7</option>
+                                                    <option value="4">8</option>
+                                                    <option value="4">9</option>
+                                                    <option value="4">10</option>
+                                                    <option value="4">11</option>
+                                                    <option value="4">12</option>
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Năm:</label>
+                                        <div class="col-sm-2">
+                                            <input class="form-control m-b" name="dateTime_Nam" id="dateTime_Nam" placeholder="Year" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div id="div_show_nam" style="display: none;">
+                                        <label class="col-sm-4 control-label" for="inputPassword3">Year:</label>
+                                        <div class="col-sm-offset-4">
+                                            <div class="btn-group">
+                                                <select multiple="multiple" id="example39" style="display: none; width:100%">
+                                                    <option value="2011">2011 </option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+
+                                    <center>
+                                        <div class="col-sm-12">
+                                            <div name="optradio_2" id="radioGroup2">
+                                                <label class="radio_button_group">Xem báo cáo theo IT Suport group</label><input type="radio" value="ITSuportgroup" name="optradio1">
+                                                <label class="radio_button_group">Xem báo cáo theo dịch vụ</label><input type="radio" value="services" name="optradio1">
+                                                <label class="radio_button_group">Xem báo cáo theo khách hàng</label><input type="radio" value="customer" name="optradio1">
+                                            </div>
+                                        </div>
+                                    </center>
+
+                                </div>
+                                <!---sdfsdfsdfsdf-->
+
+                                <div class="form-group">
+                                    <div id="div_show_supportGroup">
+                                        <label class="col-sm-2 control-label" for="inputPassword3">Group:</label>
+                                        <div class="col-sm-2">
+
+
+
+                                            <div class="btn-group">
+                                                <select id="example-dropUp" multiple="multiple" onload="LoadGroup()"  >
+                                                  
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+                                       <div id="subtechnician">
+                                                <label class="col-sm-2 control-label" for="inputPassword3">Technician:</label>
+                                                <div class="col-sm-2">
+                                                    <div class="btn-group">
+                                                        <select multiple="multiple" id="example42" style="display: none; width:100%">
+                                                            @*<optgroup label="Quản trị CRM & HRM1" id="example-post-checkboxName-1">
+                                                                <option value="1">F0001-CAO THỊ NGỌC DUNG</option>
+                                                                <option value="2">F0003-NGUYỄN THỊ CÚC</option>
+                                                                <option value="3">F0033-NGUYỄN HUỲNH TRÚC CHI</option>
+                                                            </optgroup>
+                                                            <optgroup label="Quản trị ERP" id="example-post-checkboxName-2">
+                                                                <option value="4">F0066-NGUYỄN THỊ HỒNG DUYÊN</option>
+                                                                <option value="5">F0081-PHẠM THỊ MỸ HẠNH</option>
+                                                                <option value="6">F0088-TRẦN THỊ THU HÀ</option>
+                                                            </optgroup>*@
+                                                        </select>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div id="div_show_service">
+                                        <label class="col-sm-2 control-label" for="inputPassword3">Servicategory:</label>
+                                        <div class="col-sm-2">
+                                            <div class="btn-group">
+                                                <select multiple="multiple" id="example43" onload="Servicategory()" style="display: none; width:100%">
+                                                  
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+                                        <div id="sub_Category">
+                                            <label class="col-sm-2 control-label" for="inputPassword3">Category:</label>
+                                            <div class="col-sm-2">
+                                                <div class="btn-group">
+                                                    <select multiple="multiple" id="example44" style="display: none; width:100%">
+                                                       
+                                                    </select>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="sublastCategory">
+                                            <label class="col-sm-1 control-label" for="inputPassword3">Subcategory:</label>
+                                            <div class="col-sm-2">
+                                                <div class="btn-group">
+                                                    <select multiple="multiple" id="example45" style="display: none; width:100%">
+                                                        
+                                                    </select>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div id="div_show_customer">
+                                        <label class="col-sm-2 control-label" for="inputPassword3">Derpartment:</label>
+                                        <div class="col-sm-2">
+                                            <div class="btn-group">
+                                                <select multiple="multiple" id="example47" onload="LoadDepartment()" style="display: none; width:100%">
+                                                    
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+                                        <div id="subRequester">
+                                            <label class="col-sm-1 control-label" for="inputPassword3">Requester:</label>
+                                            <div class="col-sm-2">
+                                                <div class="btn-group">
+                                                    <select multiple="multiple" id="example48" style="display: none; width:100%"></select>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-12 col-sm-offset-4">
+
+                                        <button type="submit" id="btn_submit" class="btn btn-primary">Kết quả</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                    </div>
+                    Nội dung báo cáo
+                </div>
+                <div class="panel-body" id="Replace">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Vendor scripts -->
+<script src="~/wizard_data/jquery.js"></script>
+<script src="~/wizard_data/jquery-ui.js"></script>
+<script src="~/wizard_data/jquery_002.js"></script>
+<script src="~/wizard_data/bootstrap.js"></script>
+<script src="~/wizard_data/metisMenu.js"></script>
+<script src="~/wizard_data/icheck.js"></script>
+<script src="~/wizard_data/index.js"></script>
+<script src="~/wizard_data/sweet-alert.js"></script>
+<!-- App scripts -->
+<script src="~/wizard_data/homer.js"></script>
+<script src="~/wizard_data/bootstrap-datetimepicker.js"></script>
+<script src="~/wizard_data/bootstrap-clockpicker.js"></script>
+<script src="~/wizard_data/bootstrap-datepicker.js"></script>
+<script src="~/wizard_data/bootstrap-multiselect.js"></script>
+<script src="~/Scripts/Plugin/moment.js"></script>
+<script src="~/Scripts/Plugin/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script>
+
+        $(function () {
+
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                $('a[data-toggle="tab"]').removeClass('btn-primary');
+                $('a[data-toggle="tab"]').addClass('btn-default');
+                $(this).removeClass('btn-default');
+                $(this).addClass('btn-primary');
+            })
+
+            $('.next').click(function () {
+                var nextId = $(this).parents('.tab-pane').next().attr("id");
+                $('[href=#' + nextId + ']').tab('show');
+            })
+
+            $('.prev').click(function () {
+                var prevId = $(this).parents('.tab-pane').prev().attr("id");
+                $('[href=#' + prevId + ']').tab('show');
+            })
+
+            $('.submitWizard').click(function () {
+
+                var approve = $(".approveCheck").is(':checked');
+                if (approve) {
+                    // Got to step 1
+                    $('[href=#step1]').tab('show');
+
+                    // Serialize data to post method
+                    var datastring = $("#simpleForm").serialize();
+
+                    // Show notification
+                    swal({
+                        title: "Thank you!",
+                        text: "You approved our example form!",
+                        type: "success"
+                    });
+                    //            Example code for post form
+                    //            $.ajax({
+                    //                type: "POST",
+                    //                url: "your_link.php",
+                    //                data: datastring,
+                    //                success: function(data) {
+                    //                    // Notification
+                    //                }
+                    //            });
+                } else {
+                    // Show notification
+                    swal({
+                        title: "Error!",
+                        text: "You have to approve form checkbox.",
+                        type: "error"
+                    });
+                }
+            })
+        });
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example37').multiselect({
+                buttonWidth: '157px',
+                onChange: function (option, checked) {
+                    // Get selected options.
+                    var selectedOptions = $('#example37 option:selected');
+
+                    if (selectedOptions.length >= 4) {
+                        // Disable all other checkboxes.
+                        var nonSelectedOptions = $('#example37 option').filter(function () {
+                            return !$(this).is(':selected');
+                        });
+
+                        var dropdown = $('#example37').siblings('.multiselect-container');
+                        nonSelectedOptions.each(function () {
+                            var input = $('input[value="' + $(this).val() + '"]');
+                            input.prop('disabled', true);
+                            input.parent('li').addClass('disabled');
+                        });
+                    }
+                    else {
+                        // Enable all checkboxes.
+                        var dropdown = $('#example37').siblings('.multiselect-container');
+                        $('#example37 option').each(function () {
+                            var input = $('input[value="' + $(this).val() + '"]');
+                            
+                            input.prop('disabled', false);
+                            input.parent('li').addClass('disabled');
+                        });
+                    }
+                }
+            });
+        });
+</script>
+
+<script type="text/javascript">
+        $("#dateTime_Tungay").datepicker({
+            format: "dd/mm/yyyy"
+        });
+
+        $("#dateTime_Denngay").datepicker({
+            format: "dd/mm/yyyy"
+        });
+
+
+        //$("#dateTime_Tungay").datepicker({
+        //    format: "mm",
+        //    viewMode: "months",
+        //    minViewMode: "months"
+        //});
+
+        //$("#dateTime_Denngay").datepicker({
+        //    format: "mm",
+        //    viewMode: "months",
+        //    minViewMode: "months"
+        //});
+
+        $("#dateTime_QuyNam").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+        });
+
+        $("#dateTime_Nam").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+        });
+
+
+
+        $('#sub_Category').hide();
+        $('#subRequester').hide();
+        $('#div_show_customer').hide();
+
+        $('#div_show_service').hide();
+        $('#sublastCategory').hide();
+        $('#subtechnician').hide();
+        $('#div_show_supportGroup').hide();
+
+        $('#div_show_ngay').hide();
+        $('#div_show_thang').hide();
+        $('#div_show_quy').hide();
+        $('#div_show_nam').hide();
+
+        $('#div_Technician').hide();
+
+        $('#div_Subcategory').hide();
+        $('#div_Item').hide();
+        $("#option_quy").hide();
+
+        function hide() {
+            $('#div_show_ngay').hide();
+            $('#div_show_thang').hide();
+            $('#div_show_quy').hide();
+            $('#div_show_nam').hide();
+        }
+
+        function setissnull() {
+            $('#dateTime_Tungay').val('');
+            $('#dateTime_Denngay').val('');
+            $("#example38").val("None selected");
+            //$('#example38').removeAttr('checked');
+            $('#dateTime_Nam').val('');
+            $('#example37').val('');
+            $('#dateTime_QuyNam').val('');
+            $('#example39').val('');
+        }
+        $('#radioGroup2').change(function () {
+
+
+            if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "ITSuportgroup") {
+
+                $('#div_show_supportGroup').show();
+                $('#div_show_service').hide();
+                $('#div_show_customer').hide();
+                $('#subtechnician').hide();
+                setclearservices();
+                setcleardepart();
+            }
+
+            if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "services") {
+
+                $('#div_show_service').show();
+                $('#div_show_supportGroup').hide();
+                $('#div_show_customer').hide();
+                $('#sub_Category').hide();
+                $('#sublastCategory').hide();
+                setclearitgroup();
+                setcleardepart();
+            }
+
+            if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "customer") {
+
+                $('#div_show_customer').show();
+                $('#div_show_service').hide();
+                $('#div_show_supportGroup').hide();
+
+                $('#subRequester').hide();
+                setclearitgroup();
+                setclearservices();
+
+            }
+
+
+
+        });
+
+
+
+
+        $('#radioGroup').change(function () {
+
+
+
+            if ($('input[name=optradio]:checked', '#radioGroup').val() == "ngay") {
+                setissnull();
+                hide();
+                $('#div_show_ngay').show();
+                setclearitmont();
+                setclearQuy();
+                setclearyear();
+            }
+
+
+            if ($('input[name=optradio]:checked', '#radioGroup').val() == "thang") {
+                setissnull();
+                hide();
+                $('#div_show_thang').show();
+                setclearQuy();
+                setclearyear();
+
+            }
+
+            if ($('input[name=optradio]:checked', '#radioGroup').val() == "quy") {
+                setissnull();
+                hide();
+                $('#div_show_quy').show();
+                setclearitmont();
+                setclearyear();
+            }
+
+            if ($('input[name=optradio]:checked', '#radioGroup').val() == "nam") {
+                setissnull();
+                hide();
+                $('#div_show_nam').show();
+                setclearitmont();
+                setclearQuy();
+            }
+        });
+
+
+
+
+</script>
+
+
+<script type="text/javascript">
+        hideDiv();
+        function hideDiv() {
+            $('#Div_TECHNICIAN').hide();
+            $('#div_Group').hide();
+            $('#Div_SERVICECATEGORY').hide();
+            $('#Div_SERVICECATEGORY_1').hide();
+            $('#Div_Category').hide();
+            $('#Div_SERVICECATEGORY_2').hide();
+            $('#Div_Department').hide();
+            $('#div_Department_Requester').hide();
+        }
+        function hideIMG(){
+            $('#week').hide();
+            $('#month').hide();
+            $('#month_quy').hide();
+            $('#quy').hide();
+            $('#img_group').hide();
+            $('#nam').hide();
+            $('#year').hide();
+            $('#Technician').hide();
+
+            //servicer category
+            $('#sc_day').hide();
+            $('#sc_year').hide();
+            $('#sc_month').hide();
+            $('#sc_quy').hide();
+            $('#sc_week').hide();
+        }
+
+
+        function setclearitgroup() {
+            $('#example-dropUp').multiselect('deselectAll', false);
+            $('#example-dropUp').multiselect('updateButtonText');
+            $('#example42').multiselect('deselectAll', false);
+            $('#example42').multiselect('updateButtonText');
+        }
+        function setclearservices() {
+            $('#example43').multiselect('deselectAll', false);
+            $('#example43').multiselect('updateButtonText');
+            $('#example44').multiselect('deselectAll', false);
+            $('#example44').multiselect('updateButtonText');
+            $('#example45').multiselect('deselectAll', false);
+            $('#example45').multiselect('updateButtonText');
+        }
+        function setcleardepart() {
+            $('#example47').multiselect('deselectAll', false);
+            $('#example47').multiselect('updateButtonText');
+            $('#example48').multiselect('deselectAll', false);
+            $('#example48').multiselect('updateButtonText');
+
+        }
+
+        function setclearitmont() {
+            $('#example38').multiselect('deselectAll', false);
+            $('#example38').multiselect('updateButtonText');
+        }
+        function setclearQuy() {
+            $('#example37').multiselect('deselectAll', false);
+            $('#example37').multiselect('updateButtonText');
+        }
+        function setclearyear() {
+            $('#example39').multiselect('deselectAll', false);
+            $('#example39').multiselect('updateButtonText');
+
+
+        }
+
+        $(document).ready(function () {
+            $('#btn_submit').click(function () {
+
+
+
+                if ($('input[name=optradio]:checked', '#radioGroup').val() == "ngay") {
+                    if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "ITSuportgroup") {
+                        if ($('#dateTime_Tungay').val() != null && $('#dateTime_Denngay').val() !=null && $('#example-dropUp').val() != null && $('#example42').val() == null) {
+                            hideDiv();
+                            hideIMG();
+                            $('#div_Group').show();
+                            $('#img_group').show();
+                            $('#Div_TECHNICIAN').hide();
+                        }
+                        if ($('#dateTime_Tungay').val() !=null && $('#dateTime_Denngay').val() !=null && $('#example-dropUp').val() != null && $('#example42').val() != null) {
+                            hideIMG();
+                            hideDiv();
+                            $('#Div_TECHNICIAN').show();
+                            $('#Technician').show();
+                            $('#div_Group').hide();
+                        }
+                    }
+                }
+                if ($('input[name=optradio]:checked', '#radioGroup').val() == "thang") {
+                    if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "ITSuportgroup") {
+                        if ($('#example38').val() != null && $('#example38').val().length == 1 && $('#dateTime_Nam').val() && $('#example-dropUp').val() != null && $('#example42').val() != null) {
+                            hideIMG();
+                            $('#Div_TECHNICIAN').show();
+                            $('#div_Group').hide();
+                            $('#week').show();
+                        }
+                        if ($('#example38').val() != null && $('#example38').val().length > 1 && $('#dateTime_Nam').val() && $('#example-dropUp').val() != null && $('#example42').val() != null) {
+                            hideIMG();
+                            $('#Div_TECHNICIAN').show();
+                            $('#div_Group').hide();
+                            $('#month').show();
+                        }
+                    }
+                }
+
+                if ($('input[name=optradio]:checked', '#radioGroup').val() == "quy") {
+                    if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "ITSuportgroup") {
+                        if ($('#example37').val() != null && $('#example37').val().length == 1 && $('#dateTime_QuyNam').val() && $('#example-dropUp').val() != null && $('#example42').val() != null) {
+
+                            hideIMG();
+                            $('#Div_TECHNICIAN').show();
+                            $('#div_Group').hide();
+                            $('#month_quy').show();
+                        }
+                        if ($('#example37').val() != null && $('#example37').val().length > 1 && $('#dateTime_QuyNam').val() && $('#example-dropUp').val() != null && $('#example42').val() != null) {
+
+                            hideIMG();
+                            $('#Div_TECHNICIAN').show();
+                            $('#div_Group').hide();
+                            $('#quy').show();
+                        }
+                    }
+                }
+
+                if ($('input[name=optradio]:checked', '#radioGroup').val() == "nam")
+                {
+                    if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "ITSuportgroup") {
+                        if ($('#example39').val() != null && $('#example39').val().length == 1 && $('#example-dropUp').val() != null && $('#example42').val() != null) {
+                            hideIMG();
+                            $('#Div_TECHNICIAN').show();
+                            $('#div_Group').hide();
+                            $('#month').show();
+                        }
+                        if ($('#example39').val() != null && $('#example39').val().length > 1 && $('#dateTime_Nam').val != null && $('#example-dropUp').val() != null && $('#example42').val() != null) {
+                            hideIMG();
+                            $('#Div_TECHNICIAN').show();
+                            $('#div_Group').hide();
+                            $('#year').show();
+                        }
+                    }
+                }
+
+                //service category
+                if ($('input[name=optradio]:checked', '#radioGroup').val() == "ngay")
+                {
+                    if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "services") {
+                        if ($('#dateTime_Tungay').val() && $('#dateTime_Denngay').val() && $('#example43').val() != null) {
+                            hideIMG();
+                            hideDiv();
+                            $('#Div_SERVICECATEGORY_2').show();
+                            $('#sc_day').show();
+                        }
+                    }
+                }
+
+                if ($('input[name=optradio]:checked', '#radioGroup').val() == "thang")
+                {
+                    if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "services")
+                    {
+                        if ($('#example38').val() != null && $('#example38').val().length == 1 && $('#dateTime_Nam').val != null && $('#example43').val() != null) {
+                            hideIMG();
+                            hideDiv();
+                            $('#Div_SERVICECATEGORY_2').show();
+                            $('#sc_week').show();
+                        }
+                        if ($('#example38').val() != null && $('#example38').val().length > 1 && $('#dateTime_Nam').val != null && $('#example43').val() != null ) {
+                            hideIMG();
+                            hideDiv();
+                            $('#Div_SERVICECATEGORY_2').show();
+                            $('#sc_month').show();
+                        }
+                    }
+                }
+                if ($('input[name=optradio]:checked', '#radioGroup').val() == "quy")
+                {
+                    if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "services")
+                    {
+                        if ($('#example37').val() != null && $('#example37').val().length == 1 && $('#dateTime_QuyNam').val() != null && $('#example43').val() != null ) {
+                            hideIMG();
+                            hideDiv();
+                            $('#Div_SERVICECATEGORY_2').show();
+                            $('#sc_month').show();
+                        }
+                        if ($('#example37').val() != null && $('#example37').val().length > 1 && $('#dateTime_QuyNam').val() != null && $('#example43').val() != null) {
+                            hideIMG();
+                            hideDiv();
+                            $('#Div_SERVICECATEGORY_2').show();
+                            $('#sc_quy').show();
+                        }
+                    }
+                }
+
+                if ($('input[name=optradio]:checked', '#radioGroup').val() == "nam")
+                {
+                    if ($('input[name=optradio1]:checked', '#radioGroup2').val() == "services")
+                    {
+
+                        if ($('#example39').val() != null && $('#example39').val().length == 1 && $('#example43').val() != null)
+                        {
+                            hideIMG();
+                            hideDiv();
+                            $('#Div_SERVICECATEGORY_2').show();
+                            $('#sc_month').show();
+                        }
+                        if ($('#example39').val() != null && $('#example39').val().length > 1 && $('#example43').val() != null) {
+                            hideIMG();
+                            hideDiv();
+                            $('#Div_SERVICECATEGORY_2').show();
+                            $('#sc_year').show();
+                        }
+                    }
+                }
+
+
+            });
+
+        });
+
+
+</script>
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#example-dropUp').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked, select) {
+
+                    if (option.length == 1) {
+                        $('#subtechnician').show();
+                      
+                    }
+
+                },
+            });
+            $('#example38').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked, select) {
+
+
+
+                },
+            });
+
+            $('#example39').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked, select) {
+
+
+
+                },
+            });
+
+            $('#example40').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked, select) {
+
+
+
+                },
+            });
+            $('#example42').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false
+               
+            });
+        });
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#example42').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                enableClickableOptGroups: true,
+                enableCollapsibleOptGroups: true,
+                onChange: function (option, checked) {
+                    // Get selected options.
+                    var selectedOptions = $('#example42 option:selected');
+                    if (option.length == 1) {
+                        $('#subtechnician').show();
+                    }
+
+                }
+            });
+        });
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example43').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked) {
+                    // Get selected options.
+                    var selectedOptions = $('#example43 option:selected');
+                    $('#sub_Category').show();
+                    $('#sublastCategory').hide();
+                }
+            });
+        });
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example44').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked) {
+                    // Get selected options.
+                    var selectedOptions = $('#example44 option:selected');
+                    $('#sub_Category').show();
+                    $('#sublastCategory').show();
+                }
+            });
+        });
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example45').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked) {
+                    //// Get selected options.
+                    //var selectedOptions = $('#example45 option:selected');
+                    //$('#sub_Category').show();
+                    //$('#sublastCategory').show();
+                }
+            });
+        });
+</script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example47').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked) {
+                    // Get selected options.
+                    var selectedOptions = $('#example47 option:selected');
+                    $('#subRequester').show();
+
+
+                }
+            });
+        });
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example48').multiselect({
+                buttonWidth: '157px',
+                enableFiltering: true,
+                includeSelectAllOption: true,
+                maxHeight: 400,
+                dropUp: false,
+                onChange: function (option, checked) {
+                    // Get selected options.
+                    var selectedOptions = $('#example48 option:selected');
+                    $(selectedOptions).each(function (index, brand) {
+                        alert($(this).val())
+                    });
+                }
+              
+            });
+        });
+</script>
+<script src="~/Scripts/Js/JsRequest.js"></script>

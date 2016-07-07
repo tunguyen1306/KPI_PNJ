@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Admin_TCBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ConfigAD">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="directoryDomain" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="directoryPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="sort" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ConfigReportServer">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="reportUri" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="reportPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="passWord" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="domain" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="DashBoard">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="reportUri" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Function">
+    <Key>
+      <PropertyRef Name="idFunction" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idFunction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="idGroup" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+    <NavigationProperty Name="GroupUsers" Relationship="Self.FK_GroupUser_Group" FromRole="Groups" ToRole="GroupUser" />
+    <NavigationProperty Name="RoleGroups" Relationship="Self.FK_RoleGroup_Group" FromRole="Groups" ToRole="RoleGroup" />
+  </EntityType>
+  <EntityType Name="GroupUser">
+    <Key>
+      <PropertyRef Name="idGroup" />
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_GroupUser_Group" FromRole="GroupUser" ToRole="Groups" />
+    <NavigationProperty Name="User" Relationship="Self.FK_GroupUser_User" FromRole="GroupUser" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Navigation">
+    <Key>
+      <PropertyRef Name="idNavigation" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idNavigation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="report" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="parentid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="sort" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Page">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="namePage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idFunction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="idPermission" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPermission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+    <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermission_Permission" FromRole="Permission" ToRole="RolePermission" />
+  </EntityType>
+  <EntityType Name="PermissionObject">
+    <Key>
+      <PropertyRef Name="idPermission" />
+      <PropertyRef Name="idobject" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPermission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="typeobject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idobject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valueobject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRole" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+    <NavigationProperty Name="RoleGroups" Relationship="Self.FK_RoleGroup_Role" FromRole="Role" ToRole="RoleGroup" />
+    <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermission_Role" FromRole="Role" ToRole="RolePermission" />
+  </EntityType>
+  <EntityType Name="RoleGroup">
+    <Key>
+      <PropertyRef Name="idGroup" />
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idRole" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_RoleGroup_Group" FromRole="RoleGroup" ToRole="Groups" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_RoleGroup_Role" FromRole="RoleGroup" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="RolePermission">
+    <Key>
+      <PropertyRef Name="idRole" />
+      <PropertyRef Name="idPermission" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRole" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idPermission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Permission" Relationship="Self.FK_RolePermission_Permission" FromRole="RolePermission" ToRole="Permission" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_RolePermission_Role" FromRole="RolePermission" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nameUser" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="passWord" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="createdBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="createdDate" Type="DateTime" Precision="3" />
+    <Property Name="modifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="deletedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="isLoginAd" Type="Boolean" />
+    <NavigationProperty Name="GroupUsers" Relationship="Self.FK_GroupUser_User" FromRole="Users" ToRole="GroupUser" />
+  </EntityType>
+  <Association Name="FK_GroupUser_Group">
+    <End Role="Groups" Type="Self.Group" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="idGroup" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="idGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleGroup_Group">
+    <End Role="Groups" Type="Self.Group" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RoleGroup" Type="Self.RoleGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="idGroup" />
+      </Principal>
+      <Dependent Role="RoleGroup">
+        <PropertyRef Name="idGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_User">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermission_Permission">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="idPermission" />
+      </Principal>
+      <Dependent Role="RolePermission">
+        <PropertyRef Name="idPermission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleGroup_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RoleGroup" Type="Self.RoleGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="RoleGroup">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermission_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="RolePermission">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Admin_TCBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ConfigADs" EntityType="Self.ConfigAD" />
+    <EntitySet Name="ConfigReportServers" EntityType="Self.ConfigReportServer" />
+    <EntitySet Name="DashBoards" EntityType="Self.DashBoard" />
+    <EntitySet Name="Functions" EntityType="Self.Function" />
+    <EntitySet Name="Groups" EntityType="Self.Group" />
+    <EntitySet Name="GroupUsers" EntityType="Self.GroupUser" />
+    <EntitySet Name="Navigations" EntityType="Self.Navigation" />
+    <EntitySet Name="Pages" EntityType="Self.Page" />
+    <EntitySet Name="Permissions" EntityType="Self.Permission" />
+    <EntitySet Name="PermissionObjects" EntityType="Self.PermissionObject" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="RoleGroups" EntityType="Self.RoleGroup" />
+    <EntitySet Name="RolePermissions" EntityType="Self.RolePermission" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_GroupUser_Group" Association="Self.FK_GroupUser_Group">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="GroupUser" EntitySet="GroupUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleGroup_Group" Association="Self.FK_RoleGroup_Group">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="RoleGroup" EntitySet="RoleGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_User" Association="Self.FK_GroupUser_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="GroupUser" EntitySet="GroupUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermission_Permission" Association="Self.FK_RolePermission_Permission">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="RolePermission" EntitySet="RolePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleGroup_Role" Association="Self.FK_RoleGroup_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RoleGroup" EntitySet="RoleGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermission_Role" Association="Self.FK_RolePermission_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RolePermission" EntitySet="RolePermissions" />
+    </AssociationSet>
+    <FunctionImport Name="sp_Navigation" ReturnType="Collection(Admin_TCBModel.sp_Navigation_Result)">
+      <Parameter Name="parent" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_Navigation_Result">
+    <Property Type="String" Name="idNavigation" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="parentid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="sort" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="link" Nullable="true" MaxLength="200" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,23 @@
+﻿<aside id="menu">
+    <div class="profile-picture logoMenu">
+        <a href="/">
+            <img style="height : 100%; width : 100%" src="~/img/logo-black.png" />
+        </a>
+    </div>
+    <div id="navigation" ng-controller="getNavigation">
+
+        <ul class="nav" id="side-menu">
+            <li ng-repeat="menu in SiteMenu | filter :{parentid : 'PNJ'} | orderBy : 'sort'" ng-include="'treeMenu'">
+            </li>
+        </ul>
+        <script type="text/ng-template" id="treeMenu">
+            <a data-toggle="collapse" data-target="#{{menu.idNavigation}}" href="{{menu.link}}"><span class="nav-label">{{menu.title}}</span><span class="fa arrow" ng-if="(SiteMenu | filter:{parentid : menu.idNavigation}).length > 0"></span> </a>
+            <ul id="{{menu.idNavigation}}" ng-if="(SiteMenu | filter:{parentid : menu.idNavigation}).length > 0" class="nav nav-second-level collapse" id="child{{$index}}">
+                <li ng-repeat="menu in SiteMenu | filter :{parentid : menu.idNavigation} | orderBy : 'sort'" ng-include="'treeMenu'">
+                </li>
+            </ul>
+        </script>
+    </div>
+</aside>
+<script src="~/Scripts/Plugin/metisMenu.min.js"></script>
+<script src="~/Scripts/Plugin/bootstrap.min.js"></script>

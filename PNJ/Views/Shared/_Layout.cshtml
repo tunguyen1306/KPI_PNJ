@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/font-awesome.css" />
+    <link rel="stylesheet" href="~/Content/metisMenu.css" />
+    <link rel="stylesheet" href="~/Content/animate.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="~/Content/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="~/Content/helper.css" />
+    <link rel="stylesheet" href="~/Content/style.css">
+    <script src="~/Scripts/Angularjs/angular.min.js"></script>
+    <script src="~/Scripts/Controller/Controller.js"></script>
+    <script src="~/Scripts/Plugin/jquery.min.js"></script>
+    <script src="~/Scripts/Plugin/jquery-ui.min.js"></script>
+
+    <meta name="description" content="The description of my page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="fixed-navbar fixed-sidebar" ng-app="pnjapp">
+    <div id="header">
+        <div id="logo" class="light-version">
+
+            <span>
+                <img style="height : 100%; width : 100%" src="~/img/logo-black.png" />
+            </span>
+        </div>
+        <nav role="navigation">
+            <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav no-borders">
+                    <li class="dropdown" ng-controller="logouts" ng-click="logout()">
+                        <a>
+                            <i class="pe-7s-upload pe-rotate-90"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    @*@Html.Partial("../Partial/Menu")*@
+    <div id="wrapper">
+        @RenderBody()
+        <footer class="footer">
+            <span class="pull-right">
+            </span>
+            Bản quyền © @DateTime.Now.Year thuộc về PNJ. Bảo lưu mọi quyền lợi.
+        </footer>
+    </div>
+    <div>
+    </div>
+
+    <script src="~/Scripts/Plugin/jquery.slimscroll.min.js"></script>
+
+    <script src="~/Scripts/Plugin/jquery.flot.js"></script>
+    <script src="~/Scripts/Plugin/jquery.flot.resize.js"></script>
+    <script src="~/Scripts/Plugin/jquery.flot.pie.js"></script>
+    <script src="~/Scripts/Plugin/curvedLines.js"></script>
+    <script src="~/Scripts/Plugin/index.js"></script>
+
+    <script src="~/Scripts/Plugin/icheck.min.js"></script>
+    <script src="~/Scripts/Plugin/jquery.peity.min.js"></script>
+    <script src="~/Scripts/Plugin/Script.js"></script>
+    <script src="~/Scripts/Plugin/homer.js"></script>
+</body>
+</html>

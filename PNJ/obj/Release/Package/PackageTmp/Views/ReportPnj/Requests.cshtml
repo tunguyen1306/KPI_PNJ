@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Requests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-clockpicker.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+<div class="content animate-panel">
+    <div class="row">
+        <div class="col-lg-12 text-center m-t-md">
+            <h2>
+                Báo Cáo Contract
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                    </div>
+                    Danh sách bộ lọc
+                </div>
+                <div class="panel-body" ng-controller="getFilterContract">
+                    @using (Ajax.BeginForm("ReportsR", "ReportPnj", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "Replace" }, new { id = "panel-body" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@ViewBag.NameReport" name="nameReport" />
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="username">Type:</label>
+                                    <select name="rqt" class="form-control m-b">
+                                        <option value="">Tất cả</option>
+                                        <option ng-repeat="s in Type" value="{{s.REQUESTTYPEID}}">{{s.NAME}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="username">From Date:</label>
+                                    <input id="dateTime_2_1" name="tungaytao" type="text" placeholder="Từ" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="username">To Date</label>
+                                    <input id="dateTime_2_2" name="denngaytao" type="text" placeholder="Đến" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="text-center">
+                                <input type="submit" value="Xem báo cáo" class="btn btn-success" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                    </div>
+                    Nội dung báo cáo
+                </div>
+                <div class="panel-body" id="Replace">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Plugin/moment.js"></script>
+<script src="~/Scripts/Plugin/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/Plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="~/Scripts/Plugin/bootstrap-clockpicker.min.js"></script>
+<script src="~/Scripts/Plugin/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+    $("#dateTime_2_2").datepicker({
+        format: "dd/mm/yyyy"
+    });
+    $("#dateTime_2_1").datepicker({
+        format: "dd/mm/yyyy"
+    });
+</script>

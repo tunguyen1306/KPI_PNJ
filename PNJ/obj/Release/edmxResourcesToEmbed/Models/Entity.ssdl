@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Admin_TCBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ConfigAD">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="directoryDomain" Type="nvarchar" MaxLength="200" />
+    <Property Name="directoryPath" Type="nvarchar" MaxLength="200" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="sort" Type="int" />
+  </EntityType>
+  <EntityType Name="ConfigReportServer">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="reportUri" Type="varchar" MaxLength="200" />
+    <Property Name="reportPath" Type="varchar" MaxLength="200" />
+    <Property Name="userName" Type="varchar" MaxLength="100" />
+    <Property Name="passWord" Type="varchar" MaxLength="100" />
+    <Property Name="domain" Type="varchar" MaxLength="100" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="DashBoard">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="reportUri" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="sort" Type="int" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Functions">
+    <Key>
+      <PropertyRef Name="idFunction" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idFunction" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="idGroup" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idGroup" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="GroupUser">
+    <Key>
+      <PropertyRef Name="idGroup" />
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idGroup" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="idUser" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Navigation">
+    <Key>
+      <PropertyRef Name="idNavigation" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idNavigation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="link" Type="nvarchar" MaxLength="200" />
+    <Property Name="report" Type="nvarchar" MaxLength="100" />
+    <Property Name="parentid" Type="varchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="sort" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Page">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="namePage" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idFunction" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="idPermission" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idPermission" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="PermissionObject">
+    <Key>
+      <PropertyRef Name="idPermission" />
+      <PropertyRef Name="idobject" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idPermission" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="typeobject" Type="varchar" MaxLength="50" />
+    <Property Name="idobject" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="valueobject" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRole" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="RoleGroup">
+    <Key>
+      <PropertyRef Name="idGroup" />
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idGroup" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="idRole" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolePermission">
+    <Key>
+      <PropertyRef Name="idRole" />
+      <PropertyRef Name="idPermission" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRole" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="idPermission" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="nameUser" Type="nvarchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="15" />
+    <Property Name="passWord" Type="varchar" MaxLength="100" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="createdBy" Type="varchar" MaxLength="100" />
+    <Property Name="createdDate" Type="datetime" />
+    <Property Name="modifiedBy" Type="varchar" MaxLength="100" />
+    <Property Name="modifiedDate" Type="datetime" />
+    <Property Name="deletedBy" Type="varchar" MaxLength="100" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="isDeleted" Type="bit" />
+    <Property Name="isLoginAd" Type="bit" />
+  </EntityType>
+  <Association Name="FK_GroupUser_Group">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="idGroup" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="idGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_User">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleGroup_Group">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RoleGroup" Type="Self.RoleGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="idGroup" />
+      </Principal>
+      <Dependent Role="RoleGroup">
+        <PropertyRef Name="idGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleGroup_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RoleGroup" Type="Self.RoleGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="RoleGroup">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermission_Permission">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="idPermission" />
+      </Principal>
+      <Dependent Role="RolePermission">
+        <PropertyRef Name="idPermission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermission_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="RolePermission">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_Navigation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parent" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Admin_TCBModelStoreContainer">
+    <EntitySet Name="ConfigAD" EntityType="Self.ConfigAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConfigReportServer" EntityType="Self.ConfigReportServer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DashBoard" EntityType="Self.DashBoard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Functions" EntityType="Self.Functions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupUser" EntityType="Self.GroupUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Navigation" EntityType="Self.Navigation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermissionObject" EntityType="Self.PermissionObject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleGroup" EntityType="Self.RoleGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolePermission" EntityType="Self.RolePermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GroupUser_Group" Association="Self.FK_GroupUser_Group">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="GroupUser" EntitySet="GroupUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_User" Association="Self.FK_GroupUser_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="GroupUser" EntitySet="GroupUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleGroup_Group" Association="Self.FK_RoleGroup_Group">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="RoleGroup" EntitySet="RoleGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleGroup_Role" Association="Self.FK_RoleGroup_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RoleGroup" EntitySet="RoleGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermission_Permission" Association="Self.FK_RolePermission_Permission">
+      <End Role="Permission" EntitySet="Permission" />
+      <End Role="RolePermission" EntitySet="RolePermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermission_Role" Association="Self.FK_RolePermission_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RolePermission" EntitySet="RolePermission" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
