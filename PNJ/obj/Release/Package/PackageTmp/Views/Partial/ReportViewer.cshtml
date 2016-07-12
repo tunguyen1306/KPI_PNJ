@@ -6,6 +6,8 @@
         $("iframe").attr("width", "100%");
         $("iframe").css({"border": "none", "height":"650px" })
         $("iframe").contents().find("#ReportViewer1").css({ "width": "100%" });
+        $("iframe").contents().find("#VisibleReportContentReportViewer1_ctl09").find("table").css({ "margin": "0 auto" }).attr("clearinter","");
+
         if ( $("iframe").attr("clearinter") === "yes") {
             clearInterval(temp);
         }

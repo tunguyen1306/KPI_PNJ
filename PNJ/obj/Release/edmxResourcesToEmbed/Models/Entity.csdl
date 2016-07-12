@@ -302,6 +302,13 @@
     <FunctionImport Name="sp_Navigation" ReturnType="Collection(Admin_TCBModel.sp_Navigation_Result)">
       <Parameter Name="parent" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_getIdServicecategorymapcategory" ReturnType="Collection(Admin_TCBModel.sp_getIdServicecategorymapcategory_Result)">
+      <Parameter Name="idservice" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getIdServicecategorymapcategory2" ReturnType="Collection(Admin_TCBModel.sp_getIdServicecategorymapcategory2_Result)">
+      <Parameter Name="idservice" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ServiceCategoryMapCategories" EntityType="Admin_TCBModel.ServiceCategoryMapCategory" />
   </EntityContainer>
   <ComplexType Name="sp_Navigation_Result">
     <Property Type="String" Name="idNavigation" Nullable="false" MaxLength="50" />
@@ -310,4 +317,22 @@
     <Property Type="Decimal" Name="sort" Nullable="true" Precision="18" Scale="0" />
     <Property Type="String" Name="link" Nullable="true" MaxLength="200" />
   </ComplexType>
+  <ComplexType Name="sp_getIdServicecategorymapcategory_Result">
+    <Property Type="Int32" Name="idServices" Nullable="false" />
+    <Property Type="Int32" Name="IdCategory" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_getIdServicecategorymapcategory2_Result">
+    <Property Type="Int32" Name="idServices" Nullable="false" />
+    <Property Type="Int32" Name="IdCategory" Nullable="false" />
+    <Property Type="String" Name="NameCategory" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="ServiceCategoryMapCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idServices" Type="Int32" Nullable="false" />
+    <Property Name="IdCategory" Type="Int32" Nullable="false" />
+    <Property Name="NameCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

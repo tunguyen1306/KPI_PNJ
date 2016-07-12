@@ -44,3 +44,38 @@ C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\PNJ\bin\pt\Micr
 C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\PNJ\bin\ru\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\PNJ\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Administrator\documents\visual studio 2015\Projects\PNJ\PNJ\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\PNJ.dll.config
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\PNJ.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\PNJ.pdb
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\EntityFramework.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\EntityFramework.SqlServer.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\Microsoft.ReportViewer.Common.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\Microsoft.ReportViewer.WebForms.DLL
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\Microsoft.Web.Infrastructure.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\Newtonsoft.Json.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\ReportViewerForMvc.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Net.Http.Formatting.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Helpers.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Http.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Http.WebHost.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Mvc.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Razor.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Webpages.Deployment.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Webpages.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Webpages.Razor.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\EntityFramework.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\EntityFramework.SqlServer.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\Newtonsoft.Json.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Razor.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Webpages.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Webpages.Deployment.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Webpages.Razor.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Helpers.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Mvc.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Net.Http.Formatting.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Http.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\bin\System.Web.Http.WebHost.xml
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\obj\Release\PNJ.csprojResolveAssemblyReference.cache
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\obj\Release\PNJ.dll
+D:\Dropbox\Cong Ty\Vietconnect\KPI_PNJ\PNJ\obj\Release\PNJ.pdb

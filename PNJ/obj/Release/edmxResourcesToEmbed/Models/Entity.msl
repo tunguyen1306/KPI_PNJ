@@ -188,5 +188,32 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getIdServicecategorymapcategory" FunctionName="Admin_TCBModel.Store.sp_getIdServicecategorymapcategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Admin_TCBModel.sp_getIdServicecategorymapcategory_Result">
+          <ScalarProperty Name="idServices" ColumnName="idServices" />
+          <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getIdServicecategorymapcategory2" FunctionName="Admin_TCBModel.Store.sp_getIdServicecategorymapcategory2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Admin_TCBModel.sp_getIdServicecategorymapcategory2_Result">
+          <ScalarProperty Name="idServices" ColumnName="idServices" />
+          <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+          <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ServiceCategoryMapCategories">
+      <EntityTypeMapping TypeName="Admin_TCBModel.ServiceCategoryMapCategory">
+        <MappingFragment StoreEntitySet="ServiceCategoryMapCategory">
+          <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+          <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+          <ScalarProperty Name="idServices" ColumnName="idServices" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -26,6 +26,7 @@
         <AssociationConnector Association="Admin_TCBModel.FK_RolePermission_Permission" ManuallyRouted="false" />
         <AssociationConnector Association="Admin_TCBModel.FK_RoleGroup_Role" ManuallyRouted="false" />
         <AssociationConnector Association="Admin_TCBModel.FK_RolePermission_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Admin_TCBModel.ServiceCategoryMapCategory" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

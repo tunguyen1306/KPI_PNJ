@@ -2001,6 +2001,7 @@
     <Content Include="Views\ReportPnj\Requests.cshtml" />
     <Content Include="Views\fileexcels\Index.cshtml" />
     <Content Include="Views\fileexcels\Indexfileexcel.cshtml" />
+    <Content Include="Views\ReportPnj\TEMP.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

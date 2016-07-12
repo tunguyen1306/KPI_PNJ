@@ -135,6 +135,15 @@
     <Property Name="idRole" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="idPermission" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="ServiceCategoryMapCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idServices" Type="int" Nullable="false" />
+    <Property Name="IdCategory" Type="int" Nullable="false" />
+    <Property Name="NameCategory" Type="nvarchar" MaxLength="500" />
+  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -149,7 +158,7 @@
     <Key>
       <PropertyRef Name="idUser" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idUser" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="nameUser" Type="nvarchar" MaxLength="200" />
     <Property Name="email" Type="varchar" MaxLength="50" />
@@ -247,6 +256,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_getIdServicecategorymapcategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idservice" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getIdServicecategorymapcategory2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idservice" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_Navigation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="parent" Type="nvarchar" Mode="In" />
   </Function>
@@ -264,6 +279,7 @@
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoleGroup" EntityType="Self.RoleGroup" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RolePermission" EntityType="Self.RolePermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceCategoryMapCategory" EntityType="Self.ServiceCategoryMapCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_GroupUser_Group" Association="Self.FK_GroupUser_Group">

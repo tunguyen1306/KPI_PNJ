@@ -14,7 +14,7 @@ namespace PNJ.Models
             var temp = db.ConfigReportServers.Where(x => x.isActive == true).FirstOrDefault();
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Remote;
-            reportViewer.ServerReport.ReportPath = temp.reportPath + "Request_TiLeDungSLA_Response";
+            reportViewer.ServerReport.ReportPath = temp.reportPath + NameReport;
             //reportViewer.ServerReport.ReportPath = temp.reportPath + "Request_TiLeDungSLA_Response";
             reportViewer.ServerReport.ReportServerUrl = new Uri(temp.reportUri);
             reportViewer.ServerReport.ReportServerCredentials = new CustomReportCredentials(temp.userName, temp.passWord, temp.domain);

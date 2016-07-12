@@ -22,7 +22,7 @@ namespace PNJ.Models
         public string tech { get; set; }
         public string isoverdue { get; set; }
         public string nameReport { get; set; }
-
+        public string depart { get; set; }
         public string itd { get; set; }
 
         public string dateTime_thang { get; set; }
@@ -30,6 +30,11 @@ namespace PNJ.Models
         public string dateTime_quynam { get; set; }
         public string Quy { get; set; }
         public string dateTime_nam { get; set; }
+        public string condition { get; set; }
+        public string typeaction { get; set; }
+        public string optradio1 { get; set; }
+        public string subcd { get; set; }
+
     }
     public class GetMonth
     {

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSet Name="">
     <Query>
       <DataSourceReference>DataSource</DataSourceReference>
@@ -40,6 +40,12 @@
           <OmitFromQuery>false</OmitFromQuery>
           <rd:DbType>String</rd:DbType>
         </DataSetParameter>
+        <DataSetParameter Name="@subcd">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>String</rd:DbType>
+        </DataSetParameter>
         <DataSetParameter Name="@std">
           <ReadOnly>false</ReadOnly>
           <Nullable>false</Nullable>
@@ -70,7 +76,39 @@
           <OmitFromQuery>false</OmitFromQuery>
           <rd:DbType>String</rd:DbType>
         </DataSetParameter>
+        <DataSetParameter Name="@tech">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>String</rd:DbType>
+        </DataSetParameter>
         <DataSetParameter Name="@rqt">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>String</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@requester">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>String</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@condition">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:UserDefined>true</rd:UserDefined>
+          <rd:DbType>Int32</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@typeaction">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:UserDefined>true</rd:UserDefined>
+          <rd:DbType>Int32</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@depart">
           <ReadOnly>false</ReadOnly>
           <Nullable>false</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
@@ -81,6 +119,10 @@
       <CommandText>sp_Request</CommandText>
     </Query>
     <Fields>
+      <Field Name="DisplayName">
+        <DataField>DisplayName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
       <Field Name="CategoryName">
         <DataField>CategoryName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
@@ -97,8 +139,8 @@
         <DataField>Status</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="Reopen">
-        <DataField>Reopen</DataField>
+      <Field Name="Reopen1">
+        <DataField>Reopen1</DataField>
         <rd:TypeName>System.Boolean</rd:TypeName>
       </Field>
       <Field Name="Group">
@@ -163,7 +205,7 @@
       </Field>
       <Field Name="SurveyName">
         <DataField>SurveyName</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
+        <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="DuebyDate">
         <DataField>DuebyDate</DataField>
@@ -221,13 +263,45 @@
         <DataField>Manv</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="RequestType">
-        <DataField>RequestType</DataField>
+      <Field Name="Reportingto">
+        <DataField>Reportingto</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="ServiceCategory">
         <DataField>ServiceCategory</DataField>
         <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="YKienĐVCN">
+        <DataField>YKienĐVCN</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="rcode">
+        <DataField>rcode</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RequestType">
+        <DataField>RequestType</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CREATEDTIME">
+        <DataField>CREATEDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="RESPONDEDTIME">
+        <DataField>RESPONDEDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="RESOLVEDTIME">
+        <DataField>RESOLVEDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="COMPLETEDTIME">
+        <DataField>COMPLETEDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="DUEBYTIME">
+        <DataField>DUEBYTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
     </Fields>
   </DataSet>
