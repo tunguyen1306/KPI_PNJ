@@ -1,17 +1,19 @@
 ﻿
 
 
-    LoadGroup();
+LoadGroup();
 function LoadGroup() {
+ $("#example-dropUp").html("");
     $.ajax({
         url: "/api/PNJ/getFilter/4/none",
         success: function (result) {
             $(result.data).each(function (i, value) {
+               
                 $("#example-dropUp").append($("<option></option>").val(value.QUEUEID).html(value.QUEUENAME));
             });
             $("#example-dropUp").multiselect('rebuild');
-           
-           
+
+
         }
 
     });
@@ -22,36 +24,36 @@ $('#example-dropUp').change(function (e) {
     var brands = $('#example-dropUp option:selected');
     var selected = "";
     var parent = "";
-  
+
     if (brands.length == 0) {
         $("#example42").multiselect('destroy');
         $('#example42').multiselect('refresh');
         $('#subtechnician').hide();
     }
     $("#example42").html("");
-   
+
     $(brands).each(function (index, brand) {
-       
+
         $.ajax({
-          
+
             url: "/api/PNJ/getFilter/5/" + $(this).val(),
             success: function (result) {
-              
+
                 parent += "<optgroup id='" + index + "' label='" + brand.text + "'>";
                 $.each(result.data, function (i, value) {
-                  
+
                     parent += "<option value='" + value.USER_ID + "'>" + value.FIRST_NAME + "</option>";
                 })
                 parent += "</optgroup>";
-               
+
                 $("#example42").append(parent);
                 parent = "";
                 $("#example42").multiselect('rebuild');
-             
+
             }
         });
     });
-   
+
 });
 
 
@@ -70,21 +72,21 @@ function Servicategory() {
 
 //load category
 $('#example43').change(function (e) {
- 
+
     var brands = $('#example43 option:selected');
     var selected = "";
     var parent = "";
-    
+
     if (brands.length == 0) {
         $("#example44").multiselect('destroy');
         $('#example44').multiselect('refresh');
         $('#sub_Category').hide();
     }
     $("#example44").html('');
-    
+
 
     $(brands).each(function (index, brand) {
-       
+
         $.ajax({
 
             url: "/api/PNJ/getservicecategorymap/" + $(this).val(),
@@ -103,7 +105,7 @@ $('#example43').change(function (e) {
 
             }
         });
-       
+
 
     });
 
@@ -114,7 +116,7 @@ $('#example44').change(function (e) {
     var brands = $('#example44 option:selected');
     var selected = "";
     var parent = "";
- 
+
     if (brands.length == 0) {
         $("#example45").multiselect('destroy');
         $('#example45').multiselect('refresh');
@@ -310,39 +312,47 @@ function showSelectredateTime_nam() {
 
 }
 
+
+
+
 $('#example-dropUp').change(function () {
+
     showSelectgroup();
 });
 $('#example37').change(function () {
+    
     showSelectreQuy();
 });
 $('#example38').change(function () {
     showSelectredateTime_thang();
+  
 });
 $('#example39').change(function () {
+
     showSelectredateTime_nam();
 });
 
-
-
-
-
-
 $('#example42').change(function () {
+    
     showSelecttech();
 });
 $('#example43').change(function () {
+    
     showSelectsd();
 });
 $('#example44').change(function () {
+   
     showSelectcd();
 });
 $('#example45').change(function () {
+    
     showSelectsubcd();
 });
 $('#example47').change(function () {
+    
     showSelectdepart();
 });
 $('#example48').change(function () {
+  
     showSelectrequester();
 });

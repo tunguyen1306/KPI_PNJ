@@ -71,7 +71,15 @@ namespace PNJ.Controllers
                 data.denngayre = Convert.ToString(createDate.ToString("yyyy-MM-dd"));
                 hdtungayre = DateTime.Parse(data.tungayre).ToString("yyyy-MM-dd");
                 hddenngayre = data.denngaytao;
-                hdconditione = "2";
+                if (fithang.Length==1)
+                {
+                    hdconditione = "5";
+                }
+                else
+                {
+                    hdconditione = "2";
+                }
+               
 
             }
             if (radio == "quy")
@@ -93,7 +101,14 @@ namespace PNJ.Controllers
                 data.denngayre = Convert.ToString(createDate.ToString("yyyy-MM-dd"));
                 hdtungayre = DateTime.Parse(data.tungayre).ToString("yyyy-MM-dd");
                 hddenngayre = data.denngaytao;
-                hdconditione = "3";
+                if (fiquy.Length == 1)
+                {
+                    hdconditione = "2";
+                }
+                else
+                {
+                    hdconditione = "3";
+                }
             }
             if (radio == "nam")
             {
@@ -113,7 +128,15 @@ namespace PNJ.Controllers
                 data.denngayre = Convert.ToString(createDate.ToString("yyyy-MM-dd"));
                 hdtungayre = DateTime.Parse(data.tungayre).ToString("yyyy-MM-dd");
                 hddenngayre = data.denngayre;
-                hdconditione = "4";
+                if (finam.Length == 1)
+                {
+                    hdconditione = "3";
+                }
+                else
+                {
+                    hdconditione = "4";
+                }
+
             }
             if (data.optradio1 == "ITSuportgroup")
             {
@@ -205,15 +228,24 @@ namespace PNJ.Controllers
             {
                 hdrqt = "302";
             }
+            if (data.nameReport.Contains("ReportKPI_PNJ_C4"))
+            {
+                hdrqt = "303";
+            }
+            else
+            {
+                hdrqt = "302,301,303";
+            }
             if (data.nameReport.Contains("ReportKPI_PNJ_ALL01"))
             {
                 hdrqt = "302,301,303";
             }
-            if (data.nameReport.Contains("ReportKPI_PNJ_OLA01"))
+            if (data.nameReport.Contains("ReportKPI_PNJ_OLA01") || data.nameReport.Contains("ReportKPI_PNJ_T"))
 
             {
                 hdrqt = "302,301,303";
             }
+           
 
             ReportParameter[] rsp = new[] {
                 new ReportParameter("tungaytao", hdtungaytao),
@@ -234,7 +266,10 @@ namespace PNJ.Controllers
                 new ReportParameter("tech",data.tech ?? "none"),
                   new ReportParameter("subcd",data.subcd ?? "none"),
                 new ReportParameter("pd",data.isoverdue ?? "none")
-             
+                // new ReportParameter("techname",data.techname ?? "none"),
+                //  new ReportParameter("itname",data.itname ?? "none"),
+                //new ReportParameter("departname",data.departname ?? "none")
+
             };
             ViewBag.Report = fn.ContentReport(rsp, data.nameReport, db);
 

@@ -244,9 +244,9 @@
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Group Name="Chart1_CategoryGroup1">
+                  <Group Name="Chart1_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Switch(Parameters!condition.Value = 1, Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3, Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4, Code.ConvertIntoDate(4,Fields!CreateTime.Value))</GroupExpression>
+                      <GroupExpression>=Switch(Parameters!condition.Value = 1,"Ngày " &amp;  Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,"Tháng " &amp; Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3,"Quý " &amp;  Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4,"Năm " &amp;  Code.ConvertIntoDate(4,Fields!CreateTime.Value),Parameters!condition.Value = 5,"Tuần " &amp; Code.ConvertIntoDate(5,Fields!CreateTime.Value))</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
@@ -254,7 +254,7 @@
                       <Value>=Fields!CreateTime.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Switch(Parameters!condition.Value = 1, Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3, Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4, Code.ConvertIntoDate(4,Fields!CreateTime.Value))</Label>
+                  <Label>=Switch(Parameters!condition.Value = 1,"Ngày " &amp;  Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,"Tháng " &amp; Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3,"Quý " &amp;  Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4,"Năm " &amp;  Code.ConvertIntoDate(4,Fields!CreateTime.Value),Parameters!condition.Value = 5,"Tuần " &amp; Code.ConvertIntoDate(5,Fields!CreateTime.Value))</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
@@ -277,8 +277,10 @@
                         <Y>=Round( 100 * Count(iif(Fields!Group.Value like "L1*", Fields!Requestid.Value, Nothing))/Count(Fields!Requestid.Value),2)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style />
-                        <Label>#PERCENT</Label>
+                        <Style>
+                          <Color>Orange</Color>
+                        </Style>
+                        <Label>#VAL{#0.##\%}</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style>
@@ -317,8 +319,10 @@
                         <Y>=100-Round( 100 * Count(iif(Fields!Group.Value like "L1*", Fields!Requestid.Value, Nothing))/Count(Fields!Requestid.Value),2)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style />
-                        <Label>#PERCENT</Label>
+                        <Style>
+                          <Color>Orange</Color>
+                        </Style>
+                        <Label>#VAL{#0.##\%}</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style>
@@ -356,10 +360,11 @@
               <ChartArea Name="Default">
                 <ChartCategoryAxes>
                   <ChartAxis Name="Primary">
+                    <Visible>True</Visible>
                     <Style>
                       <Border>
                         <Color>Gainsboro</Color>
-                        <Style>None</Style>
+                        <Style>Solid</Style>
                       </Border>
                       <FontSize>8pt</FontSize>
                       <Color>#5c5c5c</Color>
@@ -371,6 +376,7 @@
                         <Color>#5c5c5c</Color>
                       </Style>
                     </ChartAxisTitle>
+                    <VariableAutoInterval>true</VariableAutoInterval>
                     <ChartMajorGridLines>
                       <Enabled>False</Enabled>
                       <Style>
@@ -404,6 +410,7 @@
                       <Length>0.5</Length>
                     </ChartMinorTickMarks>
                     <CrossAt>NaN</CrossAt>
+                    <Arrows>Lines</Arrows>
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
                     <Angle>90</Angle>
@@ -609,7 +616,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Tỷ lệ % cấp độ (level) xử lý trên mỗi sự cố</Caption>
+                <Caption>Tỷ lệ % cấp độ (level) xử lý trên  sự cố</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>14pt</FontSize>
@@ -735,7 +742,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.37917in</Width>
+                  <Width>1.92952in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -790,8 +797,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(count(Fields!Requestid.Value))</Value>
-                                  <Style />
+                                  <Value>=Sum(Count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -805,6 +814,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -828,8 +838,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(count(Fields!Requestid.Value))</Value>
-                                  <Style />
+                                  <Value>=Sum(Count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -843,6 +855,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -869,7 +882,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Số ticket xữ lý</Value>
+                                <Value>Số ticket xử lý</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -914,7 +927,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.57707in</Size>
+                    <Size>3.12742in</Size>
                     <CellContents>
                       <Textbox Name="ItemName2">
                         <CanGrow>true</CanGrow>
@@ -961,9 +974,9 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>2.66043in</Size>
+                        <Size>3.21078in</Size>
                         <CellContents>
-                          <Textbox Name="Priority2">
+                          <Textbox Name="Technician">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -974,48 +987,12 @@
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
-                                <LeftIndent>2pt</LeftIndent>
                                 <Style>
                                   <TextAlign>Left</TextAlign>
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Priority</rd:DefaultName>
-                            <ActionInfo>
-                              <Actions>
-                                <Action>
-                                  <Drillthrough>
-                                    <ReportName>KPI_Detail_R6</ReportName>
-                                    <Parameters>
-                                      <Parameter Name="tech">
-                                        <Value>=Parameters!tech.Value(0)</Value>
-                                      </Parameter>
-                                      <Parameter Name="tungaytao">
-                                        <Value>=Parameters!tungaytao.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="denngaytao">
-                                        <Value>=Parameters!denngaytao.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="condition">
-                                        <Value>=Parameters!condition.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="typeaction">
-                                        <Value>=Parameters!typeaction.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="denngayre">
-                                        <Value>=Parameters!denngayre.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="tungayre">
-                                        <Value>=Parameters!tungayre.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="rqt">
-                                        <Value>=Parameters!rqt.Value</Value>
-                                      </Parameter>
-                                    </Parameters>
-                                  </Drillthrough>
-                                </Action>
-                              </Actions>
-                            </ActionInfo>
+                            <rd:DefaultName>Technician</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -1033,7 +1010,7 @@
                     </TablixMember>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.66043in</Size>
+                        <Size>3.21078in</Size>
                         <CellContents>
                           <Textbox Name="Textbox38">
                             <CanGrow>true</CanGrow>
@@ -1042,8 +1019,10 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Tổng theo Group</Value>
-                                    <Style />
+                                    <Value>Tổng</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
@@ -1057,6 +1036,7 @@
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -1072,7 +1052,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.57707in</Size>
+                    <Size>3.12742in</Size>
                     <CellContents>
                       <Textbox Name="Textbox64">
                         <CanGrow>true</CanGrow>
@@ -1081,8 +1061,10 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng  theo group</Value>
-                                <Style />
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -1096,6 +1078,7 @@
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
                           <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -1108,7 +1091,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.66043in</Size>
+                        <Size>3.21078in</Size>
                         <CellContents>
                           <Textbox Name="Textbox65">
                             <CanGrow>true</CanGrow>
@@ -1118,7 +1101,9 @@
                                 <TextRuns>
                                   <TextRun>
                                     <Value />
-                                    <Style />
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
@@ -1132,6 +1117,7 @@
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -1149,11 +1135,27 @@
             </TablixRowHierarchy>
             <RepeatColumnHeaders>true</RepeatColumnHeaders>
             <FixedColumnHeaders>true</FixedColumnHeaders>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet</DataSetName>
-            <Top>3.5711in</Top>
-            <Left>0.155in</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=IsNothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=IsNothing(Fields!Technician.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>3.47072in</Top>
             <Height>1.36459in</Height>
-            <Width>6.61667in</Width>
+            <Width>8.26772in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1162,10 +1164,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>42.81225cm</Height>
+        <Height>12.28169cm</Height>
         <Style />
       </Body>
-      <Width>38.37313cm</Width>
+      <Width>21.09584cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -1449,6 +1451,10 @@
                  Return DatePart(DateInterval.Quarter, startDate)
             Case 4
               Return startDate.ToString("yyyy")
+Case 5
+
+  Dim weekNumber As Integer = DatePart(DateInterval.WeekOfYear, startDate)
+                Return weekNumber
 
             Case Else
                 Return startDate.ToString("dd-MM-yyyy")

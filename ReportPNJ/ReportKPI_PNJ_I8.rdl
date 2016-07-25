@@ -81,6 +81,10 @@
           <DataField>SubcategoryName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SubcategoryID">
+          <DataField>SubcategoryID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
         <Field Name="ItemName">
           <DataField>ItemName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -123,6 +127,10 @@
         </Field>
         <Field Name="ResponseTime">
           <DataField>ResponseTime</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="techId">
+          <DataField>techId</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="CreateTime">
@@ -169,6 +177,10 @@
           <DataField>DueTimebyMail</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
+        <Field Name="Requester">
+          <DataField>Requester</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="DuedateResoleved">
           <DataField>DuedateResoleved</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
@@ -200,6 +212,10 @@
         <Field Name="EquipmentRequest">
           <DataField>EquipmentRequest</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DepartID">
+          <DataField>DepartID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="Equipment">
           <DataField>Equipment</DataField>
@@ -233,6 +249,30 @@
           <DataField>RequestType</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="CREATEDTIME">
+          <DataField>CREATEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RESPONDEDTIME">
+          <DataField>RESPONDEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RequestTypeID">
+          <DataField>RequestTypeID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="RESOLVEDTIME">
+          <DataField>RESOLVEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="COMPLETEDTIME">
+          <DataField>COMPLETEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DUEBYTIME">
+          <DataField>DUEBYTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -244,9 +284,9 @@
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Group Name="Chart1_CategoryGroup2">
+                  <Group Name="Chart2_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</GroupExpression>
+                      <GroupExpression>=Switch(Parameters!condition.Value = 1,"Ngày " &amp;  Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,"Tháng " &amp; Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3,"Quý " &amp;  Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4,"Năm " &amp;  Code.ConvertIntoDate(4,Fields!CreateTime.Value),Parameters!condition.Value = 5,"Tuần " &amp; Code.ConvertIntoDate(5,Fields!CreateTime.Value))</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
@@ -254,7 +294,22 @@
                       <Value>=Fields!CreateTime.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</Label>
+                  <ChartMembers>
+                    <ChartMember>
+                      <Group Name="Chart1_CategoryGroup2">
+                        <GroupExpressions>
+                          <GroupExpression>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!CreateTime.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <Label>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</Label>
+                    </ChartMember>
+                  </ChartMembers>
+                  <Label>=Switch(Parameters!condition.Value = 1,"Ngày " &amp;  Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,"Tháng " &amp; Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3,"Quý " &amp;  Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4,"Năm " &amp;  Code.ConvertIntoDate(4,Fields!CreateTime.Value),Parameters!condition.Value = 5,"Tuần " &amp; Code.ConvertIntoDate(5,Fields!CreateTime.Value))</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
@@ -274,7 +329,9 @@
                         <Y>=Round(sum(Fields!SurveyName.Value)/count(Fields!Requestid.Value),2)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style />
+                        <Style>
+                          <Color>Orange</Color>
+                        </Style>
                         <UseValueAsLabel>true</UseValueAsLabel>
                         <Visible>true</Visible>
                       </ChartDataLabel>
@@ -365,7 +422,7 @@
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
                     <Angle>90</Angle>
-                    <OffsetLabels>true</OffsetLabels>
+                    <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
                     <ChartAxisScaleBreak>
                       <Style />
                     </ChartAxisScaleBreak>
@@ -597,8 +654,8 @@
             <DataSetName>DataSet</DataSetName>
             <Top>0.15498cm</Top>
             <Left>0.15655cm</Left>
-            <Height>8.01307cm</Height>
-            <Width>21cm</Width>
+            <Height>9.99745cm</Height>
+            <Width>25.15713cm</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -638,6 +695,7 @@
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -673,6 +731,7 @@
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -698,7 +757,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>1.04979cm</Height>
+                  <Height>1.07625cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -799,6 +858,114 @@
                     </TablixCell>
                   </TablixCells>
                 </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox138">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox62">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!SurveyName.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox61</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox68">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=System.Math.Round(Sum(Fields!SurveyName.Value) / Sum(Fields!Requestid.Value), 2)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox66</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
@@ -812,14 +979,14 @@
                   <TablixHeader>
                     <Size>1.04979cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox40">
+                      <Textbox Name="Textbox97">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -829,13 +996,14 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox12</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -873,6 +1041,7 @@
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -910,6 +1079,7 @@
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -990,7 +1160,7 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
+                                        <Value>=Fields!CategoryName.Value</Value>
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
@@ -1012,17 +1182,76 @@
                               </Textbox>
                             </CellContents>
                           </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember />
+                          </TablixMembers>
                         </TablixMember>
                       </TablixMembers>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>10.62208cm</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox18">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>Tổng</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox18</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
+                              <VerticalAlign>Middle</VerticalAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
                     </TablixMember>
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet</DataSetName>
-            <Top>18.33133cm</Top>
-            <Left>0.55025cm</Left>
-            <Height>2.09958cm</Height>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!CategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>20.86991cm</Top>
+            <Left>0.23307cm</Left>
+            <Height>2.72604cm</Height>
             <Width>25.08062cm</Width>
             <ZIndex>1</ZIndex>
             <Visibility>
@@ -1276,6 +1505,114 @@
                     </TablixCell>
                   </TablixCells>
                 </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox141">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox72">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!SurveyName.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox61</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox73">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=System.Math.Round(Sum(Fields!SurveyName.Value) / Sum(Fields!Requestid.Value), 2)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox66</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
@@ -1287,28 +1624,26 @@
                     </GroupExpressions>
                   </Group>
                   <TablixHeader>
-                    <Size>1.06302cm</Size>
+                    <Size>1.0101cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox48">
+                      <Textbox Name="Textbox99">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox12</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -1327,7 +1662,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.06302cm</Size>
+                    <Size>1.0101cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox49">
                         <CanGrow>true</CanGrow>
@@ -1367,7 +1702,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.06302cm</Size>
+                    <Size>1.0101cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox50">
                         <CanGrow>true</CanGrow>
@@ -1466,7 +1801,7 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
+                                        <Value>=Fields!CategoryName.Value</Value>
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
@@ -1503,529 +1838,7 @@
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="SubcategoryName">
-                                    <CanGrow>true</CanGrow>
-                                    <KeepTogether>true</KeepTogether>
-                                    <Paragraphs>
-                                      <Paragraph>
-                                        <TextRuns>
-                                          <TextRun>
-                                            <Value>=Fields!SubcategoryName.Value</Value>
-                                            <Style />
-                                          </TextRun>
-                                        </TextRuns>
-                                        <Style />
-                                      </Paragraph>
-                                    </Paragraphs>
-                                    <rd:DefaultName>SubcategoryName</rd:DefaultName>
-                                    <Style>
-                                      <Border>
-                                        <Color>LightGrey</Color>
-                                        <Style>Solid</Style>
-                                      </Border>
-                                      <VerticalAlign>Middle</VerticalAlign>
-                                      <PaddingLeft>2pt</PaddingLeft>
-                                      <PaddingRight>2pt</PaddingRight>
-                                      <PaddingTop>2pt</PaddingTop>
-                                      <PaddingBottom>2pt</PaddingBottom>
-                                    </Style>
-                                  </Textbox>
-                                </CellContents>
-                              </TablixHeader>
-                            </TablixMember>
-                          </TablixMembers>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
-              </TablixMembers>
-            </TablixRowHierarchy>
-            <DataSetName>DataSet</DataSetName>
-            <Top>21.42751cm</Top>
-            <Left>0.55025cm</Left>
-            <Height>2.12604cm</Height>
-            <Width>25.08062cm</Width>
-            <ZIndex>2</ZIndex>
-            <Visibility>
-              <Hidden>=iif(Parameters!typeaction.Value=5,false,true)</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Tablix>
-          <Tablix Name="Tablix8">
-            <TablixCorner>
-              <TablixCornerRows>
-                <TablixCornerRow>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox62">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Service Category</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox14</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox80">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Category </Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                              <TextRun>
-                                <Value>Name</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox79</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox63">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>SubCategory</Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox33</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                </TablixCornerRow>
-              </TablixCornerRows>
-            </TablixCorner>
-            <TablixBody>
-              <TablixColumns>
-                <TablixColumn>
-                  <Width>4.0875cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>5.62208cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.78354cm</Width>
-                </TablixColumn>
-              </TablixColumns>
-              <TablixRows>
-                <TablixRow>
-                  <Height>1.1424cm</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox59">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Count(Fields!Requestid.Value)</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox13</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="SurveyName10">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!SurveyName.Value)</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>SurveyName</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox39">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=System.Math.Round(Sum(Fields!SurveyName.Value) / Count(Fields!Requestid.Value), 2)</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox30</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-              </TablixRows>
-            </TablixBody>
-            <TablixColumnHierarchy>
-              <TablixMembers>
-                <TablixMember>
-                  <Group Name="ColumnGroup7">
-                    <GroupExpressions>
-                      <GroupExpression />
-                    </GroupExpressions>
-                  </Group>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox56">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox12</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox57">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Tổng điểm</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox19</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox58">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Điểm trung bình</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox21</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-              </TablixMembers>
-            </TablixColumnHierarchy>
-            <TablixRowHierarchy>
-              <TablixMembers>
-                <TablixMember>
-                  <Group Name="Group6">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!Group.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!Group.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <TablixMembers>
-                    <TablixMember>
-                      <TablixHeader>
-                        <Size>5.62208cm</Size>
-                        <CellContents>
-                          <Textbox Name="Group6">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>=Fields!ServiceCategory.Value</Value>
-                                    <Style />
-                                  </TextRun>
-                                </TextRuns>
-                                <Style />
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>Group</rd:DefaultName>
-                            <Style>
-                              <Border>
-                                <Color>LightGrey</Color>
-                                <Style>Solid</Style>
-                              </Border>
-                              <VerticalAlign>Middle</VerticalAlign>
-                              <PaddingLeft>2pt</PaddingLeft>
-                              <PaddingRight>2pt</PaddingRight>
-                              <PaddingTop>2pt</PaddingTop>
-                              <PaddingBottom>2pt</PaddingBottom>
-                            </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
-                      <TablixMembers>
-                        <TablixMember>
-                          <TablixHeader>
-                            <Size>3.46542cm</Size>
-                            <CellContents>
-                              <Textbox Name="Technician4">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
-                                        <Style />
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style />
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Technician</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Color>LightGrey</Color>
-                                    <Style>Solid</Style>
-                                  </Border>
-                                  <VerticalAlign>Middle</VerticalAlign>
-                                  <PaddingLeft>2pt</PaddingLeft>
-                                  <PaddingRight>2pt</PaddingRight>
-                                  <PaddingTop>2pt</PaddingTop>
-                                  <PaddingBottom>2pt</PaddingBottom>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember>
-                              <Group Name="SubCategoryName2">
-                                <GroupExpressions>
-                                  <GroupExpression>=Fields!ItemName.Value</GroupExpression>
-                                </GroupExpressions>
-                              </Group>
-                              <SortExpressions>
-                                <SortExpression>
-                                  <Value>=Fields!CategoryName.Value</Value>
-                                </SortExpression>
-                              </SortExpressions>
-                              <TablixHeader>
-                                <Size>2.5cm</Size>
-                                <CellContents>
-                                  <Textbox Name="SubcategoryName2">
+                                  <Textbox Name="SubcategoryName3">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -2044,7 +1857,7 @@
                                       <Actions>
                                         <Action>
                                           <Drillthrough>
-                                            <ReportName>KPI_Detail_R6</ReportName>
+                                            <ReportName>KPI_Detail_R5</ReportName>
                                             <Parameters>
                                               <Parameter Name="tungaytao">
                                                 <Value>=Parameters!tungaytao.Value</Value>
@@ -2058,8 +1871,23 @@
                                               <Parameter Name="denngayre">
                                                 <Value>=Parameters!denngayre.Value</Value>
                                               </Parameter>
+                                              <Parameter Name="rqt">
+                                                <Value>=Parameters!rqt.Value</Value>
+                                              </Parameter>
+                                              <Parameter Name="condition">
+                                                <Value>=Parameters!condition.Value</Value>
+                                              </Parameter>
+                                              <Parameter Name="typeaction">
+                                                <Value>=Parameters!typeaction.Value</Value>
+                                              </Parameter>
                                               <Parameter Name="subcd">
-                                                <Value>=Parameters!subcd.Value(0)</Value>
+                                                <Value>=iif(Parameters!typeaction.Value = 5, Fields!SubcategoryID.Value, "none")</Value>
+                                              </Parameter>
+                                              <Parameter Name="depart">
+                                                <Value>=iif(Parameters!typeaction.Value = 6, Fields!Department.Value, "none")</Value>
+                                              </Parameter>
+                                              <Parameter Name="tech">
+                                                <Value>=iif(Parameters!typeaction.Value = 2, Fields!Technician.Value, "none")</Value>
                                               </Parameter>
                                             </Parameters>
                                           </Drillthrough>
@@ -2080,23 +1908,89 @@
                                   </Textbox>
                                 </CellContents>
                               </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember />
+                              </TablixMembers>
                             </TablixMember>
                           </TablixMembers>
                         </TablixMember>
                       </TablixMembers>
                     </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>11.5875cm</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox45">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>Tổng</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox45</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
+                              <VerticalAlign>Middle</VerticalAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                    </TablixMember>
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet</DataSetName>
-            <Top>24.57661cm</Top>
-            <Left>0.55025cm</Left>
-            <Height>2.2848cm</Height>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!CategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!SubcategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>23.96609cm</Top>
+            <Left>0.23306cm</Left>
+            <Height>2.67312cm</Height>
             <Width>25.08062cm</Width>
-            <ZIndex>3</ZIndex>
+            <ZIndex>2</ZIndex>
             <Visibility>
-              <Hidden>=iif(Parameters!typeaction.Value=6,false,true)</Hidden>
+              <Hidden>=iif(Parameters!typeaction.Value=5,false,true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2316,7 +2210,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=System.Math.Round(Sum(Fields!SurveyName.Value) / Count(Fields!Requestid.Value), 2)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2330,6 +2226,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -2357,7 +2254,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=System.Math.Round(Sum(Fields!SurveyName.Value) / Count(Fields!Requestid.Value), 2)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2371,6 +2270,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -2393,26 +2293,24 @@
                   <TablixHeader>
                     <Size>0.5625in</Size>
                     <CellContents>
-                      <Textbox Name="Textbox23">
+                      <Textbox Name="Textbox94">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>Center</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox13</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -2574,7 +2472,7 @@
                       <TablixHeader>
                         <Size>2.18977in</Size>
                         <CellContents>
-                          <Textbox Name="Priority2">
+                          <Textbox Name="Technician">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -2585,48 +2483,12 @@
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
-                                <LeftIndent>2pt</LeftIndent>
                                 <Style>
                                   <TextAlign>Left</TextAlign>
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Priority</rd:DefaultName>
-                            <ActionInfo>
-                              <Actions>
-                                <Action>
-                                  <Drillthrough>
-                                    <ReportName>KPI_Detail_R6</ReportName>
-                                    <Parameters>
-                                      <Parameter Name="tech">
-                                        <Value>=Parameters!tech.Value(0)</Value>
-                                      </Parameter>
-                                      <Parameter Name="tungaytao">
-                                        <Value>=Parameters!tungaytao.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="denngaytao">
-                                        <Value>=Parameters!denngaytao.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="condition">
-                                        <Value>=Parameters!condition.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="typeaction">
-                                        <Value>=Parameters!typeaction.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="denngayre">
-                                        <Value>=Parameters!denngayre.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="tungayre">
-                                        <Value>=Parameters!tungayre.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="rqt">
-                                        <Value>=Parameters!rqt.Value</Value>
-                                      </Parameter>
-                                    </Parameters>
-                                  </Drillthrough>
-                                </Action>
-                              </Actions>
-                            </ActionInfo>
+                            <rd:DefaultName>Technician</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -2653,8 +2515,10 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Tỉ lệ % theo Group</Value>
-                                    <Style />
+                                    <Value>Tổng</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
@@ -2668,6 +2532,7 @@
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -2692,8 +2557,10 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng tỉ lệ % theo group</Value>
-                                <Style />
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -2707,6 +2574,7 @@
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
                           <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -2729,7 +2597,9 @@
                                 <TextRuns>
                                   <TextRun>
                                     <Value />
-                                    <Style />
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
@@ -2743,6 +2613,7 @@
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -2760,12 +2631,29 @@
             </TablixRowHierarchy>
             <RepeatColumnHeaders>true</RepeatColumnHeaders>
             <FixedColumnHeaders>true</FixedColumnHeaders>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet</DataSetName>
-            <Top>4.4843in</Top>
-            <Left>0.21663in</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Technician.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>5.36916in</Top>
+            <Left>0.09176in</Left>
             <Height>1.44792in</Height>
             <Width>9.87426in</Width>
-            <ZIndex>4</ZIndex>
+            <ZIndex>3</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=2,false,true)</Hidden>
             </Visibility>
@@ -2823,7 +2711,7 @@
                   <Width>6.45889cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.41652cm</Width>
+                  <Width>7.29979cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.70077cm</Width>
@@ -3016,7 +2904,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(Sum(Fields!SurveyName.Value)/sum(Fields!Requestid.Value),2)</Value>
+                                  <Value>=Round(sum(sum(Fields!SurveyName.Value))/sum(Fields!Requestid.Value),2)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3064,7 +2952,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3183,7 +3071,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>5.03014cm</Size>
+                    <Size>7.53839cm</Size>
                     <CellContents>
                       <Textbox Name="Group">
                         <CanGrow>true</CanGrow>
@@ -3217,7 +3105,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>5.03014cm</Size>
+                    <Size>7.53839cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox129">
                         <CanGrow>true</CanGrow>
@@ -3254,12 +3142,24 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet</DataSetName>
-            <Top>8.4547cm</Top>
-            <Left>0.55025cm</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>10.43765cm</Top>
+            <Left>0.23307cm</Left>
             <Height>2.8848cm</Height>
-            <Width>20.60632cm</Width>
-            <ZIndex>5</ZIndex>
+            <Width>24.99784cm</Width>
+            <ZIndex>4</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=1,false,true)</Hidden>
             </Visibility>
@@ -3314,7 +3214,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>6.41615cm</Width>
+                  <Width>9.00749cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>6.01927cm</Width>
@@ -3547,14 +3447,14 @@
                   <TablixHeader>
                     <Size>1.02234cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox111">
+                      <Textbox Name="Textbox96">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3564,7 +3464,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox111</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -3630,7 +3530,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
+                                <Value>Điểm trung bình</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3743,12 +3643,24 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet</DataSetName>
-            <Top>15.03257cm</Top>
-            <Left>0.55025cm</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>17.65052cm</Top>
+            <Left>0.23307cm</Left>
             <Height>2.81567cm</Height>
-            <Width>22.48959cm</Width>
-            <ZIndex>6</ZIndex>
+            <Width>25.08093cm</Width>
+            <ZIndex>5</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=3,false,true)</Hidden>
             </Visibility>
@@ -3806,7 +3718,7 @@
                   <Width>4.29208cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.84345cm</Width>
+                  <Width>5.92666cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>6.25708cm</Width>
@@ -3914,6 +3826,114 @@
                     </TablixCell>
                   </TablixCells>
                 </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox142">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox74">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!SurveyName.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox61</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox75">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=System.Math.Round(Sum(Fields!SurveyName.Value) / Sum(Fields!Requestid.Value), 2)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox66</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
@@ -3927,14 +3947,14 @@
                   <TablixHeader>
                     <Size>1.0101cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox2">
+                      <Textbox Name="Textbox101">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3944,7 +3964,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox2</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -4010,7 +4030,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
+                                <Value>Điểm trung bình</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -4055,7 +4075,7 @@
                   <TablixHeader>
                     <Size>8.60479cm</Size>
                     <CellContents>
-                      <Textbox Name="Group8">
+                      <Textbox Name="SubcategoryName2">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -4069,12 +4089,12 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Group</rd:DefaultName>
+                        <rd:DefaultName>SubcategoryName</rd:DefaultName>
                         <ActionInfo>
                           <Actions>
                             <Action>
                               <Drillthrough>
-                                <ReportName>KPI_Detail_R6</ReportName>
+                                <ReportName>KPI_Detail_R8</ReportName>
                                 <Parameters>
                                   <Parameter Name="tungaytao">
                                     <Value>=Parameters!tungaytao.Value</Value>
@@ -4088,14 +4108,23 @@
                                   <Parameter Name="denngayre">
                                     <Value>=Parameters!denngayre.Value</Value>
                                   </Parameter>
-                                  <Parameter Name="typeaction">
-                                    <Value>=Parameters!typeaction.Value</Value>
+                                  <Parameter Name="rqt">
+                                    <Value>=Parameters!rqt.Value</Value>
                                   </Parameter>
                                   <Parameter Name="condition">
                                     <Value>=Parameters!condition.Value</Value>
                                   </Parameter>
+                                  <Parameter Name="typeaction">
+                                    <Value>=Parameters!typeaction.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="subcd">
+                                    <Value>=iif(Parameters!typeaction.Value = 5, Fields!SubcategoryID.Value, "none")</Value>
+                                  </Parameter>
                                   <Parameter Name="depart">
-                                    <Value>=Parameters!depart.Value(0)</Value>
+                                    <Value>=iif(Parameters!typeaction.Value = 7, Fields!DepartID.Value, "none")</Value>
+                                  </Parameter>
+                                  <Parameter Name="tech">
+                                    <Value>=iif(Parameters!typeaction.Value = 2, Fields!techId.Value, "none")</Value>
                                   </Parameter>
                                 </Parameters>
                               </Drillthrough>
@@ -4116,15 +4145,68 @@
                       </Textbox>
                     </CellContents>
                   </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>8.60479cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox48">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox45</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <KeepWithGroup>Before</KeepWithGroup>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet</DataSetName>
-            <Top>29.64783cm</Top>
-            <Left>0.55025cm</Left>
-            <Height>2.0202cm</Height>
-            <Width>23.9974cm</Width>
-            <ZIndex>7</ZIndex>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Department.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>26.97412cm</Top>
+            <Left>0.23339cm</Left>
+            <Height>2.6202cm</Height>
+            <Width>25.08061cm</Width>
+            <ZIndex>6</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=7,false,true)</Hidden>
             </Visibility>
@@ -4135,10 +4217,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>42.81225cm</Height>
+        <Height>30.33515cm</Height>
         <Style />
       </Body>
-      <Width>38.37313cm</Width>
+      <Width>25.38209cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -4421,6 +4503,10 @@
                  Return DatePart(DateInterval.Quarter, startDate)
             Case 4
               Return startDate.ToString("yyyy")
+Case 5
+
+Dim weekNumber As Integer = DatePart(DateInterval.WeekOfYear, startDate)
+                Return weekNumber
 
             Case Else
                 Return startDate.ToString("dd-MM-yyyy")

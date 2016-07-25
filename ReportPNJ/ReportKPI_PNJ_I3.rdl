@@ -81,6 +81,10 @@
           <DataField>SubcategoryName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SubcategoryID">
+          <DataField>SubcategoryID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
         <Field Name="ItemName">
           <DataField>ItemName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -123,6 +127,10 @@
         </Field>
         <Field Name="ResponseTime">
           <DataField>ResponseTime</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="techId">
+          <DataField>techId</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="CreateTime">
@@ -169,6 +177,10 @@
           <DataField>DueTimebyMail</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
+        <Field Name="Requester">
+          <DataField>Requester</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="DuedateResoleved">
           <DataField>DuedateResoleved</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
@@ -200,6 +212,10 @@
         <Field Name="EquipmentRequest">
           <DataField>EquipmentRequest</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DepartID">
+          <DataField>DepartID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="Equipment">
           <DataField>Equipment</DataField>
@@ -233,6 +249,30 @@
           <DataField>RequestType</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="CREATEDTIME">
+          <DataField>CREATEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RESPONDEDTIME">
+          <DataField>RESPONDEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RequestTypeID">
+          <DataField>RequestTypeID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="RESOLVEDTIME">
+          <DataField>RESOLVEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="COMPLETEDTIME">
+          <DataField>COMPLETEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DUEBYTIME">
+          <DataField>DUEBYTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -244,9 +284,9 @@
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Group Name="Chart1_CategoryGroup2">
+                  <Group Name="Chart2_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</GroupExpression>
+                      <GroupExpression>=Switch(Parameters!condition.Value = 1,"Ngày " &amp;  Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,"Tháng " &amp; Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3,"Quý " &amp;  Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4,"Năm " &amp;  Code.ConvertIntoDate(4,Fields!CreateTime.Value),Parameters!condition.Value = 5,"Tuần " &amp; Code.ConvertIntoDate(5,Fields!CreateTime.Value))</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
@@ -254,7 +294,22 @@
                       <Value>=Fields!CreateTime.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</Label>
+                  <ChartMembers>
+                    <ChartMember>
+                      <Group Name="Chart1_CategoryGroup2">
+                        <GroupExpressions>
+                          <GroupExpression>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!CreateTime.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <Label>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</Label>
+                    </ChartMember>
+                  </ChartMembers>
+                  <Label>=Switch(Parameters!condition.Value = 1,"Ngày " &amp;  Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,"Tháng " &amp; Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3,"Quý " &amp;  Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4,"Năm " &amp;  Code.ConvertIntoDate(4,Fields!CreateTime.Value),Parameters!condition.Value = 5,"Tuần " &amp; Code.ConvertIntoDate(5,Fields!CreateTime.Value))</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
@@ -271,11 +326,13 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=(Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value)</Y>
+                        <Y>=sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style />
-                        <Label>=code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Label>
+                        <Style>
+                          <Color>Orange</Color>
+                        </Style>
+                        <Label>=code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style>
@@ -365,7 +422,7 @@
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
                     <Angle>90</Angle>
-                    <OffsetLabels>true</OffsetLabels>
+                    <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
                     <ChartAxisScaleBreak>
                       <Style />
                     </ChartAxisScaleBreak>
@@ -565,7 +622,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>BÁO CÁO THƠI GIAN TRUNG BÌNH PHẢN HỒI YÊU CẦU</Caption>
+                <Caption>Báo cáo thời gian trung bình phản hồi sự cố</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>14pt</FontSize>
@@ -596,8 +653,8 @@
             <DataSetName>DataSet</DataSetName>
             <Top>0.15498cm</Top>
             <Left>0.15655cm</Left>
-            <Height>8.01307cm</Height>
-            <Width>21cm</Width>
+            <Height>10.68156cm</Height>
+            <Width>25.47431cm</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -637,6 +694,7 @@
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -672,6 +730,7 @@
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -739,7 +798,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 ))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -772,7 +831,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -798,6 +857,117 @@
                     </TablixCell>
                   </TablixCells>
                 </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox141">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox34">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox23">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
@@ -811,14 +981,14 @@
                   <TablixHeader>
                     <Size>1.04979cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox40">
+                      <Textbox Name="Textbox97">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -828,13 +998,14 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox12</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -872,6 +1043,7 @@
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -885,14 +1057,14 @@
                   <TablixHeader>
                     <Size>1.04979cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox42">
+                      <Textbox Name="Textbox103">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
+                                <Value>Thời gian trung bình</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -902,13 +1074,14 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox21</rd:DefaultName>
+                        <rd:DefaultName>Textbox100</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
                           <BackgroundColor>#001c43</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -936,7 +1109,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>5.62208cm</Size>
+                        <Size>6.07695cm</Size>
                         <CellContents>
                           <Textbox Name="Group4">
                             <CanGrow>true</CanGrow>
@@ -989,7 +1162,7 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
+                                        <Value>=Fields!CategoryName.Value</Value>
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
@@ -1011,18 +1184,76 @@
                               </Textbox>
                             </CellContents>
                           </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember />
+                          </TablixMembers>
                         </TablixMember>
                       </TablixMembers>
                     </TablixMember>
                   </TablixMembers>
                 </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>11.07695cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox134">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox133</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>18.33133cm</Top>
-            <Left>0.55025cm</Left>
-            <Height>2.09958cm</Height>
-            <Width>25.08062cm</Width>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!CategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>20.88956cm</Top>
+            <Left>0.16354cm</Left>
+            <Height>2.69958cm</Height>
+            <Width>25.53549cm</Width>
             <ZIndex>1</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=4,false,true)</Hidden>
@@ -1163,10 +1394,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.0875cm</Width>
+                  <Width>3.00428cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.62208cm</Width>
+                  <Width>4.45791cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.78354cm</Width>
@@ -1216,7 +1447,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 ))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1249,7 +1480,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1275,6 +1506,117 @@
                     </TablixCell>
                   </TablixCells>
                 </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox139">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox25">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox30">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
@@ -1288,26 +1630,24 @@
                   <TablixHeader>
                     <Size>1.06302cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox48">
+                      <Textbox Name="Textbox99">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox12</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -1368,26 +1708,24 @@
                   <TablixHeader>
                     <Size>1.06302cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox50">
+                      <Textbox Name="Textbox104">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
+                                <Value>Thời gian trung bình</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox21</rd:DefaultName>
+                        <rd:DefaultName>Textbox100</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -1456,7 +1794,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>3.46542cm</Size>
+                            <Size>3.9203cm</Size>
                             <CellContents>
                               <Textbox Name="Technician3">
                                 <CanGrow>true</CanGrow>
@@ -1465,7 +1803,7 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
+                                        <Value>=Fields!CategoryName.Value</Value>
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
@@ -1500,531 +1838,9 @@
                                 </SortExpression>
                               </SortExpressions>
                               <TablixHeader>
-                                <Size>2.5cm</Size>
+                                <Size>4.74738cm</Size>
                                 <CellContents>
-                                  <Textbox Name="SubcategoryName">
-                                    <CanGrow>true</CanGrow>
-                                    <KeepTogether>true</KeepTogether>
-                                    <Paragraphs>
-                                      <Paragraph>
-                                        <TextRuns>
-                                          <TextRun>
-                                            <Value>=Fields!SubcategoryName.Value</Value>
-                                            <Style />
-                                          </TextRun>
-                                        </TextRuns>
-                                        <Style />
-                                      </Paragraph>
-                                    </Paragraphs>
-                                    <rd:DefaultName>SubcategoryName</rd:DefaultName>
-                                    <Style>
-                                      <Border>
-                                        <Color>LightGrey</Color>
-                                        <Style>Solid</Style>
-                                      </Border>
-                                      <VerticalAlign>Middle</VerticalAlign>
-                                      <PaddingLeft>2pt</PaddingLeft>
-                                      <PaddingRight>2pt</PaddingRight>
-                                      <PaddingTop>2pt</PaddingTop>
-                                      <PaddingBottom>2pt</PaddingBottom>
-                                    </Style>
-                                  </Textbox>
-                                </CellContents>
-                              </TablixHeader>
-                            </TablixMember>
-                          </TablixMembers>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
-              </TablixMembers>
-            </TablixRowHierarchy>
-            <DataSetName>DataSet</DataSetName>
-            <Top>21.42751cm</Top>
-            <Left>0.55025cm</Left>
-            <Height>2.12604cm</Height>
-            <Width>25.08062cm</Width>
-            <ZIndex>2</ZIndex>
-            <Visibility>
-              <Hidden>=iif(Parameters!typeaction.Value=5,false,true)</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Tablix>
-          <Tablix Name="Tablix8">
-            <TablixCorner>
-              <TablixCornerRows>
-                <TablixCornerRow>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox62">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Service Category</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox14</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox80">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Category </Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                              <TextRun>
-                                <Value>Name</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox79</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox63">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>SubCategory</Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox33</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                </TablixCornerRow>
-              </TablixCornerRows>
-            </TablixCorner>
-            <TablixBody>
-              <TablixColumns>
-                <TablixColumn>
-                  <Width>4.0875cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>5.62208cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.78354cm</Width>
-                </TablixColumn>
-              </TablixColumns>
-              <TablixRows>
-                <TablixRow>
-                  <Height>1.1424cm</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox59">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Count(Fields!Requestid.Value)</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox13</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox17">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 ))</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox3</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox14">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-              </TablixRows>
-            </TablixBody>
-            <TablixColumnHierarchy>
-              <TablixMembers>
-                <TablixMember>
-                  <Group Name="ColumnGroup7">
-                    <GroupExpressions>
-                      <GroupExpression />
-                    </GroupExpressions>
-                  </Group>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox56">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox12</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox57">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Tổng thời gian phản hồi</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox19</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox58">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox21</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-              </TablixMembers>
-            </TablixColumnHierarchy>
-            <TablixRowHierarchy>
-              <TablixMembers>
-                <TablixMember>
-                  <Group Name="Group6">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!Group.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!Group.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <TablixMembers>
-                    <TablixMember>
-                      <TablixHeader>
-                        <Size>5.62208cm</Size>
-                        <CellContents>
-                          <Textbox Name="Group6">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>=Fields!ServiceCategory.Value</Value>
-                                    <Style />
-                                  </TextRun>
-                                </TextRuns>
-                                <Style />
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>Group</rd:DefaultName>
-                            <Style>
-                              <Border>
-                                <Color>LightGrey</Color>
-                                <Style>Solid</Style>
-                              </Border>
-                              <VerticalAlign>Middle</VerticalAlign>
-                              <PaddingLeft>2pt</PaddingLeft>
-                              <PaddingRight>2pt</PaddingRight>
-                              <PaddingTop>2pt</PaddingTop>
-                              <PaddingBottom>2pt</PaddingBottom>
-                            </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
-                      <TablixMembers>
-                        <TablixMember>
-                          <TablixHeader>
-                            <Size>3.46542cm</Size>
-                            <CellContents>
-                              <Textbox Name="Technician4">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
-                                        <Style />
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style />
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Technician</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Color>LightGrey</Color>
-                                    <Style>Solid</Style>
-                                  </Border>
-                                  <VerticalAlign>Middle</VerticalAlign>
-                                  <PaddingLeft>2pt</PaddingLeft>
-                                  <PaddingRight>2pt</PaddingRight>
-                                  <PaddingTop>2pt</PaddingTop>
-                                  <PaddingBottom>2pt</PaddingBottom>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember>
-                              <Group Name="SubCategoryName2">
-                                <GroupExpressions>
-                                  <GroupExpression>=Fields!ItemName.Value</GroupExpression>
-                                </GroupExpressions>
-                              </Group>
-                              <SortExpressions>
-                                <SortExpression>
-                                  <Value>=Fields!CategoryName.Value</Value>
-                                </SortExpression>
-                              </SortExpressions>
-                              <TablixHeader>
-                                <Size>2.5cm</Size>
-                                <CellContents>
-                                  <Textbox Name="SubcategoryName2">
+                                  <Textbox Name="SubcategoryName3">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -2043,7 +1859,7 @@
                                       <Actions>
                                         <Action>
                                           <Drillthrough>
-                                            <ReportName>KPI_Detail_R6</ReportName>
+                                            <ReportName>KPI_Detail_R3</ReportName>
                                             <Parameters>
                                               <Parameter Name="tungaytao">
                                                 <Value>=Parameters!tungaytao.Value</Value>
@@ -2057,8 +1873,23 @@
                                               <Parameter Name="denngayre">
                                                 <Value>=Parameters!denngayre.Value</Value>
                                               </Parameter>
+                                              <Parameter Name="rqt">
+                                                <Value>=Parameters!rqt.Value(0)</Value>
+                                              </Parameter>
+                                              <Parameter Name="condition">
+                                                <Value>=Parameters!condition.Value</Value>
+                                              </Parameter>
+                                              <Parameter Name="typeaction">
+                                                <Value>=Parameters!typeaction.Value</Value>
+                                              </Parameter>
                                               <Parameter Name="subcd">
-                                                <Value>=Parameters!subcd.Value(0)</Value>
+                                                <Value>=iif(Parameters!typeaction.Value = 5, Fields!SubcategoryID.Value, "none")</Value>
+                                              </Parameter>
+                                              <Parameter Name="depart">
+                                                <Value>=iif(Parameters!typeaction.Value = 6, Fields!Department.Value, "none")</Value>
+                                              </Parameter>
+                                              <Parameter Name="tech">
+                                                <Value>=iif(Parameters!typeaction.Value = 2, Fields!Technician.Value, "none")</Value>
                                               </Parameter>
                                             </Parameters>
                                           </Drillthrough>
@@ -2079,6 +1910,9 @@
                                   </Textbox>
                                 </CellContents>
                               </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember />
+                              </TablixMembers>
                             </TablixMember>
                           </TablixMembers>
                         </TablixMember>
@@ -2086,16 +1920,78 @@
                     </TablixMember>
                   </TablixMembers>
                 </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>14.28976cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox135">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox133</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>24.57661cm</Top>
-            <Left>0.55025cm</Left>
-            <Height>2.2848cm</Height>
-            <Width>25.08062cm</Width>
-            <ZIndex>3</ZIndex>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!CategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!SubcategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>23.98574cm</Top>
+            <Left>0.16354cm</Left>
+            <Height>2.72604cm</Height>
+            <Width>25.53549cm</Width>
+            <ZIndex>2</ZIndex>
             <Visibility>
-              <Hidden>=iif(Parameters!typeaction.Value=6,false,true)</Hidden>
+              <Hidden>=iif(Parameters!typeaction.Value=5,false,true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2243,7 +2139,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 ))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2276,7 +2172,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value)</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2314,8 +2210,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
-                                  <Style />
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2329,6 +2227,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -2355,8 +2254,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
-                                  <Style />
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2370,6 +2271,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -2392,26 +2294,24 @@
                   <TablixHeader>
                     <Size>0.5625in</Size>
                     <CellContents>
-                      <Textbox Name="Textbox23">
+                      <Textbox Name="Textbox93">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>Center</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox13</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -2472,26 +2372,24 @@
                   <TablixHeader>
                     <Size>0.5625in</Size>
                     <CellContents>
-                      <Textbox Name="Textbox25">
+                      <Textbox Name="Textbox101">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
+                                <Value>Thời gian trung bình</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>Center</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox17</rd:DefaultName>
+                        <rd:DefaultName>Textbox100</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -2524,7 +2422,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.57707in</Size>
+                    <Size>2.72932in</Size>
                     <CellContents>
                       <Textbox Name="ItemName2">
                         <CanGrow>true</CanGrow>
@@ -2573,7 +2471,7 @@
                       <TablixHeader>
                         <Size>2.18977in</Size>
                         <CellContents>
-                          <Textbox Name="Priority2">
+                          <Textbox Name="Technician">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -2584,48 +2482,12 @@
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
-                                <LeftIndent>2pt</LeftIndent>
                                 <Style>
                                   <TextAlign>Left</TextAlign>
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Priority</rd:DefaultName>
-                            <ActionInfo>
-                              <Actions>
-                                <Action>
-                                  <Drillthrough>
-                                    <ReportName>KPI_Detail_R6</ReportName>
-                                    <Parameters>
-                                      <Parameter Name="tech">
-                                        <Value>=Parameters!tech.Value(0)</Value>
-                                      </Parameter>
-                                      <Parameter Name="tungaytao">
-                                        <Value>=Parameters!tungaytao.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="denngaytao">
-                                        <Value>=Parameters!denngaytao.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="condition">
-                                        <Value>=Parameters!condition.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="typeaction">
-                                        <Value>=Parameters!typeaction.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="denngayre">
-                                        <Value>=Parameters!denngayre.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="tungayre">
-                                        <Value>=Parameters!tungayre.Value</Value>
-                                      </Parameter>
-                                      <Parameter Name="rqt">
-                                        <Value>=Parameters!rqt.Value</Value>
-                                      </Parameter>
-                                    </Parameters>
-                                  </Drillthrough>
-                                </Action>
-                              </Actions>
-                            </ActionInfo>
+                            <rd:DefaultName>Technician</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -2652,7 +2514,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Tỉ lệ % theo Group</Value>
+                                    <Value>Tổng</Value>
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
@@ -2667,6 +2529,7 @@
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -2682,7 +2545,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.57707in</Size>
+                    <Size>2.72932in</Size>
                     <CellContents>
                       <Textbox Name="Textbox64">
                         <CanGrow>true</CanGrow>
@@ -2691,8 +2554,10 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng tỉ lệ % theo group</Value>
-                                <Style />
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -2706,6 +2571,7 @@
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
                           <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -2728,7 +2594,9 @@
                                 <TextRuns>
                                   <TextRun>
                                     <Value />
-                                    <Style />
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
@@ -2742,6 +2610,7 @@
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -2760,11 +2629,27 @@
             <RepeatColumnHeaders>true</RepeatColumnHeaders>
             <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>4.4843in</Top>
-            <Left>0.21663in</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=IsNothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=IsNothing(Fields!Technician.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>5.49148in</Top>
+            <Left>0.06438in</Left>
             <Height>1.44792in</Height>
-            <Width>9.87426in</Width>
-            <ZIndex>4</ZIndex>
+            <Width>10.02651in</Width>
+            <ZIndex>3</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=2,false,true)</Hidden>
             </Visibility>
@@ -2874,7 +2759,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 ))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2907,7 +2792,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2980,7 +2865,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(Sum(Fields!ResponseTime.Value) / 60 ))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(Math.Floor( sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3015,7 +2900,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Code.ConvertIntToHour(Math.Floor(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value))))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3056,14 +2941,14 @@
                   <TablixHeader>
                     <Size>1.1424cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox93">
+                      <Textbox Name="Textbox94">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3139,7 +3024,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
+                                <Value>Thời gian trung bình</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3182,7 +3067,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>5.03014cm</Size>
+                    <Size>9.89114cm</Size>
                     <CellContents>
                       <Textbox Name="Group">
                         <CanGrow>true</CanGrow>
@@ -3216,7 +3101,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>5.03014cm</Size>
+                    <Size>9.89114cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox129">
                         <CanGrow>true</CanGrow>
@@ -3253,12 +3138,23 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>8.4547cm</Top>
-            <Left>0.55025cm</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=IsNothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>11.01293cm</Top>
+            <Left>0.16354cm</Left>
             <Height>2.8848cm</Height>
-            <Width>20.60632cm</Width>
-            <ZIndex>5</ZIndex>
+            <Width>25.46732cm</Width>
+            <ZIndex>4</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=1,false,true)</Hidden>
             </Visibility>
@@ -3319,7 +3215,7 @@
                   <Width>6.01927cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.74927cm</Width>
+                  <Width>7.3403cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -3366,7 +3262,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 ))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3399,7 +3295,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3443,7 +3339,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox130</rd:DefaultName>
@@ -3463,23 +3361,25 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox61">
+                        <Textbox Name="Textbox14">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox61</rd:DefaultName>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -3503,8 +3403,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
-                                  <Style />
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -3518,6 +3420,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -3542,14 +3445,14 @@
                   <TablixHeader>
                     <Size>1.02234cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox111">
+                      <Textbox Name="Textbox96">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3559,7 +3462,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox111</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -3618,14 +3521,14 @@
                   <TablixHeader>
                     <Size>1.02234cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox116">
+                      <Textbox Name="Textbox102">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
+                                <Value>Thời gian trung bình</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3635,7 +3538,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox116</rd:DefaultName>
+                        <rd:DefaultName>Textbox100</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -3668,7 +3571,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>5.3049cm</Size>
+                    <Size>5.69161cm</Size>
                     <CellContents>
                       <Textbox Name="ServiceCategory">
                         <CanGrow>true</CanGrow>
@@ -3690,6 +3593,7 @@
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -3701,7 +3605,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>5.3049cm</Size>
+                    <Size>5.69161cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox133">
                         <CanGrow>true</CanGrow>
@@ -3738,12 +3642,23 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>15.03257cm</Top>
-            <Left>0.55025cm</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=ISNOTHING(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>17.5908cm</Top>
+            <Left>0.16354cm</Left>
             <Height>2.81567cm</Height>
-            <Width>22.48959cm</Width>
-            <ZIndex>6</ZIndex>
+            <Width>25.46733cm</Width>
+            <ZIndex>5</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=3,false,true)</Hidden>
             </Visibility>
@@ -3798,7 +3713,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.29208cm</Width>
+                  <Width>4.74695cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.84345cm</Width>
@@ -3850,7 +3765,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 ))</Value>
+                                  <Value>=Code.ConvertIntToHour(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3883,7 +3798,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour((Sum(Fields!ResponseTime.Value) / 60 )/ count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3909,6 +3824,117 @@
                     </TablixCell>
                   </TablixCells>
                 </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox140">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(Fields!Requestid.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox31">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox32">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
@@ -3922,14 +3948,14 @@
                   <TablixHeader>
                     <Size>1.0101cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox2">
+                      <Textbox Name="Textbox105">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
+                                <Value>Tổng số sự cố</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -3939,7 +3965,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox2</rd:DefaultName>
+                        <rd:DefaultName>Textbox93</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -3998,14 +4024,14 @@
                   <TablixHeader>
                     <Size>1.0101cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox7">
+                      <Textbox Name="Textbox106">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng thời gian phản hồi trung bình</Value>
+                                <Value>Thời gian trung bình</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
@@ -4015,7 +4041,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox7</rd:DefaultName>
+                        <rd:DefaultName>Textbox100</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -4048,9 +4074,9 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>8.60479cm</Size>
+                    <Size>9.68802cm</Size>
                     <CellContents>
-                      <Textbox Name="Group8">
+                      <Textbox Name="SubcategoryName2">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -4064,12 +4090,12 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Group</rd:DefaultName>
+                        <rd:DefaultName>SubcategoryName</rd:DefaultName>
                         <ActionInfo>
                           <Actions>
                             <Action>
                               <Drillthrough>
-                                <ReportName>KPI_Detail_R6</ReportName>
+                                <ReportName>KPI_Detail_R3</ReportName>
                                 <Parameters>
                                   <Parameter Name="tungaytao">
                                     <Value>=Parameters!tungaytao.Value</Value>
@@ -4083,14 +4109,23 @@
                                   <Parameter Name="denngayre">
                                     <Value>=Parameters!denngayre.Value</Value>
                                   </Parameter>
-                                  <Parameter Name="typeaction">
-                                    <Value>=Parameters!typeaction.Value</Value>
+                                  <Parameter Name="rqt">
+                                    <Value>=Parameters!rqt.Value(0)</Value>
                                   </Parameter>
                                   <Parameter Name="condition">
                                     <Value>=Parameters!condition.Value</Value>
                                   </Parameter>
+                                  <Parameter Name="typeaction">
+                                    <Value>=Parameters!typeaction.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="subcd">
+                                    <Value>=iif(Parameters!typeaction.Value = 5, Fields!SubcategoryID.Value, "none")</Value>
+                                  </Parameter>
                                   <Parameter Name="depart">
-                                    <Value>=Parameters!depart.Value(0)</Value>
+                                    <Value>=iif(Parameters!typeaction.Value = 7, Fields!DepartID.Value, "none")</Value>
+                                  </Parameter>
+                                  <Parameter Name="tech">
+                                    <Value>=iif(Parameters!typeaction.Value = 2, Fields!techId.Value, "none")</Value>
                                   </Parameter>
                                 </Parameters>
                               </Drillthrough>
@@ -4111,15 +4146,66 @@
                       </Textbox>
                     </CellContents>
                   </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>9.68802cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox136">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox133</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <KeepWithGroup>Before</KeepWithGroup>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>29.64783cm</Top>
-            <Left>0.55025cm</Left>
-            <Height>2.0202cm</Height>
-            <Width>23.9974cm</Width>
-            <ZIndex>7</ZIndex>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Department.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>27.25835cm</Top>
+            <Left>0.16353cm</Left>
+            <Height>2.6202cm</Height>
+            <Width>25.5355cm</Width>
+            <ZIndex>6</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=7,false,true)</Hidden>
             </Visibility>
@@ -4130,10 +4216,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>42.81225cm</Height>
+        <Height>29.87855cm</Height>
         <Style />
       </Body>
-      <Width>38.37313cm</Width>
+      <Width>25.69903cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -4416,12 +4502,16 @@
                  Return DatePart(DateInterval.Quarter, startDate)
             Case 4
               Return startDate.ToString("yyyy")
+Case 5
+
+Dim weekNumber As Integer = DatePart(DateInterval.WeekOfYear, startDate)
+                Return weekNumber
 
             Case Else
                 Return startDate.ToString("dd-MM-yyyy")
         End Select
     End Function
- Public Function ConvertIntToHour(ByVal number As Int64) As String
+ Public Function ConvertIntToHourV1(ByVal number As Int64) As String
         Dim interval As TimeSpan = TimeSpan.FromSeconds(number)
         Return interval.ToString()
     End Function
@@ -4433,7 +4523,29 @@ startDate = TimeZone.CurrentTimeZone.ToLocalTime(startDate)
 
              Return startDate
     End Function
-</Code>
+Public Function ConvertIntToHour(ByVal number As Integer) As String
+        Try
+            Dim temp As Double = number / 3600
+            Dim result As String = AddZero(Math.Floor(temp))
+            temp = (number - Math.Floor(temp) * 3600) / 60
+            result = result + ":" + AddZero(Math.Floor(temp))
+            temp = number - Math.Floor(temp) * 60 - Math.Floor(number / 3600) * 3600
+
+            Return result + ":" + AddZero(Math.Floor(temp))
+        Catch ex As Exception
+            Return "NA"
+        End Try
+
+    End Function
+
+    Public Function AddZero(ByVal number As Integer) As String
+        If number &lt; 10 Then
+            Return "0" + number.ToString()
+        Else
+            Return number.ToString()
+        End If
+
+    End Function</Code>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>c18a3ff6-3c16-4ab7-950b-059feeccf1c6</rd:ReportID>
 </Report>

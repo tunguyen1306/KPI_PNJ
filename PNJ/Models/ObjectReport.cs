@@ -34,6 +34,9 @@ namespace PNJ.Models
         public string typeaction { get; set; }
         public string optradio1 { get; set; }
         public string subcd { get; set; }
+        public string departname { get; set; }
+        public string itname { get; set; }
+        public string techname { get; set; }
 
     }
     public class GetMonth

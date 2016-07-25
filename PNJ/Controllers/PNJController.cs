@@ -125,7 +125,7 @@ namespace PNJ.Controllers
                 #region
                 case 0:
                     
-                    query = new StringBuilder("SELECT sd.STATUSID, sd.STATUSNAME FROM StatusDefinition sd");
+                    query = new StringBuilder("SELECT DISTINCT sd.STATUSID, sd.STATUSNAME FROM StatusDefinition sd");
                     break;
 
                 case 1:
@@ -141,7 +141,7 @@ namespace PNJ.Controllers
                     break;
 
                 case 4:
-                    query = new StringBuilder("SELECT distinct QueueDefinition.QUEUEID,QueueDefinition.QUEUENAME FROM QueueDefinition");
+                    query = new StringBuilder("SELECT DISTINCT QueueDefinition.QUEUEID,QueueDefinition.QUEUENAME FROM QueueDefinition");
                     break;
 
                 case 5:
@@ -167,26 +167,26 @@ namespace PNJ.Controllers
                 //Contract
                 #region
                 case 10:
-                    query = new StringBuilder("SELECT cc.CATEGORYID, cc.CATEGORYNAME FROM ContractCategory cc");
+                    query = new StringBuilder("SELECT DISTINCT cc.CATEGORYID, cc.CATEGORYNAME FROM ContractCategory cc");
                     break;
 
                 case 11:
-                    query = new StringBuilder("SELECT cs.STATUSID, cs.STATUSNAME FROM ContractStatus cs");
+                    query = new StringBuilder("SELECT DISTINCT cs.STATUSID, cs.STATUSNAME FROM ContractStatus cs");
                     break;
                 case 12:
-                    query = new StringBuilder("SELECT s.ORG_ID, s.NAME FROM SDOrganization s");
+                    query = new StringBuilder("SELECT DISTINCT s.ORG_ID, s.NAME FROM SDOrganization s");
                     break;
                 case 13:
-                    query = new StringBuilder("select top 50000  qd.QUEUENAME AS [Group], qd.QUEUEID FROM WorkOrder wo LEFT JOIN WorkOrder_Queue woq ON wo.WORKORDERID=woq.WORKORDERID LEFT JOIN QueueDefinition qd ON woq.QUEUEID=qd.QUEUEID WHERE (wo.ISPARENT='1') group by qd.QUEUENAME, qd.QUEUEID");
+                    query = new StringBuilder("select DISTINCT top 50000  qd.QUEUENAME AS [Group], qd.QUEUEID FROM WorkOrder wo LEFT JOIN WorkOrder_Queue woq ON wo.WORKORDERID=woq.WORKORDERID LEFT JOIN QueueDefinition qd ON woq.QUEUEID=qd.QUEUEID WHERE (wo.ISPARENT='1') group by qd.QUEUENAME, qd.QUEUEID");
                     break;
                 case 14:
-                    query = new StringBuilder("SELECT  serdef.SERVICEID,serdef.NAME AS ServiceCategory FROM WorkOrder wo LEFT JOIN ServiceDefinition serdef ON wo.SERVICEID=serdef.SERVICEID LEFT JOIN WorkOrderStates wos ON wo.WORKORDERID=wos.WORKORDERID LEFT JOIN CategoryDefinition cd ON wos.CATEGORYID=cd.CATEGORYID WHERE (wo.ISPARENT='1') group by serdef.NAME, serdef.SERVICEID");
+                    query = new StringBuilder("SELECT DISTINCT serdef.SERVICEID,serdef.NAME AS ServiceCategory FROM WorkOrder wo LEFT JOIN ServiceDefinition serdef ON wo.SERVICEID=serdef.SERVICEID LEFT JOIN WorkOrderStates wos ON wo.WORKORDERID=wos.WORKORDERID LEFT JOIN CategoryDefinition cd ON wos.CATEGORYID=cd.CATEGORYID WHERE (wo.ISPARENT='1') group by serdef.NAME, serdef.SERVICEID");
                     break;
                 case 15:
-                    query = new StringBuilder("SELECT  sd.NAME, sd.SERVICEID FROM dbo.ServiceDefinition sd WHERE sd.STATUS ='ACTIVE'  GROUP BY sd.NAME, sd.SERVICEID");
+                    query = new StringBuilder("SELECT DISTINCT sd.NAME, sd.SERVICEID FROM dbo.ServiceDefinition sd WHERE sd.STATUS ='ACTIVE'  GROUP BY sd.NAME, sd.SERVICEID");
                     break;
                 case 16:
-                    query = new StringBuilder("SELECT AaaUser.FIRST_NAME ,SDUser.Employeeid ,DepartmentDefinition.DEPTNAME FROM AaaUser LEFT JOIN UserDepartment ON AaaUser.USER_ID = UserDepartment.USERID  LEFT JOIN DepartmentDefinition ON UserDepartment.DEPTID = DepartmentDefinition.DEPTID LEFT JOIN SiteDefinition ON DepartmentDefinition.SITEID = SiteDefinition.SITEID LEFT JOIN SDOrganization ON SiteDefinition.SITEID = SDOrganization.ORG_ID INNER JOIN SDUser ON AaaUser.USER_ID = SDUser.USERID LEFT JOIN HelpDeskCrew ON SDUser.USERID = HelpDeskCrew.TECHNICIANID LEFT JOIN Requester_Fields ON SDUser.USERID = Requester_Fields.USERID LEFT JOIN AaaLogin ON AaaUser.USER_ID = AaaLogin.USER_ID WHERE DepartmentDefinition.DEPTID = "+ condition + " AND SDUser.STATUS = 'ACTIVE'  ORDER BY 1");
+                    query = new StringBuilder("SELECT DISTINCT  AaaUser.FIRST_NAME ,SDUser.Employeeid ,DepartmentDefinition.DEPTNAME FROM AaaUser LEFT JOIN UserDepartment ON AaaUser.USER_ID = UserDepartment.USERID  LEFT JOIN DepartmentDefinition ON UserDepartment.DEPTID = DepartmentDefinition.DEPTID LEFT JOIN SiteDefinition ON DepartmentDefinition.SITEID = SiteDefinition.SITEID LEFT JOIN SDOrganization ON SiteDefinition.SITEID = SDOrganization.ORG_ID INNER JOIN SDUser ON AaaUser.USER_ID = SDUser.USERID LEFT JOIN HelpDeskCrew ON SDUser.USERID = HelpDeskCrew.TECHNICIANID LEFT JOIN Requester_Fields ON SDUser.USERID = Requester_Fields.USERID LEFT JOIN AaaLogin ON AaaUser.USER_ID = AaaLogin.USER_ID WHERE DepartmentDefinition.DEPTID = " + condition + " AND SDUser.STATUS = 'ACTIVE'  ORDER BY 1");
                     break;
                 #endregion
                 default:

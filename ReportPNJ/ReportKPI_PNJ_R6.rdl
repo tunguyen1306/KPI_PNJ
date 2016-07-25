@@ -81,6 +81,10 @@
           <DataField>SubcategoryName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SubcategoryID">
+          <DataField>SubcategoryID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
         <Field Name="ItemName">
           <DataField>ItemName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -89,8 +93,8 @@
           <DataField>Status</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Reopen">
-          <DataField>Reopen</DataField>
+        <Field Name="Reopen1">
+          <DataField>Reopen1</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Group">
@@ -125,6 +129,10 @@
           <DataField>ResponseTime</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
+        <Field Name="techId">
+          <DataField>techId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
         <Field Name="CreateTime">
           <DataField>CreateTime</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
@@ -155,7 +163,7 @@
         </Field>
         <Field Name="SurveyName">
           <DataField>SurveyName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="DuebyDate">
           <DataField>DuebyDate</DataField>
@@ -168,6 +176,10 @@
         <Field Name="DueTimebyMail">
           <DataField>DueTimebyMail</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Requester">
+          <DataField>Requester</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="DuedateResoleved">
           <DataField>DuedateResoleved</DataField>
@@ -201,6 +213,10 @@
           <DataField>EquipmentRequest</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="DepartID">
+          <DataField>DepartID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
         <Field Name="Equipment">
           <DataField>Equipment</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -225,6 +241,38 @@
           <DataField>YKienĐVCN</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="rcode">
+          <DataField>rcode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RequestType">
+          <DataField>RequestType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CREATEDTIME">
+          <DataField>CREATEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RESPONDEDTIME">
+          <DataField>RESPONDEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RequestTypeID">
+          <DataField>RequestTypeID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="RESOLVEDTIME">
+          <DataField>RESOLVEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="COMPLETEDTIME">
+          <DataField>COMPLETEDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DUEBYTIME">
+          <DataField>DUEBYTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -232,13 +280,13 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Chart Name="Chart1">
+          <Chart Name="Chart2">
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Group Name="Chart1_CategoryGroup1">
+                  <Group Name="Chart2_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Switch(Parameters!condition.Value = 1, Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3, Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4, Code.ConvertIntoDate(4,Fields!CreateTime.Value))</GroupExpression>
+                      <GroupExpression>=Switch(Parameters!condition.Value = 1,"Ngày " &amp;  Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,"Tháng " &amp; Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3,"Quý " &amp;  Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4,"Năm " &amp;  Code.ConvertIntoDate(4,Fields!CreateTime.Value),Parameters!condition.Value = 5,"Tuần " &amp; Code.ConvertIntoDate(5,Fields!CreateTime.Value))</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
@@ -248,20 +296,20 @@
                   </SortExpressions>
                   <ChartMembers>
                     <ChartMember>
-                      <Group Name="Chart1_CategoryGroup">
+                      <Group Name="Chart1_CategoryGroup2">
                         <GroupExpressions>
-                          <GroupExpression>=Switch(Parameters!typeaction.Value =2, Fields!Technician.Value)</GroupExpression>
+                          <GroupExpression>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</GroupExpression>
                         </GroupExpressions>
                       </Group>
                       <SortExpressions>
                         <SortExpression>
-                          <Value>=Fields!OverSLAResolution.Value</Value>
+                          <Value>=Fields!CreateTime.Value</Value>
                         </SortExpression>
                       </SortExpressions>
-                      <Label>=Switch(Parameters!typeaction.Value =2, Fields!Technician.Value)</Label>
+                      <Label>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=2,Fields!Technician.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</Label>
                     </ChartMember>
                   </ChartMembers>
-                  <Label>=Switch(Parameters!condition.Value = 1, Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3, Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4, Code.ConvertIntoDate(4,Fields!CreateTime.Value))</Label>
+                  <Label>=Switch(Parameters!condition.Value = 1,"Ngày " &amp;  Code.ConvertIntoDate(1,Fields!CreateTime.Value),Parameters!condition.Value=2,"Tháng " &amp; Code.ConvertIntoDate(2,Fields!CreateTime.Value),Parameters!condition.Value = 3,"Quý " &amp;  Code.ConvertIntoDate(3,Fields!CreateTime.Value),Parameters!condition.Value = 4,"Năm " &amp;  Code.ConvertIntoDate(4,Fields!CreateTime.Value),Parameters!condition.Value = 5,"Tuần " &amp; Code.ConvertIntoDate(5,Fields!CreateTime.Value))</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
@@ -281,425 +329,12 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Round( 100* Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",iif( Fields!OverSLAResolution.Value=FALSE,"yes",nothing), nothing))/iif(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))=0,1,Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))),2)</Y>
+                        <Y>=Round( 100* Count(iif((Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved"),iif(Fields!OverSLAResolution.Value=0,1,nothing) ,nothing))/Count(iif((Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved"),Fields!Requestid.Value,nothing)))</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style />
-                        <Label>#VAL{#0.##\%}</Label>
-                        <Visible>true</Visible>
-                      </ChartDataLabel>
-                      <Style>
-                        <Color>MidnightBlue</Color>
-                      </Style>
-                      <ChartMarker>
-                        <Style />
-                      </ChartMarker>
-                      <DataElementOutput>Output</DataElementOutput>
-                    </ChartDataPoint>
-                  </ChartDataPoints>
-                  <Style />
-                  <ChartEmptyPoints>
-                    <Style />
-                    <ChartMarker>
-                      <Style />
-                    </ChartMarker>
-                    <ChartDataLabel>
-                      <Style />
-                    </ChartDataLabel>
-                  </ChartEmptyPoints>
-                  <ChartItemInLegend>
-                    <LegendText>Tỷ lệ đạt SLA</LegendText>
-                  </ChartItemInLegend>
-                  <ValueAxisName>Primary</ValueAxisName>
-                  <CategoryAxisName>Primary</CategoryAxisName>
-                  <ChartSmartLabel>
-                    <CalloutLineColor>Black</CalloutLineColor>
-                    <MinMovingDistance>0pt</MinMovingDistance>
-                  </ChartSmartLabel>
-                </ChartSeries>
-                <ChartSeries Name="Priority">
-                  <ChartDataPoints>
-                    <ChartDataPoint>
-                      <ChartDataPointValues>
-                        <Y>=Round( 100* Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",iif( Fields!OverSLAResolution.Value=TRUE,"yes",nothing), nothing))/iif(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))=0,1,Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))),2)</Y>
-                      </ChartDataPointValues>
-                      <ChartDataLabel>
-                        <Style />
-                        <Label>#VAL{#0.##\%}</Label>
-                        <Visible>true</Visible>
-                      </ChartDataLabel>
-                      <Style>
-                        <Color>Red</Color>
-                      </Style>
-                      <ChartMarker>
-                        <Style />
-                      </ChartMarker>
-                      <DataElementOutput>Output</DataElementOutput>
-                    </ChartDataPoint>
-                  </ChartDataPoints>
-                  <Style />
-                  <ChartEmptyPoints>
-                    <Style />
-                    <ChartMarker>
-                      <Style />
-                    </ChartMarker>
-                    <ChartDataLabel>
-                      <Style />
-                    </ChartDataLabel>
-                  </ChartEmptyPoints>
-                  <ChartItemInLegend>
-                    <LegendText>Tỷ lệ vi phạm SLA</LegendText>
-                  </ChartItemInLegend>
-                  <ValueAxisName>Primary</ValueAxisName>
-                  <CategoryAxisName>Primary</CategoryAxisName>
-                  <ChartSmartLabel>
-                    <CalloutLineColor>Black</CalloutLineColor>
-                    <MinMovingDistance>0pt</MinMovingDistance>
-                  </ChartSmartLabel>
-                </ChartSeries>
-              </ChartSeriesCollection>
-            </ChartData>
-            <ChartAreas>
-              <ChartArea Name="Default">
-                <ChartCategoryAxes>
-                  <ChartAxis Name="Primary">
-                    <Style>
-                      <Border>
-                        <Color>Gainsboro</Color>
-                        <Style>None</Style>
-                      </Border>
-                      <FontSize>8pt</FontSize>
-                      <Color>#5c5c5c</Color>
-                    </Style>
-                    <ChartAxisTitle>
-                      <Caption />
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Color>#5c5c5c</Color>
-                      </Style>
-                    </ChartAxisTitle>
-                    <ChartMajorGridLines>
-                      <Enabled>False</Enabled>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                        </Border>
-                      </Style>
-                    </ChartMajorGridLines>
-                    <ChartMinorGridLines>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                          <Style>Dotted</Style>
-                        </Border>
-                      </Style>
-                    </ChartMinorGridLines>
-                    <ChartMajorTickMarks>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </ChartMajorTickMarks>
-                    <ChartMinorTickMarks>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                        </Border>
-                      </Style>
-                      <Length>0.5</Length>
-                    </ChartMinorTickMarks>
-                    <CrossAt>NaN</CrossAt>
-                    <Minimum>NaN</Minimum>
-                    <Maximum>NaN</Maximum>
-                    <Angle>90</Angle>
-                    <ChartAxisScaleBreak>
-                      <Style />
-                    </ChartAxisScaleBreak>
-                  </ChartAxis>
-                  <ChartAxis Name="Secondary">
-                    <Style>
-                      <Border>
-                        <Color>Gainsboro</Color>
-                        <Style>None</Style>
-                      </Border>
-                      <FontSize>8pt</FontSize>
-                      <Color>#5c5c5c</Color>
-                    </Style>
-                    <ChartAxisTitle>
-                      <Caption />
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Color>#5c5c5c</Color>
-                      </Style>
-                    </ChartAxisTitle>
-                    <ChartMajorGridLines>
-                      <Enabled>False</Enabled>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                        </Border>
-                      </Style>
-                    </ChartMajorGridLines>
-                    <ChartMinorGridLines>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                          <Style>Dotted</Style>
-                        </Border>
-                      </Style>
-                    </ChartMinorGridLines>
-                    <ChartMajorTickMarks>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </ChartMajorTickMarks>
-                    <ChartMinorTickMarks>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                        </Border>
-                      </Style>
-                      <Length>0.5</Length>
-                    </ChartMinorTickMarks>
-                    <CrossAt>NaN</CrossAt>
-                    <Location>Opposite</Location>
-                    <Minimum>NaN</Minimum>
-                    <Maximum>NaN</Maximum>
-                    <ChartAxisScaleBreak>
-                      <Style />
-                    </ChartAxisScaleBreak>
-                  </ChartAxis>
-                </ChartCategoryAxes>
-                <ChartValueAxes>
-                  <ChartAxis Name="Primary">
-                    <Style>
-                      <Border>
-                        <Color>Gainsboro</Color>
-                        <Style>None</Style>
-                      </Border>
-                      <FontSize>8pt</FontSize>
-                      <Color>#5c5c5c</Color>
-                    </Style>
-                    <ChartAxisTitle>
-                      <Caption />
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Color>#5c5c5c</Color>
-                      </Style>
-                    </ChartAxisTitle>
-                    <ChartMajorGridLines>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                        </Border>
-                      </Style>
-                    </ChartMajorGridLines>
-                    <ChartMinorGridLines>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                          <Style>Dotted</Style>
-                        </Border>
-                      </Style>
-                    </ChartMinorGridLines>
-                    <ChartMajorTickMarks>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </ChartMajorTickMarks>
-                    <ChartMinorTickMarks>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                        </Border>
-                      </Style>
-                      <Length>0.5</Length>
-                    </ChartMinorTickMarks>
-                    <CrossAt>NaN</CrossAt>
-                    <Minimum>NaN</Minimum>
-                    <Maximum>NaN</Maximum>
-                    <ChartAxisScaleBreak>
-                      <Style />
-                    </ChartAxisScaleBreak>
-                  </ChartAxis>
-                  <ChartAxis Name="Secondary">
-                    <Style>
-                      <Border>
-                        <Color>Gainsboro</Color>
-                        <Style>None</Style>
-                      </Border>
-                      <FontSize>8pt</FontSize>
-                      <Color>#5c5c5c</Color>
-                    </Style>
-                    <ChartAxisTitle>
-                      <Caption />
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Color>#5c5c5c</Color>
-                      </Style>
-                    </ChartAxisTitle>
-                    <ChartMajorGridLines>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                        </Border>
-                      </Style>
-                    </ChartMajorGridLines>
-                    <ChartMinorGridLines>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                          <Style>Dotted</Style>
-                        </Border>
-                      </Style>
-                    </ChartMinorGridLines>
-                    <ChartMajorTickMarks>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                          <Style>None</Style>
-                        </Border>
-                      </Style>
-                    </ChartMajorTickMarks>
-                    <ChartMinorTickMarks>
-                      <Style>
-                        <Border>
-                          <Color>Gainsboro</Color>
-                        </Border>
-                      </Style>
-                      <Length>0.5</Length>
-                    </ChartMinorTickMarks>
-                    <CrossAt>NaN</CrossAt>
-                    <Location>Opposite</Location>
-                    <Minimum>NaN</Minimum>
-                    <Maximum>NaN</Maximum>
-                    <ChartAxisScaleBreak>
-                      <Style />
-                    </ChartAxisScaleBreak>
-                  </ChartAxis>
-                </ChartValueAxes>
-                <Style>
-                  <Border>
-                    <Color>Blue</Color>
-                  </Border>
-                  <BackgroundColor>#00ffffff</BackgroundColor>
-                  <BackgroundGradientType>None</BackgroundGradientType>
-                </Style>
-              </ChartArea>
-            </ChartAreas>
-            <ChartLegends>
-              <ChartLegend Name="Default">
-                <Style>
-                  <BackgroundGradientType>None</BackgroundGradientType>
-                  <FontSize>8pt</FontSize>
-                </Style>
-                <Position>TopRight</Position>
-                <ChartLegendTitle>
-                  <Caption />
-                  <Style>
-                    <FontSize>8pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </ChartLegendTitle>
-                <HeaderSeparatorColor>Black</HeaderSeparatorColor>
-                <ColumnSeparatorColor>Black</ColumnSeparatorColor>
-              </ChartLegend>
-            </ChartLegends>
-            <ChartTitles>
-              <ChartTitle Name="Default">
-                <Caption>Tỷ lệ % các yêu cầu xử lý đúng cam kết SLA</Caption>
-                <Style>
-                  <BackgroundGradientType>None</BackgroundGradientType>
-                  <FontSize>9pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextAlign>Left</TextAlign>
-                  <VerticalAlign>Top</VerticalAlign>
-                  <Color>#a6a6a6</Color>
-                </Style>
-                <Position>TopLeft</Position>
-              </ChartTitle>
-            </ChartTitles>
-            <Palette>Pacific</Palette>
-            <ChartBorderSkin>
-              <Style>
-                <BackgroundColor>Gray</BackgroundColor>
-                <BackgroundGradientType>None</BackgroundGradientType>
-                <Color>White</Color>
-              </Style>
-            </ChartBorderSkin>
-            <ChartNoDataMessage Name="NoDataMessage">
-              <Caption>No Data Available</Caption>
-              <Style>
-                <BackgroundGradientType>None</BackgroundGradientType>
-                <FontWeight>Bold</FontWeight>
-                <TextAlign>General</TextAlign>
-                <VerticalAlign>Top</VerticalAlign>
-              </Style>
-            </ChartNoDataMessage>
-            <DataSetName>DataSet</DataSetName>
-            <Top>0cm</Top>
-            <Left>0cm</Left>
-            <Height>8.67453cm</Height>
-            <Width>21cm</Width>
-            <Visibility>
-              <Hidden>=iif(Parameters!typeaction.Value =2,false,true)</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Color>LightGrey</Color>
-                <Style>None</Style>
-              </Border>
-              <BackgroundColor>White</BackgroundColor>
-              <BackgroundGradientType>None</BackgroundGradientType>
-            </Style>
-          </Chart>
-          <Chart Name="Chart2">
-            <ChartCategoryHierarchy>
-              <ChartMembers>
-                <ChartMember>
-                  <Group Name="Chart1_CategoryGroup2">
-                    <GroupExpressions>
-                      <GroupExpression>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!CreateTime.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <Label>=Switch(Parameters!typeaction.Value=1,Fields!Group.Value,Parameters!typeaction.Value=3,Fields!ServiceCategory.Value,Parameters!typeaction.Value=4,Fields!CategoryName.Value,Parameters!typeaction.Value=5,Fields!SubcategoryName.Value,Parameters!typeaction.Value=6,Fields!ItemName.Value,Parameters!typeaction.Value=7,Fields!Department.Value)</Label>
-                </ChartMember>
-              </ChartMembers>
-            </ChartCategoryHierarchy>
-            <ChartSeriesHierarchy>
-              <ChartMembers>
-                <ChartMember>
-                  <Label>Requestid</Label>
-                </ChartMember>
-                <ChartMember>
-                  <Label>Requestid</Label>
-                </ChartMember>
-              </ChartMembers>
-            </ChartSeriesHierarchy>
-            <ChartData>
-              <ChartSeriesCollection>
-                <ChartSeries Name="ResolvedTime">
-                  <ChartDataPoints>
-                    <ChartDataPoint>
-                      <ChartDataPointValues>
-                        <Y>=Round( 100* Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",iif( Fields!OverSLAResolution.Value=FALSE,"yes",nothing), nothing))/iif(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))=0,1,Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))),2)</Y>
-                      </ChartDataPointValues>
-                      <ChartDataLabel>
-                        <Style />
+                        <Style>
+                          <Color>Orange</Color>
+                        </Style>
                         <Label>#VAL{#0.##\%}</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
@@ -736,10 +371,12 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Round( 100* Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",iif( Fields!OverSLAResolution.Value=TRUE,"yes",nothing), nothing))/iif(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))=0,1,Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))),2)</Y>
+                        <Y>=100-Round( 100* Count(iif((Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved"),iif(Fields!OverSLAResolution.Value=0,1,nothing) ,nothing))/Count(iif((Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved"),Fields!Requestid.Value,nothing)))</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style />
+                        <Style>
+                          <Color>Orange</Color>
+                        </Style>
                         <Label>#VAL{#0.##\%}</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
@@ -803,6 +440,7 @@
                       </Style>
                     </ChartMajorGridLines>
                     <ChartMinorGridLines>
+                      <Enabled>False</Enabled>
                       <Style>
                         <Border>
                           <Color>Gainsboro</Color>
@@ -830,7 +468,7 @@
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
                     <Angle>90</Angle>
-                    <OffsetLabels>true</OffsetLabels>
+                    <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
                     <ChartAxisScaleBreak>
                       <Style />
                     </ChartAxisScaleBreak>
@@ -1030,16 +668,15 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Chart Title</Caption>
+                <Caption>Tỷ lệ % các yêu cầu xử lý đúng cam kết SLA</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
-                  <FontSize>9pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                   <TextAlign>Left</TextAlign>
                   <VerticalAlign>Top</VerticalAlign>
                   <Color>#a6a6a6</Color>
                 </Style>
-                <Position>TopLeft</Position>
               </ChartTitle>
             </ChartTitles>
             <Palette>Pacific</Palette>
@@ -1060,14 +697,10 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet</DataSetName>
-            <Top>9.71523cm</Top>
-            <Left>0cm</Left>
-            <Height>8.01307cm</Height>
+            <Top>0.1197cm</Top>
+            <Left>0.04152cm</Left>
+            <Height>11.10261cm</Height>
             <Width>21cm</Width>
-            <ZIndex>1</ZIndex>
-            <Visibility>
-              <Hidden>=iif(Parameters!typeaction.Value&gt;2 or Parameters!typeaction.Value=1 ,false,true)</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -1156,10 +789,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.0875cm</Width>
+                  <Width>3.11006cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.62208cm</Width>
+                  <Width>3.42604cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.5cm</Width>
@@ -1171,14 +804,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Requestid5">
+                        <Textbox Name="Requestid4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
+                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1204,14 +837,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox108">
+                        <Textbox Name="Textbox115">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing))</Value>
+                                  <Value>=Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1237,14 +870,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox110">
+                        <Textbox Name="Textbox109">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)) / iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing)) / Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing))) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1260,6 +893,116 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox134">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox145">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox131</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox141">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing))) / Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing)))) &amp; "%"</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox132</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1461,7 +1204,7 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
+                                        <Value>=Fields!CategoryName.Value</Value>
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
@@ -1483,19 +1226,84 @@
                               </Textbox>
                             </CellContents>
                           </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember />
+                          </TablixMembers>
                         </TablixMember>
                       </TablixMembers>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>10.62208cm</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox135">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>Tổng</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox133</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
                     </TablixMember>
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>27.89158cm</Top>
-            <Left>0.3937cm</Left>
-            <Height>2.09958cm</Height>
-            <Width>22.83166cm</Width>
-            <ZIndex>2</ZIndex>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!CategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=Fields!Status.Value</FilterExpression>
+                <Operator>In</Operator>
+                <FilterValues>
+                  <FilterValue>Solved</FilterValue>
+                  <FilterValue>Closed</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>20.36975cm</Top>
+            <Left>0.04152cm</Left>
+            <Height>2.69958cm</Height>
+            <Width>19.65818cm</Width>
+            <ZIndex>1</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=4,false,true)</Hidden>
             </Visibility>
@@ -1635,10 +1443,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.0875cm</Width>
+                  <Width>3.00271cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.62208cm</Width>
+                  <Width>3.41734cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.5cm</Width>
@@ -1650,14 +1458,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Requestid6">
+                        <Textbox Name="Requestid5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
+                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1683,14 +1491,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox102">
+                        <Textbox Name="Textbox117">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing))</Value>
+                                  <Value>=Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0, 1, Nothing), Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1716,14 +1524,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox112">
+                        <Textbox Name="Textbox105">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)) / iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing)) / Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing))) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1739,6 +1547,116 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox147">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox139">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0, 1, Nothing), Nothing)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox131</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox142">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing))) / Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing)))) &amp; "%"</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox132</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1939,7 +1857,7 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
+                                        <Value>=Fields!CategoryName.Value</Value>
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
@@ -1976,531 +1894,7 @@
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="SubcategoryName">
-                                    <CanGrow>true</CanGrow>
-                                    <KeepTogether>true</KeepTogether>
-                                    <Paragraphs>
-                                      <Paragraph>
-                                        <TextRuns>
-                                          <TextRun>
-                                            <Value>=Fields!SubcategoryName.Value</Value>
-                                            <Style />
-                                          </TextRun>
-                                        </TextRuns>
-                                        <Style />
-                                      </Paragraph>
-                                    </Paragraphs>
-                                    <rd:DefaultName>SubcategoryName</rd:DefaultName>
-                                    <Style>
-                                      <Border>
-                                        <Color>LightGrey</Color>
-                                        <Style>Solid</Style>
-                                      </Border>
-                                      <VerticalAlign>Middle</VerticalAlign>
-                                      <PaddingLeft>2pt</PaddingLeft>
-                                      <PaddingRight>2pt</PaddingRight>
-                                      <PaddingTop>2pt</PaddingTop>
-                                      <PaddingBottom>2pt</PaddingBottom>
-                                    </Style>
-                                  </Textbox>
-                                </CellContents>
-                              </TablixHeader>
-                            </TablixMember>
-                          </TablixMembers>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
-              </TablixMembers>
-            </TablixRowHierarchy>
-            <DataSetName>DataSet</DataSetName>
-            <Top>30.98776cm</Top>
-            <Left>0.3937cm</Left>
-            <Height>2.12604cm</Height>
-            <Width>23.79708cm</Width>
-            <ZIndex>3</ZIndex>
-            <Visibility>
-              <Hidden>=iif(Parameters!typeaction.Value=5,false,true)</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Tablix>
-          <Tablix Name="Tablix8">
-            <TablixCorner>
-              <TablixCornerRows>
-                <TablixCornerRow>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox62">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Service Category</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox14</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox80">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Category </Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                              <TextRun>
-                                <Value>Name</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox79</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox63">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>SubCategory</Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox33</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                </TablixCornerRow>
-              </TablixCornerRows>
-            </TablixCorner>
-            <TablixBody>
-              <TablixColumns>
-                <TablixColumn>
-                  <Width>4.0875cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>5.62208cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.5cm</Width>
-                </TablixColumn>
-              </TablixColumns>
-              <TablixRows>
-                <TablixRow>
-                  <Height>1.1424cm</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Requestid7">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Requestid</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox104">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing))</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox99</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox115">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)) / iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))), 2) &amp; "%"</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox101</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-              </TablixRows>
-            </TablixBody>
-            <TablixColumnHierarchy>
-              <TablixMembers>
-                <TablixMember>
-                  <Group Name="ColumnGroup7">
-                    <GroupExpressions>
-                      <GroupExpression />
-                    </GroupExpressions>
-                  </Group>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox56">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Tổng số yêu cầu</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox12</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox57">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Số yêu cầu đạt SLA</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox19</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.1424cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox58">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Tỷ lệ</Value>
-                                <Style>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>White</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox21</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>#001c43</BackgroundColor>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
-              </TablixMembers>
-            </TablixColumnHierarchy>
-            <TablixRowHierarchy>
-              <TablixMembers>
-                <TablixMember>
-                  <Group Name="Group6">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!Group.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!Group.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <TablixMembers>
-                    <TablixMember>
-                      <TablixHeader>
-                        <Size>5.62208cm</Size>
-                        <CellContents>
-                          <Textbox Name="Group6">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>=Fields!ServiceCategory.Value</Value>
-                                    <Style />
-                                  </TextRun>
-                                </TextRuns>
-                                <Style />
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>Group</rd:DefaultName>
-                            <Style>
-                              <Border>
-                                <Color>LightGrey</Color>
-                                <Style>Solid</Style>
-                              </Border>
-                              <VerticalAlign>Middle</VerticalAlign>
-                              <PaddingLeft>2pt</PaddingLeft>
-                              <PaddingRight>2pt</PaddingRight>
-                              <PaddingTop>2pt</PaddingTop>
-                              <PaddingBottom>2pt</PaddingBottom>
-                            </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
-                      <TablixMembers>
-                        <TablixMember>
-                          <TablixHeader>
-                            <Size>3.46542cm</Size>
-                            <CellContents>
-                              <Textbox Name="Technician4">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>=Fields!Technician.Value</Value>
-                                        <Style />
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style />
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Technician</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Color>LightGrey</Color>
-                                    <Style>Solid</Style>
-                                  </Border>
-                                  <VerticalAlign>Middle</VerticalAlign>
-                                  <PaddingLeft>2pt</PaddingLeft>
-                                  <PaddingRight>2pt</PaddingRight>
-                                  <PaddingTop>2pt</PaddingTop>
-                                  <PaddingBottom>2pt</PaddingBottom>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember>
-                              <Group Name="SubCategoryName2">
-                                <GroupExpressions>
-                                  <GroupExpression>=Fields!ItemName.Value</GroupExpression>
-                                </GroupExpressions>
-                              </Group>
-                              <SortExpressions>
-                                <SortExpression>
-                                  <Value>=Fields!CategoryName.Value</Value>
-                                </SortExpression>
-                              </SortExpressions>
-                              <TablixHeader>
-                                <Size>2.5cm</Size>
-                                <CellContents>
-                                  <Textbox Name="SubcategoryName2">
+                                  <Textbox Name="SubcategoryName4">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -2533,8 +1927,23 @@
                                               <Parameter Name="denngayre">
                                                 <Value>=Parameters!denngayre.Value</Value>
                                               </Parameter>
+                                              <Parameter Name="rqt">
+                                                <Value>=Parameters!rqt.Value</Value>
+                                              </Parameter>
+                                              <Parameter Name="condition">
+                                                <Value>=Parameters!condition.Value</Value>
+                                              </Parameter>
+                                              <Parameter Name="typeaction">
+                                                <Value>=Parameters!typeaction.Value</Value>
+                                              </Parameter>
                                               <Parameter Name="subcd">
-                                                <Value>=Parameters!subcd.Value(0)</Value>
+                                                <Value>=iif(Parameters!typeaction.Value = 5, Fields!SubcategoryID.Value, "none")</Value>
+                                              </Parameter>
+                                              <Parameter Name="depart">
+                                                <Value>=iif(Parameters!typeaction.Value = 7, Fields!Department.Value, "none")</Value>
+                                              </Parameter>
+                                              <Parameter Name="tech">
+                                                <Value>=iif(Parameters!typeaction.Value = 2, Fields!Technician.Value, "none")</Value>
                                               </Parameter>
                                             </Parameters>
                                           </Drillthrough>
@@ -2555,23 +1964,95 @@
                                   </Textbox>
                                 </CellContents>
                               </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember />
+                              </TablixMembers>
                             </TablixMember>
                           </TablixMembers>
                         </TablixMember>
                       </TablixMembers>
                     </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>11.5875cm</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox138">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>Tổng</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox133</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                    </TablixMember>
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>34.13686cm</Top>
-            <Left>0.3937cm</Left>
-            <Height>2.2848cm</Height>
-            <Width>23.79708cm</Width>
-            <ZIndex>4</ZIndex>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!CategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!SubcategoryName.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=Fields!Status.Value</FilterExpression>
+                <Operator>In</Operator>
+                <FilterValues>
+                  <FilterValue>Solved</FilterValue>
+                  <FilterValue>Closed</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>23.3772cm</Top>
+            <Left>0.08304cm</Left>
+            <Height>2.72604cm</Height>
+            <Width>20.50755cm</Width>
+            <ZIndex>2</ZIndex>
             <Visibility>
-              <Hidden>=iif(Parameters!typeaction.Value=6,false,true)</Hidden>
+              <Hidden>=iif(Parameters!typeaction.Value=5,false,true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2663,13 +2144,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.37917in</Width>
+                  <Width>0.88312in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.9in</Width>
+                  <Width>0.98542in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.3375in</Width>
+                  <Width>0.99583in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -2678,14 +2159,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Requestid3">
+                        <Textbox Name="Requestid2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
+                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2711,14 +2192,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox118">
+                        <Textbox Name="Textbox112">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing))</Value>
+                                  <Value>=Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2744,14 +2225,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox107">
+                        <Textbox Name="Textbox108">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)) / iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0, 1, Nothing), Nothing)) / Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing))) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2782,14 +2263,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox109">
+                        <Textbox Name="Textbox102">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)) / iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0, 1, Nothing), Nothing)) / Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing))) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2823,15 +2304,17 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox120">
+                        <Textbox Name="Textbox136">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)) / iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))), 2) &amp; "%"</Value>
-                                  <Style />
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0, 1, Nothing), Nothing))) / Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing)))) &amp; "%"</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2839,13 +2322,13 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox101</rd:DefaultName>
+                          <rd:DefaultName>Textbox132</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2999,7 +2482,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.57707in</Size>
+                    <Size>2.66249in</Size>
                     <CellContents>
                       <Textbox Name="ItemName2">
                         <CanGrow>true</CanGrow>
@@ -3046,9 +2529,9 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>2.66043in</Size>
+                        <Size>2.74585in</Size>
                         <CellContents>
-                          <Textbox Name="Priority2">
+                          <Textbox Name="SubcategoryName3">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -3059,27 +2542,30 @@
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
-                                <LeftIndent>2pt</LeftIndent>
-                                <Style>
-                                  <TextAlign>Left</TextAlign>
-                                </Style>
+                                <Style />
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Priority</rd:DefaultName>
+                            <rd:DefaultName>SubcategoryName</rd:DefaultName>
                             <ActionInfo>
                               <Actions>
                                 <Action>
                                   <Drillthrough>
                                     <ReportName>KPI_Detail_R6</ReportName>
                                     <Parameters>
-                                      <Parameter Name="tech">
-                                        <Value>=Parameters!tech.Value(0)</Value>
-                                      </Parameter>
                                       <Parameter Name="tungaytao">
                                         <Value>=Parameters!tungaytao.Value</Value>
                                       </Parameter>
                                       <Parameter Name="denngaytao">
                                         <Value>=Parameters!denngaytao.Value</Value>
+                                      </Parameter>
+                                      <Parameter Name="tungayre">
+                                        <Value>=Parameters!tungayre.Value</Value>
+                                      </Parameter>
+                                      <Parameter Name="denngayre">
+                                        <Value>=Parameters!denngayre.Value</Value>
+                                      </Parameter>
+                                      <Parameter Name="rqt">
+                                        <Value>=Parameters!rqt.Value</Value>
                                       </Parameter>
                                       <Parameter Name="condition">
                                         <Value>=Parameters!condition.Value</Value>
@@ -3087,14 +2573,14 @@
                                       <Parameter Name="typeaction">
                                         <Value>=Parameters!typeaction.Value</Value>
                                       </Parameter>
-                                      <Parameter Name="denngayre">
-                                        <Value>=Parameters!denngayre.Value</Value>
+                                      <Parameter Name="subcd">
+                                        <Value>=iif(Parameters!typeaction.Value = 5, Fields!SubcategoryID.Value, "none")</Value>
                                       </Parameter>
-                                      <Parameter Name="tungayre">
-                                        <Value>=Parameters!tungayre.Value</Value>
+                                      <Parameter Name="depart">
+                                        <Value>=iif(Parameters!typeaction.Value = 7, Fields!Department.Value, "none")</Value>
                                       </Parameter>
-                                      <Parameter Name="rqt">
-                                        <Value>=Parameters!rqt.Value</Value>
+                                      <Parameter Name="tech">
+                                        <Value>=iif(Parameters!typeaction.Value = 2, Fields!Technician.Value, "none")</Value>
                                       </Parameter>
                                     </Parameters>
                                   </Drillthrough>
@@ -3118,7 +2604,7 @@
                     </TablixMember>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.66043in</Size>
+                        <Size>2.74585in</Size>
                         <CellContents>
                           <Textbox Name="Textbox38">
                             <CanGrow>true</CanGrow>
@@ -3127,8 +2613,10 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Tỉ lệ % theo Group</Value>
-                                    <Style />
+                                    <Value>Tổng</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
@@ -3157,7 +2645,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.57707in</Size>
+                    <Size>2.66249in</Size>
                     <CellContents>
                       <Textbox Name="Textbox64">
                         <CanGrow>true</CanGrow>
@@ -3166,8 +2654,10 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng tỉ lệ % theo group</Value>
-                                <Style />
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -3181,6 +2671,7 @@
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
                           <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -3193,7 +2684,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.66043in</Size>
+                        <Size>2.74585in</Size>
                         <CellContents>
                           <Textbox Name="Textbox65">
                             <CanGrow>true</CanGrow>
@@ -3217,6 +2708,7 @@
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -3235,11 +2727,35 @@
             <RepeatColumnHeaders>true</RepeatColumnHeaders>
             <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>8.24818in</Top>
-            <Left>0.155in</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Technician.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=Fields!Status.Value</FilterExpression>
+                <Operator>In</Operator>
+                <FilterValues>
+                  <FilterValue>Solved</FilterValue>
+                  <FilterValue>Closed</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>5.6512in</Top>
+            <Left>0.02771in</Left>
             <Height>1.36459in</Height>
-            <Width>8.85417in</Width>
-            <ZIndex>5</ZIndex>
+            <Width>8.27271in</Width>
+            <ZIndex>3</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=2,false,true)</Hidden>
             </Visibility>
@@ -3294,13 +2810,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>5.25812cm</Width>
+                  <Width>6.56048cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.21575cm</Width>
+                  <Width>3.63721cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.00512cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -3316,7 +2832,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=iif(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))=0,1,Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing)))</Value>
+                                  <Value>=Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3342,14 +2858,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox99">
+                        <Textbox Name="Textbox103">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",iif( Fields!OverSLAResolution.Value=FALSE,"yes",nothing), nothing))</Value>
+                                  <Value>=Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3382,7 +2898,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round( 100* Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",iif( Fields!OverSLAResolution.Value=FALSE,"yes",nothing), nothing))/iif(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))=0,1,Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))),2)&amp;"%"</Value>
+                                  <Value>=Round( 100* Count(iif((Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved"),iif(Fields!OverSLAResolution.Value=0,1,nothing) ,nothing))/Count(iif((Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved"),Fields!Requestid.Value,nothing)))&amp;"%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3420,7 +2936,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=SUM(iif(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))=0,1,Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))))</Value>
+                                  <Value>=sum(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3455,7 +2971,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",iif( Fields!OverSLAResolution.Value=FALSE,"yes",nothing), nothing)))</Value>
+                                  <Value>=sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3490,7 +3006,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round( 100* sum(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",iif( Fields!OverSLAResolution.Value=FALSE,"yes",nothing), nothing)))/sum(iif(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))=0,1,Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing)))),2)&amp;"%"</Value>
+                                  <Value>=Round( 100* sum(Count(iif((Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved"),iif(Fields!OverSLAResolution.Value=0,1,nothing) ,nothing)))/sum(Count(iif((Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved"),Fields!Requestid.Value,nothing))))&amp;"%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3657,7 +3173,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>3.82937cm</Size>
+                    <Size>7.80986cm</Size>
                     <CellContents>
                       <Textbox Name="Group">
                         <CanGrow>true</CanGrow>
@@ -3691,7 +3207,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>3.82937cm</Size>
+                    <Size>7.80986cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox129">
                         <CanGrow>true</CanGrow>
@@ -3728,12 +3244,31 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>18.01495cm</Top>
-            <Left>0.3937cm</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=Fields!Status.Value</FilterExpression>
+                <Operator>In</Operator>
+                <FilterValues>
+                  <FilterValue>Solved</FilterValue>
+                  <FilterValue>Closed</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>11.3987cm</Top>
+            <Left>0.07036cm</Left>
             <Height>2.8848cm</Height>
-            <Width>15.80324cm</Width>
-            <ZIndex>6</ZIndex>
+            <Width>21.01267cm</Width>
+            <ZIndex>4</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=1,false,true)</Hidden>
             </Visibility>
@@ -3791,10 +3326,10 @@
                   <Width>6.41615cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.01927cm</Width>
+                  <Width>3.66448cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.74927cm</Width>
+                  <Width>2.39448cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -3803,14 +3338,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Requestid4">
+                        <Textbox Name="Requestid3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
+                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3836,14 +3371,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox106">
+                        <Textbox Name="Textbox118">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing))</Value>
+                                  <Value>=Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3869,14 +3404,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox119">
+                        <Textbox Name="Textbox104">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)) / iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0, 1, Nothing), Nothing)) / Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing))) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3907,14 +3442,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox134">
+                        <Textbox Name="Textbox144">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))))</Value>
+                                  <Value>=Sum(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3942,14 +3477,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox137">
+                        <Textbox Name="Textbox149">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)))</Value>
+                                  <Value>=Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3977,14 +3512,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox136">
+                        <Textbox Name="Textbox140">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round( 100* sum(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved", Fields!OverSLAResolution.Value, nothing)))/sum(Count(iif(Fields!Status.Value = "Closed" or Fields!Status.Value = "Solved",Fields!Requestid.Value,nothing))),2)</Value>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0, 1, Nothing), Nothing))) / Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing)))) &amp; "%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -4221,12 +3756,31 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>24.86766cm</Top>
-            <Left>0.3937cm</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=Fields!Status.Value</FilterExpression>
+                <Operator>In</Operator>
+                <FilterValues>
+                  <FilterValue>Solved</FilterValue>
+                  <FilterValue>Closed</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>17.96122cm</Top>
+            <Left>0.04152cm</Left>
             <Height>2.3027cm</Height>
-            <Width>22.48959cm</Width>
-            <ZIndex>7</ZIndex>
+            <Width>17.78001cm</Width>
+            <ZIndex>5</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=3,false,true)</Hidden>
             </Visibility>
@@ -4296,14 +3850,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Requestid8">
+                        <Textbox Name="Requestid6">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
+                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -4329,14 +3883,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox103">
+                        <Textbox Name="Textbox106">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing))</Value>
+                                  <Value>=Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -4362,14 +3916,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox117">
+                        <Textbox Name="Textbox107">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", iif(Fields!OverSLAResolution.Value = False, "yes", Nothing), Nothing)) / iif(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)) = 0, 1, Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing))), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing)) / Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing))) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -4385,6 +3939,116 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox148">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(iif(Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved", Fields!Requestid.Value, Nothing)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox130</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox137">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing)))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox131</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox143">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), iif(Fields!OverSLAResolution.Value = 0,1, Nothing), Nothing))) / Sum(Count(iif((Fields!Status.Value = "Closed" Or Fields!Status.Value = "Solved"), Fields!Requestid.Value, Nothing)))) &amp; "%"</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox132</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -4536,7 +4200,7 @@
                   <TablixHeader>
                     <Size>8.60479cm</Size>
                     <CellContents>
-                      <Textbox Name="Group8">
+                      <Textbox Name="SubcategoryName2">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -4550,7 +4214,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Group</rd:DefaultName>
+                        <rd:DefaultName>SubcategoryName</rd:DefaultName>
                         <ActionInfo>
                           <Actions>
                             <Action>
@@ -4569,14 +4233,23 @@
                                   <Parameter Name="denngayre">
                                     <Value>=Parameters!denngayre.Value</Value>
                                   </Parameter>
-                                  <Parameter Name="typeaction">
-                                    <Value>=Parameters!typeaction.Value</Value>
+                                  <Parameter Name="rqt">
+                                    <Value>=Parameters!rqt.Value</Value>
                                   </Parameter>
                                   <Parameter Name="condition">
                                     <Value>=Parameters!condition.Value</Value>
                                   </Parameter>
+                                  <Parameter Name="typeaction">
+                                    <Value>=Parameters!typeaction.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="subcd">
+                                    <Value>=iif(Parameters!typeaction.Value = 5, Fields!SubcategoryID.Value, "none")</Value>
+                                  </Parameter>
                                   <Parameter Name="depart">
-                                    <Value>=Parameters!depart.Value(0)</Value>
+                                    <Value>=iif(Parameters!typeaction.Value = 7, Fields!DepartID.Value, "none")</Value>
+                                  </Parameter>
+                                  <Parameter Name="tech">
+                                    <Value>=iif(Parameters!typeaction.Value = 2, Fields!techId.Value, "none")</Value>
                                   </Parameter>
                                 </Parameters>
                               </Drillthrough>
@@ -4598,14 +4271,71 @@
                     </CellContents>
                   </TablixHeader>
                 </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>8.60479cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox20">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Tổng</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox20</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <BackgroundColor>CornflowerBlue</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
-            <Top>39.20808cm</Top>
-            <Left>0.3937cm</Left>
-            <Height>2.0202cm</Height>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Department.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=Fields!Status.Value</FilterExpression>
+                <Operator>In</Operator>
+                <FilterValues>
+                  <FilterValue>Solved</FilterValue>
+                  <FilterValue>Closed</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>26.41168cm</Top>
+            <Left>0.08304cm</Left>
+            <Height>2.6202cm</Height>
             <Width>19.61666cm</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>6</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=7,false,true)</Hidden>
             </Visibility>
@@ -4619,7 +4349,7 @@
         <Height>42.81225cm</Height>
         <Style />
       </Body>
-      <Width>38.37313cm</Width>
+      <Width>21.51777cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -4902,6 +4632,10 @@
                  Return DatePart(DateInterval.Quarter, startDate)
             Case 4
               Return startDate.ToString("yyyy")
+Case 5
+
+Dim weekNumber As Integer = DatePart(DateInterval.WeekOfYear, startDate)
+                Return weekNumber
 
             Case Else
                 Return startDate.ToString("dd-MM-yyyy")

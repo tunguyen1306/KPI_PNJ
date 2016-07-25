@@ -16,6 +16,22 @@
       <Name>DataSet1.rsd</Name>
       <FullPath>DataSet1.rsd</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>DataSetOLA.rsd</Name>
+      <FullPath>DataSetOLA.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DataSetTask.rsd</Name>
+      <FullPath>DataSetTask.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ds_change.rsd</Name>
+      <FullPath>ds_change.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ds_change2.rsd</Name>
+      <FullPath>ds_change2.rsd</FullPath>
+    </ProjectItem>
   </DataSets>
   <Reports>
     <ProjectItem>
@@ -35,8 +51,32 @@
       <FullPath>ISO_3.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>KPI_Detail_R2.rdl</Name>
+      <FullPath>KPI_Detail_R2.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>KPI_Detail_R3.rdl</Name>
+      <FullPath>KPI_Detail_R3.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>KPI_Detail_R4.rdl</Name>
+      <FullPath>KPI_Detail_R4.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>KPI_Detail_R5.rdl</Name>
+      <FullPath>KPI_Detail_R5.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>KPI_Detail_R6.rdl</Name>
       <FullPath>KPI_Detail_R6.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>KPI_Detail_R7.rdl</Name>
+      <FullPath>KPI_Detail_R7.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>KPI_Detail_R8.rdl</Name>
+      <FullPath>KPI_Detail_R8.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>KPI_PNJ_R6_TyLeDungSLA.rdl</Name>
@@ -55,6 +95,26 @@
       <FullPath>ReportKPI_PNJ_ALL01.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>ReportKPI_PNJ_C1.rdl</Name>
+      <FullPath>ReportKPI_PNJ_C1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReportKPI_PNJ_C3.rdl</Name>
+      <FullPath>ReportKPI_PNJ_C3.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReportKPI_PNJ_C4.rdl</Name>
+      <FullPath>ReportKPI_PNJ_C4.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReportKPI_PNJ_C5.rdl</Name>
+      <FullPath>ReportKPI_PNJ_C5.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReportKPI_PNJ_C6.rdl</Name>
+      <FullPath>ReportKPI_PNJ_C6.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>ReportKPI_PNJ_I1.rdl</Name>
       <FullPath>ReportKPI_PNJ_I1.rdl</FullPath>
     </ProjectItem>
@@ -67,8 +127,16 @@
       <FullPath>ReportKPI_PNJ_I3.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>ReportKPI_PNJ_I5.rdl</Name>
+      <FullPath>ReportKPI_PNJ_I5.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>ReportKPI_PNJ_I7.rdl</Name>
       <FullPath>ReportKPI_PNJ_I7.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReportKPI_PNJ_I8.rdl</Name>
+      <FullPath>ReportKPI_PNJ_I8.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>ReportKPI_PNJ_OLA01.rdl</Name>
@@ -107,6 +175,10 @@
       <FullPath>ReportKPI_PNJ_R8.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>ReportKPI_PNJ_T1.rdl</Name>
+      <FullPath>ReportKPI_PNJ_T1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Request_1.rdl</Name>
       <FullPath>Request_1.rdl</FullPath>
     </ProjectItem>
@@ -139,20 +211,16 @@
       <FullPath>Request_TrungBinhKhaoSat.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>ReportKPI_PNJ_I5.rdl</Name>
-      <FullPath>ReportKPI_PNJ_I5.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>ReportKPI_PNJ_I6.rdl</Name>
-      <FullPath>ReportKPI_PNJ_I6.rdl</FullPath>
+      <Name>ReportKPI_PNJ_C2.rdl</Name>
+      <FullPath>ReportKPI_PNJ_C2.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>ReportKPI_PNJ_I4.rdl</Name>
       <FullPath>ReportKPI_PNJ_I4.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>ReportKPI_PNJ_I8.rdl</Name>
-      <FullPath>ReportKPI_PNJ_I8.rdl</FullPath>
+      <Name>ReportKPI_PNJ_I6.rdl</Name>
+      <FullPath>ReportKPI_PNJ_I6.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

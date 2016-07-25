@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
-  <DataSet Name="DataSet2">
+  <DataSet Name="">
     <Query>
       <DataSourceReference>DataSource</DataSourceReference>
       <DataSetParameters>
@@ -98,12 +98,14 @@
           <ReadOnly>false</ReadOnly>
           <Nullable>false</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
+          <rd:UserDefined>true</rd:UserDefined>
           <rd:DbType>Int32</rd:DbType>
         </DataSetParameter>
         <DataSetParameter Name="@typeaction">
           <ReadOnly>false</ReadOnly>
           <Nullable>false</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
+          <rd:UserDefined>true</rd:UserDefined>
           <rd:DbType>Int32</rd:DbType>
         </DataSetParameter>
         <DataSetParameter Name="@depart">
@@ -114,7 +116,7 @@
         </DataSetParameter>
       </DataSetParameters>
       <CommandType>StoredProcedure</CommandType>
-      <CommandText>sp_Incident</CommandText>
+      <CommandText>sp_Request_ola</CommandText>
     </Query>
     <Fields>
       <Field Name="DisplayName">
@@ -128,6 +130,10 @@
       <Field Name="SubcategoryName">
         <DataField>SubcategoryName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SubcategoryID">
+        <DataField>SubcategoryID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
       <Field Name="ItemName">
         <DataField>ItemName</DataField>
@@ -169,6 +175,10 @@
         <DataField>Technician</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
+      <Field Name="techId">
+        <DataField>techId</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
       <Field Name="ResponseTime">
         <DataField>ResponseTime</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
@@ -205,6 +215,10 @@
         <DataField>SurveyName</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
+      <Field Name="Requester">
+        <DataField>Requester</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
       <Field Name="DuebyDate">
         <DataField>DuebyDate</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
@@ -232,6 +246,10 @@
       <Field Name="mobile">
         <DataField>mobile</DataField>
         <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DepartID">
+        <DataField>DepartID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
       <Field Name="description">
         <DataField>description</DataField>
@@ -279,6 +297,38 @@
       </Field>
       <Field Name="RequestType">
         <DataField>RequestType</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CREATEDTIME">
+        <DataField>CREATEDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="RESPONDEDTIME">
+        <DataField>RESPONDEDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="RequestTypeID">
+        <DataField>RequestTypeID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="RESOLVEDTIME">
+        <DataField>RESOLVEDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="COMPLETEDTIME">
+        <DataField>COMPLETEDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="DUEBYTIME">
+        <DataField>DUEBYTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="TimeOla">
+        <DataField>TimeOla</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="TypeOla">
+        <DataField>TypeOla</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
     </Fields>

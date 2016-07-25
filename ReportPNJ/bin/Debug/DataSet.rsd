@@ -131,6 +131,10 @@
         <DataField>SubcategoryName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
+      <Field Name="SubcategoryID">
+        <DataField>SubcategoryID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
       <Field Name="ItemName">
         <DataField>ItemName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
@@ -171,6 +175,10 @@
         <DataField>Technician</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
+      <Field Name="techId">
+        <DataField>techId</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
       <Field Name="ResponseTime">
         <DataField>ResponseTime</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
@@ -207,6 +215,10 @@
         <DataField>SurveyName</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
+      <Field Name="Requester">
+        <DataField>Requester</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
       <Field Name="DuebyDate">
         <DataField>DuebyDate</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
@@ -234,6 +246,10 @@
       <Field Name="mobile">
         <DataField>mobile</DataField>
         <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DepartID">
+        <DataField>DepartID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
       <Field Name="description">
         <DataField>description</DataField>
@@ -287,9 +303,17 @@
         <DataField>CREATEDTIME</DataField>
         <rd:TypeName>System.DateTime</rd:TypeName>
       </Field>
+      <Field Name="TITLE">
+        <DataField>TITLE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
       <Field Name="RESPONDEDTIME">
         <DataField>RESPONDEDTIME</DataField>
         <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="RequestTypeID">
+        <DataField>RequestTypeID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
       <Field Name="RESOLVEDTIME">
         <DataField>RESOLVEDTIME</DataField>
@@ -302,6 +326,42 @@
       <Field Name="DUEBYTIME">
         <DataField>DUEBYTIME</DataField>
         <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="SCHEDULEDSTARTTIME">
+        <DataField>SCHEDULEDSTARTTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="SCHEDULEDENDTIME">
+        <DataField>SCHEDULEDENDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="ACTUALSTARTTIME">
+        <DataField>ACTUALSTARTTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="ACTUALENDTIME">
+        <DataField>ACTUALENDTIME</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="TASKID">
+        <DataField>TASKID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="SCHEDULEDSTARTTIME1">
+        <DataField>SCHEDULEDSTARTTIME1</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="SCHEDULEDENDTIME1">
+        <DataField>SCHEDULEDENDTIME1</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="ACTUALSTARTTIME1">
+        <DataField>ACTUALSTARTTIME1</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="ACTUALENDTIME1">
+        <DataField>ACTUALENDTIME1</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
     </Fields>
   </DataSet>
