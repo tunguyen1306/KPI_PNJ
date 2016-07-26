@@ -363,6 +363,10 @@
         <DataField>ACTUALENDTIME1</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
+      <Field Name="LAST_TECH_UPDATE">
+        <DataField>LAST_TECH_UPDATE</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
     </Fields>
   </DataSet>
 </SharedDataSet>

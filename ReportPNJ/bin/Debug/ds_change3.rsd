@@ -116,19 +116,19 @@
         </DataSetParameter>
       </DataSetParameters>
       <CommandType>StoredProcedure</CommandType>
-      <CommandText>sp_Request</CommandText>
+      <CommandText>sp_Change_3</CommandText>
     </Query>
     <Fields>
-      <Field Name="DisplayName">
-        <DataField>DisplayName</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
       <Field Name="CategoryName">
         <DataField>CategoryName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="SubcategoryName">
         <DataField>SubcategoryName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="StatusChange">
+        <DataField>StatusChange</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="SubcategoryID">
@@ -139,233 +139,101 @@
         <DataField>ItemName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="Status">
-        <DataField>Status</DataField>
+      <Field Name="StageName">
+        <DataField>StageName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="Reopen1">
-        <DataField>Reopen1</DataField>
-        <rd:TypeName>System.Boolean</rd:TypeName>
+      <Field Name="ChangeID">
+        <DataField>ChangeID</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
       <Field Name="Group">
         <DataField>Group</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="User">
-        <DataField>User</DataField>
+      <Field Name="ChangeRequester">
+        <DataField>ChangeRequester</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="Priority">
-        <DataField>Priority</DataField>
+      <Field Name="Title">
+        <DataField>Title</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="Requestid">
-        <DataField>Requestid</DataField>
+      <Field Name="ScheduleStart">
+        <DataField>ScheduleStart</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
-      <Field Name="AssignedTime">
-        <DataField>AssignedTime</DataField>
+      <Field Name="ScheduleEnd">
+        <DataField>ScheduleEnd</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
-      <Field Name="TimeSpentonreq">
-        <DataField>TimeSpentonreq</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
+      <Field Name="ChangeManager">
+        <DataField>ChangeManager</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Impact">
+        <DataField>Impact</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="Technician">
         <DataField>Technician</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="techId">
-        <DataField>techId</DataField>
+        <DataField>TechID</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
-      <Field Name="ResponseTime">
-        <DataField>ResponseTime</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
+      <Field Name="ChangeType">
+        <DataField>ChangeType</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Risk">
+        <DataField>Risk</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="WorkFlow">
+        <DataField>WorkFlow</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="CreateTime">
         <DataField>CreateTime</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
+      <Field Name="Template">
+        <DataField>Template</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
       <Field Name="CompleteTime">
         <DataField>CompleteTime</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
-      <Field Name="SLATimeResolution">
-        <DataField>SLATimeResolution</DataField>
+      <Field Name="Comment">
+        <DataField>Comment</DataField>
         <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="SLATimeRsponse">
-        <DataField>SLATimeRsponse</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="OverSLAResolution">
-        <DataField>OverSLAResolution</DataField>
-        <rd:TypeName>System.Boolean</rd:TypeName>
-      </Field>
-      <Field Name="OverSLAResponse">
-        <DataField>OverSLAResponse</DataField>
-        <rd:TypeName>System.Boolean</rd:TypeName>
-      </Field>
-      <Field Name="ResolvedTime">
-        <DataField>ResolvedTime</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="SurveyName">
-        <DataField>SurveyName</DataField>
-        <rd:TypeName>System.Int32</rd:TypeName>
-      </Field>
-      <Field Name="Requester">
-        <DataField>Requester</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="DuebyDate">
-        <DataField>DuebyDate</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="DuebyTime">
-        <DataField>DuebyTime</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="DueTimebyMail">
-        <DataField>DueTimebyMail</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="DuedateResoleved">
-        <DataField>DuedateResoleved</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="Mode">
-        <DataField>Mode</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="Department">
-        <DataField>Department</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="mobile">
-        <DataField>mobile</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="DepartID">
-        <DataField>DepartID</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
       <Field Name="description">
-        <DataField>description</DataField>
+        <DataField>Description</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="TheNumberOf">
-        <DataField>TheNumberOf</DataField>
+      <Field Name="stageID">
+        <DataField>stageID</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
-      <Field Name="DVT">
-        <DataField>DVT</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="EquipmentRequest">
-        <DataField>EquipmentRequest</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="Equipment">
-        <DataField>Equipment</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="Conversition">
-        <DataField>Conversition</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="Manv">
-        <DataField>Manv</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="Reportingto">
-        <DataField>Reportingto</DataField>
+      <Field Name="clcodeName">
+        <DataField>clcodeName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="ServiceCategory">
         <DataField>ServiceCategory</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="YKienĐVCN">
-        <DataField>YKienĐVCN</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="rcode">
-        <DataField>rcode</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="RequestType">
-        <DataField>RequestType</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="CREATEDTIME">
-        <DataField>CREATEDTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="TITLE">
-        <DataField>TITLE</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="RESPONDEDTIME">
-        <DataField>RESPONDEDTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="RequestTypeID">
-        <DataField>RequestTypeID</DataField>
+      <Field Name="TimeChange">
+        <DataField>TimeChange</DataField>
         <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
-      <Field Name="RESOLVEDTIME">
-        <DataField>RESOLVEDTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="COMPLETEDTIME">
-        <DataField>COMPLETEDTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="DUEBYTIME">
-        <DataField>DUEBYTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="SCHEDULEDSTARTTIME">
-        <DataField>SCHEDULEDSTARTTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="SCHEDULEDENDTIME">
-        <DataField>SCHEDULEDENDTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="ACTUALSTARTTIME">
-        <DataField>ACTUALSTARTTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="ACTUALENDTIME">
-        <DataField>ACTUALENDTIME</DataField>
-        <rd:TypeName>System.DateTime</rd:TypeName>
-      </Field>
-      <Field Name="TASKID">
-        <DataField>TASKID</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="SCHEDULEDSTARTTIME1">
-        <DataField>SCHEDULEDSTARTTIME1</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="SCHEDULEDENDTIME1">
-        <DataField>SCHEDULEDENDTIME1</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="ACTUALSTARTTIME1">
-        <DataField>ACTUALSTARTTIME1</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="ACTUALENDTIME1">
-        <DataField>ACTUALENDTIME1</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
-      </Field>
-      <Field Name="LAST_TECH_UPDATE">
-        <DataField>LAST_TECH_UPDATE</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
+      <Field Name="countcab">
+        <DataField>countcab</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
     </Fields>
   </DataSet>

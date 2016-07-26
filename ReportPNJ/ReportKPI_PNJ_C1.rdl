@@ -5,7 +5,7 @@
   <DataSets>
     <DataSet Name="DataSet">
       <SharedDataSet>
-        <SharedDataSetReference>DataSet</SharedDataSetReference>
+        <SharedDataSetReference>ds_change3</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@tungaytao">
             <Value>=Parameters!tungaytao.Value</Value>
@@ -69,10 +69,6 @@
         </QueryParameters>
       </SharedDataSet>
       <Fields>
-        <Field Name="DisplayName">
-          <DataField>DisplayName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="CategoryName">
           <DataField>CategoryName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -81,157 +77,113 @@
           <DataField>SubcategoryName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="StatusChange">
+          <DataField>StatusChange</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SubcategoryID">
+          <DataField>SubcategoryID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
         <Field Name="ItemName">
           <DataField>ItemName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Status">
-          <DataField>Status</DataField>
+        <Field Name="StageName">
+          <DataField>StageName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Reopen1">
-          <DataField>Reopen1</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
+        <Field Name="ChangeID">
+          <DataField>ChangeID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="Group">
           <DataField>Group</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
+        <Field Name="ChangeRequester">
+          <DataField>ChangeRequester</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Priority">
-          <DataField>Priority</DataField>
+        <Field Name="Title">
+          <DataField>Title</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Requestid">
-          <DataField>Requestid</DataField>
+        <Field Name="ScheduleStart">
+          <DataField>ScheduleStart</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
-        <Field Name="AssignedTime">
-          <DataField>AssignedTime</DataField>
+        <Field Name="ScheduleEnd">
+          <DataField>ScheduleEnd</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
-        <Field Name="TimeSpentonreq">
-          <DataField>TimeSpentonreq</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
+        <Field Name="ChangeManager">
+          <DataField>ChangeManager</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Technician">
           <DataField>Technician</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ResponseTime">
-          <DataField>ResponseTime</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
+        <Field Name="Impact">
+          <DataField>Impact</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CreateTime">
           <DataField>CreateTime</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="techId">
+          <DataField>techId</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="CompleteTime">
           <DataField>CompleteTime</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
-        <Field Name="SLATimeResolution">
-          <DataField>SLATimeResolution</DataField>
+        <Field Name="ChangeType">
+          <DataField>ChangeType</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="SLATimeRsponse">
-          <DataField>SLATimeRsponse</DataField>
+        <Field Name="Risk">
+          <DataField>Risk</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="OverSLAResolution">
-          <DataField>OverSLAResolution</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="OverSLAResponse">
-          <DataField>OverSLAResponse</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="ResolvedTime">
-          <DataField>ResolvedTime</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="SurveyName">
-          <DataField>SurveyName</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="DuebyDate">
-          <DataField>DuebyDate</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="DuebyTime">
-          <DataField>DuebyTime</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="DueTimebyMail">
-          <DataField>DueTimebyMail</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="DuedateResoleved">
-          <DataField>DuedateResoleved</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="Mode">
-          <DataField>Mode</DataField>
+        <Field Name="WorkFlow">
+          <DataField>WorkFlow</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Department">
-          <DataField>Department</DataField>
+        <Field Name="Template">
+          <DataField>Template</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="mobile">
-          <DataField>mobile</DataField>
+        <Field Name="Comment">
+          <DataField>Comment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stageID">
+          <DataField>stageID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="clcodeName">
+          <DataField>clcodeName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="description">
           <DataField>description</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="TheNumberOf">
-          <DataField>TheNumberOf</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="DVT">
-          <DataField>DVT</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="EquipmentRequest">
-          <DataField>EquipmentRequest</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Equipment">
-          <DataField>Equipment</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Conversition">
-          <DataField>Conversition</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Manv">
-          <DataField>Manv</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Reportingto">
-          <DataField>Reportingto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="ServiceCategory">
           <DataField>ServiceCategory</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="YKienĐVCN">
-          <DataField>YKienĐVCN</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="TimeChange">
+          <DataField>TimeChange</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
-        <Field Name="rcode">
-          <DataField>rcode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="RequestType">
-          <DataField>RequestType</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="countcab">
+          <DataField>countcab</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -261,10 +213,10 @@
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Requestid</Label>
+                  <Label>countcab</Label>
                 </ChartMember>
                 <ChartMember>
-                  <Label>Requestid</Label>
+                  <Label>countcab</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
@@ -274,13 +226,13 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value)</Y>
+                        <Y>=sum(Fields!CompleteTime.Value)/Fields!countcab.Value</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
                           <Color>Orange</Color>
                         </Style>
-                        <Label>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Label>
+                        <Label>=Code.ConvertIntToHour(sum(Fields!CompleteTime.Value)/Fields!countcab.Value)</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style>
@@ -316,13 +268,13 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value)</Y>
+                        <Y>=sum(Fields!CompleteTime.Value)/Fields!countcab.Value</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
                           <Color>Orange</Color>
                         </Style>
-                        <Label>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Label>
+                        <Label>=Code.ConvertIntToHour(sum(Fields!CompleteTime.Value)/Fields!countcab.Value)</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style>
@@ -762,7 +714,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(Fields!Requestid.Value)</Value>
+                                  <Value>=Count(Fields!ChangeID.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -795,7 +747,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(Fields!CompleteTime.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -828,7 +780,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(Fields!CompleteTime.Value)/Fields!countcab.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -901,7 +853,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(count(Fields!Requestid.Value))</Value>
+                                  <Value>=Sum(count(Fields!ChangeID.Value))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -936,7 +888,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(Math.Floor( sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(sum(Fields!CompleteTime.Value)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -971,7 +923,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(sum(Fields!CompleteTime.Value))/sum(Fields!countcab.Value))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1251,6 +1203,13 @@
             <Filters>
               <Filter>
                 <FilterExpression>=IsNothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+              <Filter>
+                <FilterExpression>=IsNothing(Fields!Technician.Value)</FilterExpression>
                 <Operator>Equal</Operator>
                 <FilterValues>
                   <FilterValue DataType="Boolean">false</FilterValue>
@@ -1561,14 +1520,14 @@
               Return startDate.ToString("yyyy")
 Case 5
 
- Dim weekNumber As Integer = Math.Floor(startDate.Day / 7) + 1
+Dim weekNumber As Integer = DatePart(DateInterval.WeekOfYear, startDate)
                 Return weekNumber
 
             Case Else
                 Return startDate.ToString("dd-MM-yyyy")
         End Select
     End Function
- Public Function ConvertIntToHour(ByVal number As Int64) As String
+ Public Function ConvertIntToHourV1(ByVal number As Int64) As String
         Dim interval As TimeSpan = TimeSpan.FromSeconds(number)
         Return interval.ToString()
     End Function
@@ -1579,6 +1538,29 @@ Public Function ConvertIntDateTime(ByVal number As Integer) As DateTime
 startDate = TimeZone.CurrentTimeZone.ToLocalTime(startDate)
 
              Return startDate
+    End Function
+Public Function ConvertIntToHour(ByVal number As Integer) As String
+        Try
+            Dim temp As Double = number / 3600
+            Dim result As String = AddZero(Math.Floor(temp))
+            temp = (number - Math.Floor(temp) * 3600) / 60
+            result = result + ":" + AddZero(Math.Floor(temp))
+            temp = number - Math.Floor(temp) * 60 - Math.Floor(number / 3600) * 3600
+
+            Return result + ":" + AddZero(Math.Floor(temp))
+        Catch ex As Exception
+            Return "NA"
+        End Try
+
+    End Function
+
+    Public Function AddZero(ByVal number As Integer) As String
+        If number &lt; 10 Then
+            Return "0" + number.ToString()
+        Else
+            Return number.ToString()
+        End If
+
     End Function
 
 </Code>

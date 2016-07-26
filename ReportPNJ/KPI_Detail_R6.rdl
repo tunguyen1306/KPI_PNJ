@@ -293,6 +293,10 @@
           <DataField>ACTUALENDTIME</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="TASKID">
+          <DataField>TASKID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
         <Field Name="SCHEDULEDSTARTTIME1">
           <DataField>SCHEDULEDSTARTTIME1</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
@@ -307,6 +311,10 @@
         </Field>
         <Field Name="ACTUALENDTIME1">
           <DataField>ACTUALENDTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="LAST_TECH_UPDATE">
+          <DataField>LAST_TECH_UPDATE</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
       </Fields>

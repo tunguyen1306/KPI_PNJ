@@ -32,6 +32,10 @@
       <Name>ds_change2.rsd</Name>
       <FullPath>ds_change2.rsd</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>ds_change3.rsd</Name>
+      <FullPath>ds_change3.rsd</FullPath>
+    </ProjectItem>
   </DataSets>
   <Reports>
     <ProjectItem>
@@ -99,6 +103,10 @@
       <FullPath>ReportKPI_PNJ_C1.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>ReportKPI_PNJ_C2.rdl</Name>
+      <FullPath>ReportKPI_PNJ_C2.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>ReportKPI_PNJ_C3.rdl</Name>
       <FullPath>ReportKPI_PNJ_C3.rdl</FullPath>
     </ProjectItem>
@@ -127,8 +135,16 @@
       <FullPath>ReportKPI_PNJ_I3.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>ReportKPI_PNJ_I4.rdl</Name>
+      <FullPath>ReportKPI_PNJ_I4.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>ReportKPI_PNJ_I5.rdl</Name>
       <FullPath>ReportKPI_PNJ_I5.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ReportKPI_PNJ_I6.rdl</Name>
+      <FullPath>ReportKPI_PNJ_I6.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>ReportKPI_PNJ_I7.rdl</Name>
@@ -209,18 +225,6 @@
     <ProjectItem>
       <Name>Request_TrungBinhKhaoSat.rdl</Name>
       <FullPath>Request_TrungBinhKhaoSat.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>ReportKPI_PNJ_C2.rdl</Name>
-      <FullPath>ReportKPI_PNJ_C2.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>ReportKPI_PNJ_I4.rdl</Name>
-      <FullPath>ReportKPI_PNJ_I4.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>ReportKPI_PNJ_I6.rdl</Name>
-      <FullPath>ReportKPI_PNJ_I6.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

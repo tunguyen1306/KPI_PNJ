@@ -235,6 +235,10 @@
         <DataField>countSVID</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
+      <Field Name="sumID">
+        <DataField>sumID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
     </Fields>
   </DataSet>
 </SharedDataSet>

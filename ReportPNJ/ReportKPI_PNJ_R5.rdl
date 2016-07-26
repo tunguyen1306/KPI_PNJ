@@ -257,6 +257,10 @@
           <DataField>RESPONDEDTIME</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="TITLE">
+          <DataField>TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="RequestTypeID">
           <DataField>RequestTypeID</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
@@ -272,6 +276,46 @@
         <Field Name="DUEBYTIME">
           <DataField>DUEBYTIME</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SCHEDULEDSTARTTIME">
+          <DataField>SCHEDULEDSTARTTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SCHEDULEDENDTIME">
+          <DataField>SCHEDULEDENDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ACTUALSTARTTIME">
+          <DataField>ACTUALSTARTTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ACTUALENDTIME">
+          <DataField>ACTUALENDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="TASKID">
+          <DataField>TASKID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="SCHEDULEDSTARTTIME1">
+          <DataField>SCHEDULEDSTARTTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="SCHEDULEDENDTIME1">
+          <DataField>SCHEDULEDENDTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ACTUALSTARTTIME1">
+          <DataField>ACTUALSTARTTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ACTUALENDTIME1">
+          <DataField>ACTUALENDTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="LAST_TECH_UPDATE">
+          <DataField>LAST_TECH_UPDATE</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -405,14 +449,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox11">
+                        <Textbox Name="Textbox9">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))</Value>
+                                  <Value>=Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -438,14 +482,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox41">
+                        <Textbox Name="Textbox39">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -511,14 +555,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox28">
+                        <Textbox Name="Textbox13">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)))</Value>
+                                  <Value>=Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -546,14 +590,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox33">
+                        <Textbox Name="Textbox19">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1052,14 +1096,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
+                        <Textbox Name="Textbox11">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))</Value>
+                                  <Value>=Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1085,14 +1129,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox42">
+                        <Textbox Name="Textbox41">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1158,14 +1202,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox29">
+                        <Textbox Name="Textbox14">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)))</Value>
+                                  <Value>=Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1193,14 +1237,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox34">
+                        <Textbox Name="Textbox24">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1745,14 +1789,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox7">
+                        <Textbox Name="Textbox5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))</Value>
+                                  <Value>=Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1785,7 +1829,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0)  &lt;= 1800, "YES", Nothing)) / Count(Fields!Requestid.Value), 2)&amp;"%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1816,14 +1860,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox31">
+                        <Textbox Name="Textbox20">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1860,14 +1904,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox32">
+                        <Textbox Name="Textbox21">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -2369,7 +2413,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)/60&lt;=30,"YES",nothing))</Value>
+                                  <Value>=Count(iif(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)&lt;=1800,"YES",nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2402,7 +2446,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)) / Count(Fields!Requestid.Value), 2)&amp;"%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0)  &lt;= 1800, "YES", Nothing)) / Count(Fields!Requestid.Value), 2)&amp;"%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2475,7 +2519,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Count(iif(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)/60&lt;=30,"YES",nothing)))</Value>
+                                  <Value>=Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)&lt;=1800,"YES",nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -2510,7 +2554,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(100*Sum(Count(iif(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)/60&lt;=30,"YES",nothing)))/Sum(count(Fields!Requestid.Value)),2)&amp;"%"</Value>
+                                  <Value>=Round(100*Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)&lt;=1800,"YES",nothing)))/Sum(count(Fields!Requestid.Value)),2)&amp;"%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -2867,14 +2911,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox9">
+                        <Textbox Name="Textbox7">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))</Value>
+                                  <Value>=Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2900,14 +2944,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox39">
+                        <Textbox Name="Textbox45">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2973,14 +3017,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox27">
+                        <Textbox Name="Textbox12">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)))</Value>
+                                  <Value>=Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3008,14 +3052,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox19">
+                        <Textbox Name="Textbox22">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3370,14 +3414,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox13">
+                        <Textbox Name="Textbox8">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))</Value>
+                                  <Value>=Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3403,14 +3447,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox44">
+                        <Textbox Name="Textbox42">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing)) / Count(Fields!Requestid.Value), 2) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3476,14 +3520,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox30">
+                        <Textbox Name="Textbox15">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing)))</Value>
+                                  <Value>=Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3511,14 +3555,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox36">
+                        <Textbox Name="Textbox31">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!ResponseTime.Value &gt; 0, Fields!ResponseTime.Value - Fields!CreateTime.Value, 0) / 60 &lt;= 30, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
+                                  <Value>=System.Math.Round(100 * Sum(Count(iif(iif(Fields!LAST_TECH_UPDATE.Value &gt; 0, Fields!LAST_TECH_UPDATE.Value - Fields!CreateTime.Value, 0) &lt;= 1800, "YES", Nothing))) / Sum(Count(Fields!Requestid.Value)), 2) &amp; "%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3877,7 +3921,7 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Round(100* Count(iif(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)/60&lt;=30,"YES",nothing))/ count(Fields!Requestid.Value),2)</Y>
+                        <Y>=Round(100* Count(iif(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)&lt;=1800,"YES",nothing))/ count(Fields!Requestid.Value),2)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
@@ -3919,7 +3963,7 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=100-Round(100* Count(iif(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)/60&lt;=30,"YES",nothing))/ count(Fields!Requestid.Value),2)</Y>
+                        <Y>=100-Round(100* Count(iif(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)&lt;=1800,"YES",nothing))/ count(Fields!Requestid.Value),2)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>

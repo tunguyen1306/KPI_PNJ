@@ -257,6 +257,10 @@
           <DataField>RESPONDEDTIME</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="TITLE">
+          <DataField>TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="RequestTypeID">
           <DataField>RequestTypeID</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
@@ -272,6 +276,46 @@
         <Field Name="DUEBYTIME">
           <DataField>DUEBYTIME</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SCHEDULEDSTARTTIME">
+          <DataField>SCHEDULEDSTARTTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SCHEDULEDENDTIME">
+          <DataField>SCHEDULEDENDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ACTUALSTARTTIME">
+          <DataField>ACTUALSTARTTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ACTUALENDTIME">
+          <DataField>ACTUALENDTIME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="TASKID">
+          <DataField>TASKID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="SCHEDULEDSTARTTIME1">
+          <DataField>SCHEDULEDSTARTTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="SCHEDULEDENDTIME1">
+          <DataField>SCHEDULEDENDTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ACTUALSTARTTIME1">
+          <DataField>ACTUALSTARTTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ACTUALENDTIME1">
+          <DataField>ACTUALENDTIME1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="LAST_TECH_UPDATE">
+          <DataField>LAST_TECH_UPDATE</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -326,13 +370,13 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value)</Y>
+                        <Y>=sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
                           <Color>Orange</Color>
                         </Style>
-                        <Label>=code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Label>
+                        <Label>=code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style>
@@ -831,7 +875,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -904,7 +948,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -939,7 +983,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1481,7 +1525,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1554,7 +1598,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1589,7 +1633,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -2141,7 +2185,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2174,7 +2218,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2212,7 +2256,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -2256,7 +2300,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -2763,7 +2807,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2796,7 +2840,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2869,7 +2913,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(Math.Floor( sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(Math.Floor( sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)))))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -2904,7 +2948,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(Math.Floor(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value))))</Value>
+                                  <Value>=Code.ConvertIntToHour(Math.Floor(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value))))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3267,7 +3311,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3300,7 +3344,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3408,7 +3452,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3771,7 +3815,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))</Value>
+                                  <Value>=Code.ConvertIntToHour(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3804,7 +3848,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/count(Fields!Requestid.Value))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3877,7 +3921,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0)))</Value>
+                                  <Value>=Code.ConvertIntToHour(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0)))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -3912,7 +3956,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!ResponseTime.Value&gt;0,(Fields!ResponseTime.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
+                                  <Value>=Code.ConvertIntToHour(Round(sum(iif(Fields!LAST_TECH_UPDATE.Value&gt;0,(Fields!LAST_TECH_UPDATE.Value)-(Fields!CreateTime.Value),0))/Sum(count(Fields!Requestid.Value)),2))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>

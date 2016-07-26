@@ -229,13 +229,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.43486cm</Width>
+                  <Width>6.00132cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>5.47215cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.83375cm</Width>
+                  <Width>6.70392cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -585,7 +585,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>9.26861cm</Size>
                     <CellContents>
                       <Textbox Name="Group">
                         <CanGrow>true</CanGrow>
@@ -619,7 +619,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>9.26861cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox129">
                         <CanGrow>true</CanGrow>
@@ -659,10 +659,19 @@
             <RepeatColumnHeaders>true</RepeatColumnHeaders>
             <FixedColumnHeaders>true</FixedColumnHeaders>
             <DataSetName>DataSet</DataSetName>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
             <Top>11.34745cm</Top>
             <Left>0.2176cm</Left>
             <Height>3.04354cm</Height>
-            <Width>18.17562cm</Width>
+            <Width>27.446cm</Width>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=1,false,true)</Hidden>
             </Visibility>
@@ -1088,10 +1097,19 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet</DataSetName>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!Group.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
             <Top>0cm</Top>
             <Left>0.2176cm</Left>
-            <Height>11.02932cm</Height>
-            <Width>25.08804cm</Width>
+            <Height>11.17106cm</Height>
+            <Width>27.17825cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1794,7 +1812,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.43486cm</Width>
+                  <Width>5.50857cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>5.47215cm</Width>
@@ -2150,7 +2168,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>10.63153cm</Size>
                     <CellContents>
                       <Textbox Name="Group2">
                         <CanGrow>true</CanGrow>
@@ -2184,7 +2202,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>10.63153cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox134">
                         <CanGrow>true</CanGrow>
@@ -2227,7 +2245,7 @@
             <Top>18.56144cm</Top>
             <Left>0.21761cm</Left>
             <Height>3.04354cm</Height>
-            <Width>18.17561cm</Width>
+            <Width>27.44599cm</Width>
             <ZIndex>3</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value = 3, False, True)</Hidden>
@@ -2283,7 +2301,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.43486cm</Width>
+                  <Width>4.87828cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.43486cm</Width>
@@ -2746,7 +2764,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>7.58882cm</Size>
                     <CellContents>
                       <Textbox Name="Group3">
                         <CanGrow>true</CanGrow>
@@ -2780,7 +2798,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>7.58882cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox138">
                         <CanGrow>true</CanGrow>
@@ -2823,7 +2841,7 @@
             <Top>22.02748cm</Top>
             <Left>0.21761cm</Left>
             <Height>3.04354cm</Height>
-            <Width>21.84861cm</Width>
+            <Width>27.44599cm</Width>
             <ZIndex>4</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value = 4, False, True)</Hidden>
@@ -3449,7 +3467,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>5.79282cm</Size>
                     <CellContents>
                       <Textbox Name="Group4">
                         <CanGrow>true</CanGrow>
@@ -3483,7 +3501,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>5.79282cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox142">
                         <CanGrow>true</CanGrow>
@@ -3526,7 +3544,7 @@
             <Top>25.24741cm</Top>
             <Left>0.21761cm</Left>
             <Height>3.04354cm</Height>
-            <Width>25.08803cm</Width>
+            <Width>27.44599cm</Width>
             <ZIndex>5</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value = 5, False, True)</Hidden>
@@ -3582,10 +3600,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.43486cm</Width>
+                  <Width>7.24486cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.47215cm</Width>
+                  <Width>6.73587cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>5.83374cm</Width>
@@ -3938,7 +3956,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>7.58882cm</Size>
                     <CellContents>
                       <Textbox Name="Group5">
                         <CanGrow>true</CanGrow>
@@ -3972,7 +3990,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>3.43486cm</Size>
+                    <Size>7.58882cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox146">
                         <CanGrow>true</CanGrow>
@@ -4015,7 +4033,7 @@
             <Top>28.7479cm</Top>
             <Left>0.21761cm</Left>
             <Height>3.04354cm</Height>
-            <Width>18.17561cm</Width>
+            <Width>27.40329cm</Width>
             <ZIndex>6</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value = 7, False, True)</Hidden>

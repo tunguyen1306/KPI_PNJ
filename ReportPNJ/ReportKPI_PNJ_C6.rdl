@@ -185,6 +185,10 @@
           <DataField>countSVID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="sumID">
+          <DataField>sumID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -228,7 +232,7 @@
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Change ID</Label>
+                  <Label>sum ID</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
@@ -238,11 +242,11 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Round(100* Count(Fields!countSVID.Value) / Count(Fields!ChangeID.Value), 2)</Y>
+                        <Y>=Round(100* count(Fields!ChangeID.Value)/ Fields!sumID.Value, 2)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
-                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Label>#VAL{#0.##\%}</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
@@ -262,6 +266,9 @@
                       <Style />
                     </ChartDataLabel>
                   </ChartEmptyPoints>
+                  <ChartItemInLegend>
+                    <LegendText>Tỷ lệ % thay đổi</LegendText>
+                  </ChartItemInLegend>
                   <ValueAxisName>Primary</ValueAxisName>
                   <CategoryAxisName>Primary</CategoryAxisName>
                   <ChartSmartLabel>
@@ -556,6 +563,15 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet</DataSetName>
+            <Filters>
+              <Filter>
+                <FilterExpression>=isnothing(Fields!ServiceCategory.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
             <Top>0cm</Top>
             <Left>0.01267cm</Left>
             <Height>11.02932cm</Height>
@@ -626,21 +642,21 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Requestid1">
+                        <Textbox Name="sumID">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(Fields!ChangeID.Value)</Value>
+                                  <Value>=count(Fields!ChangeID.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Requestid1</rd:DefaultName>
+                          <rd:DefaultName>sumID</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -664,7 +680,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(100* Count(Fields!countSVID.Value) / Count(Fields!ChangeID.Value), 2) &amp; "%"</Value>
+                                  <Value>=Round(100* count(Fields!ChangeID.Value)/ Fields!sumID.Value, 2) &amp; "%"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -737,7 +753,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(100* sum(Count(Fields!countSVID.Value) / Count(Fields!ChangeID.Value)), 2)&amp;"%"</Value>
+                                  <Value>=Round(100* count(Fields!ChangeID.Value)/ Fields!sumID.Value, 2) &amp;"%"</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -908,7 +924,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tổng</Value>
+                                <Value>Total</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>

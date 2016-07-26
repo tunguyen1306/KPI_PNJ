@@ -2580,7 +2580,7 @@
                                         <Value>=iif(Parameters!typeaction.Value = 7, Fields!Department.Value, "none")</Value>
                                       </Parameter>
                                       <Parameter Name="tech">
-                                        <Value>=iif(Parameters!typeaction.Value = 2, Fields!Technician.Value, "none")</Value>
+                                        <Value>=iif(Parameters!typeaction.Value = 2, Fields!techId.Value, "none")</Value>
                                       </Parameter>
                                     </Parameters>
                                   </Drillthrough>
@@ -2599,6 +2599,7 @@
                               <PaddingBottom>2pt</PaddingBottom>
                             </Style>
                           </Textbox>
+                          <rd:Selected>true</rd:Selected>
                         </CellContents>
                       </TablixHeader>
                     </TablixMember>
@@ -3326,10 +3327,10 @@
                   <Width>6.41615cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.66448cm</Width>
+                  <Width>6.15234cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.39448cm</Width>
+                  <Width>3.12661cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -3779,7 +3780,7 @@
             <Top>17.96122cm</Top>
             <Left>0.04152cm</Left>
             <Height>2.3027cm</Height>
-            <Width>17.78001cm</Width>
+            <Width>21cm</Width>
             <ZIndex>5</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=3,false,true)</Hidden>

@@ -1245,7 +1245,7 @@
             <Top>20.86991cm</Top>
             <Left>0.23307cm</Left>
             <Height>2.69958cm</Height>
-            <Width>22.06436cm</Width>
+            <Width>22.06437cm</Width>
             <ZIndex>1</ZIndex>
             <Visibility>
               <Hidden>=iif(Parameters!typeaction.Value=4,false,true)</Hidden>
@@ -2925,6 +2925,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -4216,7 +4217,7 @@
         <Height>42.81225cm</Height>
         <Style />
       </Body>
-      <Width>22.34696cm</Width>
+      <Width>22.34697cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

@@ -183,7 +183,7 @@ namespace PNJ.Controllers
                     query = new StringBuilder("SELECT DISTINCT serdef.SERVICEID,serdef.NAME AS ServiceCategory FROM WorkOrder wo LEFT JOIN ServiceDefinition serdef ON wo.SERVICEID=serdef.SERVICEID LEFT JOIN WorkOrderStates wos ON wo.WORKORDERID=wos.WORKORDERID LEFT JOIN CategoryDefinition cd ON wos.CATEGORYID=cd.CATEGORYID WHERE (wo.ISPARENT='1') group by serdef.NAME, serdef.SERVICEID");
                     break;
                 case 15:
-                    query = new StringBuilder("SELECT DISTINCT sd.NAME, sd.SERVICEID FROM dbo.ServiceDefinition sd WHERE sd.STATUS ='ACTIVE'  GROUP BY sd.NAME, sd.SERVICEID");
+                    query = new StringBuilder("SELECT DISTINCT sd.NAME, sd.SERVICEID FROM dbo.ServiceDefinition sd WHERE sd.STATUS ='ACTIVE' and sd.ISDELETED=0  GROUP BY sd.NAME, sd.SERVICEID");
                     break;
                 case 16:
                     query = new StringBuilder("SELECT DISTINCT  AaaUser.FIRST_NAME ,SDUser.Employeeid ,DepartmentDefinition.DEPTNAME FROM AaaUser LEFT JOIN UserDepartment ON AaaUser.USER_ID = UserDepartment.USERID  LEFT JOIN DepartmentDefinition ON UserDepartment.DEPTID = DepartmentDefinition.DEPTID LEFT JOIN SiteDefinition ON DepartmentDefinition.SITEID = SiteDefinition.SITEID LEFT JOIN SDOrganization ON SiteDefinition.SITEID = SDOrganization.ORG_ID INNER JOIN SDUser ON AaaUser.USER_ID = SDUser.USERID LEFT JOIN HelpDeskCrew ON SDUser.USERID = HelpDeskCrew.TECHNICIANID LEFT JOIN Requester_Fields ON SDUser.USERID = Requester_Fields.USERID LEFT JOIN AaaLogin ON AaaUser.USER_ID = AaaLogin.USER_ID WHERE DepartmentDefinition.DEPTID = " + condition + " AND SDUser.STATUS = 'ACTIVE'  ORDER BY 1");

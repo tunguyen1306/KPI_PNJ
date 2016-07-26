@@ -232,9 +232,9 @@ namespace PNJ.Controllers
             {
                 hdrqt = "303";
             }
-            else
+            if (data.nameReport.Contains("ReportKPI_PNJ_C1")|| data.nameReport.Contains("ReportKPI_PNJ_C2") || data.nameReport.Contains("ReportKPI_PNJ_C3") || data.nameReport.Contains("ReportKPI_PNJ_C5") || data.nameReport.Contains("ReportKPI_PNJ_C6"))
             {
-                hdrqt = "302,301,303";
+                hdrqt = "none";
             }
             if (data.nameReport.Contains("ReportKPI_PNJ_ALL01"))
             {

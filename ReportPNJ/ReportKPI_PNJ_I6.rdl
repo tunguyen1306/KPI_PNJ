@@ -2574,10 +2574,10 @@
                                         <Value>=iif(Parameters!typeaction.Value = 5, Fields!SubcategoryID.Value, "none")</Value>
                                       </Parameter>
                                       <Parameter Name="depart">
-                                        <Value>=iif(Parameters!typeaction.Value = 7, Fields!Department.Value, "none")</Value>
+                                        <Value>=iif(Parameters!typeaction.Value = 7, Fields!DepartID.Value, "none")</Value>
                                       </Parameter>
                                       <Parameter Name="tech">
-                                        <Value>=iif(Parameters!typeaction.Value = 2, Fields!Technician.Value, "none")</Value>
+                                        <Value>=iif(Parameters!typeaction.Value = 2, Fields!techId.Value, "none")</Value>
                                       </Parameter>
                                     </Parameters>
                                   </Drillthrough>
@@ -2596,6 +2596,7 @@
                               <PaddingBottom>2pt</PaddingBottom>
                             </Style>
                           </Textbox>
+                          <rd:Selected>true</rd:Selected>
                         </CellContents>
                       </TablixHeader>
                     </TablixMember>
@@ -4138,7 +4139,6 @@
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
-                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                 </TablixMember>
